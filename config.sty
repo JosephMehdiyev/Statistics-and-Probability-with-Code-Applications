@@ -1,0 +1,43 @@
+\ProvidesPackage{config}
+% This sty file stores the latex configuration (packages, margins, other stuff) and my personal command list and configurations.
+
+%packages
+\usepackage[english]{babel}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{makeidx}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%dummy text generator, use \lipsum[NUMBER-NUMBER] where NUMBERS are natural numbers between 1 and 150.
+\usepackage{lipsum}  
+
+
+%-------------------------------------------------
+%Personal Commands
+
+%makes a blank page
+\newcommand\blankpage{ 
+    \clearpage
+    \begingroup
+      \null
+      \thispagestyle{empty}%
+      \addtocounter{page}{-1}%
+      \hypersetup{pageanchor=false}%
+      \clearpage
+    \endgroup
+}
+
+\newcommand{\jump}{\vspace*{0.5cm}}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{diagram}{Diagram}[section]
+%--------------------------------------------------
