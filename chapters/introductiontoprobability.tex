@@ -12,7 +12,6 @@ A \textbf{Set} is a collection of different objects, which are called \textit{el
 If $x$ is an element of a set $S$, we write $x \in S$. Otherwise we write $ x \not\in S$. A set with no elements is called \textbf{empty set} and is notated as $\emptyset$. \par
 If $x_1,x_2,...,x_n$ are the elements of the set $S$, we write:
 $$ S \in \{x_1,x_2,...,x_n\} $$
-We can visualize the sets in 2D with a rectangle, circles and their intersections. The rectangle represent $\textbf{Sample Space} \ \Omega$, or $\textbf{Universal Set}$, which we will explain next section.    
 \par
 If S is set of all even numbers smaller than 12, we can draw the diagram as:
 
@@ -30,22 +29,137 @@ $$A \subsetneq B$$
 \subsection*{Set operations}
 \textbf{Union} of sets $A$,$B$ is a set that contains the elements of $A$ and $B$:
 $$A \cup B = \{n:n \in A  \lor  n  \in B\}$$
+We can visualize the sets in 2D with circles and their intersections.  
+\begin{figure}[!h]
+    \centering
+    \input{diagrams/1.1.1.tex}
+    \caption{$A \cup B$}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
 \textbf{Intersection} of sets $A$,$B$ is a set that contains both the elements of $A$ and $B$:
 $$A \cap B = \{n:n \in A  \land  n  \in B\}$$
 
 \par
+
+
+
+
+
+
+\subsection*{Sample Space and Events}
+The Sample Space, usually denoted as $S$ or $\Omega$, is the $\textit{set}$ of all possible outcomes of an experiment. It is also called  \textbf{universal set}. Subsets of $\Omega$ are called $\textbf{events}$. A sample element of $\Omega$ is denoted as $\omega$.
+
+\begin{example}
+    If we toss a six sided dice once, then $\Omega = \{1,2,3,4,5,6\}$, the even that the side is even is $A= \{2,4,6\}$ while $\omega \in \{1,2,3,4,5,6\}$
+\end{example}
+
+\begin{example}
+    If we toss a two sided coin twice, then $$\Omega = \{(HH),(TT),(HT),(TH)\} \ \land \ \omega \in \{(HH),(TT),(HT),(TH)\}$$
+\end{example}
+\begin{example}
+    If we toss a 2 sided coin forever, then $$\Omega = \{\omega= (\omega_1,\omega_2,...): \ \omega_i \in \{H,T\} \}$$
+\end{example}
+
+\begin{example}
+    Let $E$ be the event that only even numbers appear in the six sided dice toss. Then,
+    $$E = \{2,4,6 \}$$
+\end{example}
+With the new definition, we can make more set operation: 
+$\textbf{complement}$ of the event $A$ is a set of elements $\Omega$ that do not belong to $A$. 
+$$A^{c} = \{n: n \in \Omega \land n \not\in A \}$$
+\par
+$\textbf{difference}$ of the set $A$ from B is a set of elements of $A$ that do not also belong to $B$
+$$A \setminus B = A \cap B^c$$
+\par we say that $E_1,E_2,...,E_N$ are \textbf{disjoint} if 
+$$A_i \cap A_j =  \emptyset $$
+\par
+A partition of $\Omega$ is a sequence of disjoint events  such that $$\bigcup^{\infty} E_i = \Omega$$
+
+\par 
+
+Similiar to \textbf{monotone functions}, we define \textbf{monotone increasing} sequence of sets $A_1,A_2,...$ as the sequence of sets such that $A_1 \subset A_2 \subset...$ and $\lim_{n \rightarrow \infty} A_n = \bigcup A_i$
+
+\par
+
+Moreover, we can define certain rules similar to the rules of algebra:
+$$\begin{aligned}
+    &\text{Commutative laws} \qquad  &&A \cup B = B \cup A \\
+    &\text{Associative laws} \qquad  &&(A \cup B) \cup C = A \cup (B \cup C) \\
+    &\text{Distributive laws} \qquad &&A \cap (B \cup C) = (A \cap B) \cup (A \cap C)
+\end{aligned}$$
+
+\par
+
+And lastly, \textbf{DeMorgan's laws} states that
+$$ \left( \bigcup_{i=1}^n A_i \right) ^c = \bigcap_{i=1}^n A_i^c $$
+$$ \left( \bigcap_{i=1}^n A_i \right) ^c = \bigcup_{i=1}^n A_i^c $$
+Which is, in my opinion, very intuitive and can be easily understood with sketching venn diagrams.
+These are all of the terminology and notations we will be using for learning the probability.
+
+
+
 
 %--------------------------------------------------
 
 
 
 
-\section{Sample Space and Events}
-The Sample Space, usually denoted as $S$ or $\Omega$, is the $\textit{set}$ of all possible outcomes of an experiment. It is also called  \textbf{universal set}. Subsets of $\Omega$ are called $\textbf{events}$. A sample element of $\Omega$ is denoted as $\omega$.
 
-\begin{example}
-    If we toss a six dice once, then $\Omega = \{1,2,3,4,5,6\}$, the even that the side is even is $A= \{2,4,6\}$ while $\omega \in \{1,2,3,4,5,6\}$
-\end{example}
+\section{Probability Law}
+To show the probability of a event $A$, we assign a real number $P(A)$ or $\mathbb{P}(A)$ in some textbooks, called $\textbf{probability of $A$}$. In other words, $P()$ is a unique function with unique properties that inputs an event $A$, and outputs its probability.
+\par 
+To qualify as probability, $P$ must satisfy $3$ axioms:
+\begin{itemize}
+    \item[\textbf{Axiom 1}] $P(A) \ge 0$ \ for every $A$
+    \item[\textbf{Axiom 2}] $P(\Omega)=1$
+    \item[\textbf{Axiom 3}] If $A_1,A_2,...$ are disjoing: 
+    $$P \left( \bigcup^{\infty}_{i=1} A_i \right)= \sum^{\infty}_{i=1}P(A_i) $$
+\end{itemize}
 
-With the new definition, we can make another set operation: $\textbf{complement}$ of the set $A$ is a set of elements $\Omega$ that do not belong to $A$. 
-$$A^{c} = \{n: n \in \Omega \land n \not\in A \}$$
+\par
+Let's explain the axioms. The first axiom is very simple, a probability can't be negative, since the meaning of the word probability.
+Second axiom is also very simple, the probability of any possible outcomes happening is $1$, since there must be a outcome at the end of the experiment.
+Third axiom, assume we have $2$ disjoint sets. Then
+$$P(A \cup B)= P(A)+P(B)$$
+This is true simply because sets are disjoint. Similiarly, we can use induction to prove the above property for $n$ sets. Proving for infinite sets are out of scope of this section, therefore we will skip it.
+
+\par
+We can derive many properties from these axioms. These are the most simple and intuitive ones:
+$$ \begin{aligned}
+    P(\emptyset) \qquad &= \qquad 0 \\
+    A \subset B \qquad &\Longrightarrow  \qquad P(A) \le P(B) \\
+    0 \le       \qquad &P(A) \qquad \le 1 \\ 
+    P(A^c)  \qquad  & = \qquad 1- P(A)
+\end{aligned}$$ 
+
+And a less obvious property: 
+\begin{lemma} For  events $A$ and $B$,
+    $$ P \left(A \cup B\right)= P(A)+P(B)-P(A \cap B)$$
+\end{lemma}
+
+\begin{proof}
+    We can rewrite $A \cup B$ as union of $A \setminus B$, $B \setminus A$, and $A \cap B$, since these are the slices of the thing we want to begin with. Moreover, these slices are disjoint, therefore we can apply our third axiom ($P$ is additive):
+$$ 
+\begin{aligned} 
+    P \left(A \cup B\right) &= P \bigl( (A \setminus B) \cup (B \setminus A) \cup (A \cap B) \bigr) \\
+                            &= P(A \setminus B) + P( B \setminus A) + P(A \cap B)  \\
+                            &= P(A \setminus B) + P( A \cap B)+ P( B \setminus A) + P(A \cap B) - P(A \cap B)  \\
+                            &= P(A)+P(B)-P(A \cap B) 
+\end{aligned}
+$$ 
+\end{proof}
+
+
+%--------------------------------------------------
+
+\section{Uniform Probability Distribution}
