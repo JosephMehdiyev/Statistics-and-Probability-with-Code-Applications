@@ -1,7 +1,22 @@
 \chapter{Introduction to Probability}
 The concept ``probability'' is used very often in everyday language to describe the chance of something happening. Mathematically, Probability is a language to quantify uncertainty. 
-This chapter will introduce necessary and basic concepts and namely, \textbf{Probability Theory}. We will start the chapter with the elementary \textit{Set Theory}.
+This chapter will introduce necessary and basic concepts and namely, \textbf{Probability Theory}. We will start the chapter about interpretations of probability.
 %-------------------------------------------------
+
+\section{Interpretations of Concept of Probability}
+We will briefly skim through this section.
+\par 
+In a theorical environment i.e tossing a coin with fifty to fifty chance, probabilities can be represented  as fractions. This called \textbf{Theorical Probability}. However, in practical applications, there are two major categories on interpretations:\textbf{Frequency} and \textbf{Bayesian}
+\par  
+Frequentist Probability, as name implies, gets its name from frequency. In this perspective probability is interpreted same as frequency. Repeating the experiment high number of times, one may find approximate probability of an \textit{event}. 
+This is the dominant form of probability that is taught in schools and universities.
+
+\par
+Bayesian Probability, however, takes its name from \textbf{Bayes' Rule}, which we will learn later. In this intersection, the probabilities represents the degree of belief on an event i.e the more information or conditions we have about an event, its probability changes.
+
+
+There are also other intersections, but they are not that widely used nor useful. It is enough to know above concepts.
+
 \section{Set Theory}
 Set Theory is a branch of mathematics that studies \textit{sets}, which we will define shortly. This branch is, like other parts of mathematics, very deep and complex. We will learn only the most important concepts , which is in high-school level, needed to understand later sections and chapters.
 \par
@@ -87,7 +102,7 @@ A partition of $\Omega$ is a sequence of disjoint events  such that $$\bigcup^{\
 
 \par 
 
-Similiar to \textbf{monotone functions}, we define \textbf{monotone increasing} sequence of sets $A_1,A_2,...$ as the sequence of sets such that $A_1 \subset A_2 \subset...$ and $\lim_{n \rightarrow \infty} A_n = \bigcup A_i$
+Similar to \textbf{monotone functions}, we define \textbf{monotone increasing} sequence of sets $A_1,A_2,...$ as the sequence of sets such that $A_1 \subset A_2 \subset...$ and $\lim_{n \rightarrow \infty} A_n = \bigcup A_i$
 
 \par
 
@@ -122,7 +137,7 @@ To qualify as probability, $P$ must satisfy $3$ axioms:
 \begin{itemize}
     \item[\textbf{Axiom 1}] $P(A) \ge 0$ \ for every $A$
     \item[\textbf{Axiom 2}] $P(\Omega)=1$
-    \item[\textbf{Axiom 3}] If $A_1,A_2,...$ are disjoing: 
+    \item[\textbf{Axiom 3}] If $A_1,A_2,...$ are disjoint: 
     $$P \left( \bigcup^{\infty}_{i=1} A_i \right)= \sum^{\infty}_{i=1}P(A_i) $$
 \end{itemize}
 
@@ -131,7 +146,7 @@ Let's explain the axioms. The first axiom is very simple, a probability can't be
 Second axiom is also very simple, the probability of any possible outcomes happening is $1$, since there must be a outcome at the end of the experiment.
 Third axiom, assume we have $2$ disjoint sets. Then
 $$P(A \cup B)= P(A)+P(B)$$
-This is true simply because sets are disjoint. Similiarly, we can use induction to prove the above property for $n$ sets. Proving for infinite sets are out of scope of this section, therefore we will skip it.
+This is true simply because sets are disjoint. Similarly, we can use induction to prove the above property for $n$ sets. Proving for infinite sets are out of scope of this section, therefore we will skip it.
 
 \par
 We can derive many properties from these axioms. These are the most simple and intuitive ones:
@@ -162,4 +177,122 @@ $$
 
 %--------------------------------------------------
 
-\section{Uniform Probability Distribution}
+\section{Discrete Probability Distribution}
+Discrete Probability distribution is the mathematical  description of probability of events, that are subsets of \textbf{finite or countable infinite} set $\Omega$. 
+If each outcome is equal, then probability of getting 2 even numbers from tossing a six sided dice, which is $\frac{1}{4}$,is an example of this. We can generalize this for event $A$ of finite $\Omega$,
+$$ P(A) = \frac{|A|}{|\Omega |}$$
+
+This is the equation almost everybody gets taught in high-school. We can calculate probability of getting heads from tossing a coin, getting a red ball from a box, getting a number from tossing $n$ sided coin and so on.
+To compute this probability, we first have to count $ | \Omega | $ and $|A |$. 
+
+\par 
+
+For simple experiments, it is rather easy just do count by finger.
+However, sometimes things get rather complex and we have to use new tools to count them. For example, how many possible outcomes are there from tossing a coin $10^{64^{100}}$ times? We will learn more about counting techniques in Chapter $1.7$.
+
+
+
+\section{Independent Events}
+If we flip  a six sided dice twice, probability of getting $2$ even numbers is $ \frac{1}{4}$, which can be found easily just by counting. However, one may guess that we can find the probability for one dice, then square it, which gets the same answer, $\frac{3}{6} \times \frac{3}{6}= \frac{1}{4}$.
+
+\par 
+
+This is a prime example of \textbf{Independent Events}. The first roll and the second roll are not depended on each other. Whatever the results in first roll can't influence the result in second roll.
+
+The formal definition of independence is,
+
+\begin{definition}
+    Two events $A$ and $B$ are \textbf{independent}  if 
+    $$ P(A \cap B) = P(A)P(B)$$ 
+\end{definition}
+\par
+
+But how can we  know the events are \textit{Independent}? Sometimes, it is rather simple, we know it by logic. Probability of the author being successful is not depended on tossing a coin, it is just simple logic.
+
+In almost all cases, simple logic is enough to determine this property. Another property, is that \textit{disjoint events are never Independent}. Other than that, we have to manually check if the events satisfy the above equation.
+\section{Conditional Probability}
+Conditional Probability, as the name implies, is the probability of an event with a condition. More precisely, \textbf{Conditional Probability}  is the probability of an event $A$, given that another event $B$ is already occurred. In such probability, the sample space is reduced to $B$'s, while we want to find probability of $A$ from $B$'s space (Which increases of probability of $A$, since sample space is also reduced). We can show this neatly in venn diagram:
+
+\par 
+
+PICTURE HERE
+
+\par
+
+Here are some examples:
+\begin{example}
+    If we tossed a six sided dice one time, and we rolled an even number $B$, what is the probability of getting number $2$, event $A$?
+\end{example}
+Since the first toss' result is already happened, we know that  $\Omega_{reduced}=\{2,4,6\}$ and  $A = \{2\}$, then $P(A)_{\Omega_{reduced}}=\frac{1}{3}$. 
+
+If there wasn't any condition, the probability of getting $2$ would be $\frac{1}{6}$. Simply, in a simple probability we defined a new condition and sort of updated our measurement to $\frac{1}{3}$. This is an important idea in Probability and Statistics, which we will revisit shortly in \textbf{Bayes' Rule}
+\par 
+We can show the conditional probability of $A$ given $B$ as:
+$$ P(A | B) = \frac{P(A \cap B)}{P(B)} \qquad \text{for}\ P(B) \neq 0$$
+\par
+If we revisit to our simple probability equation, this equation starts making sense since $P(B)$ becomes our reduced sample space, while $P(A \cap B)$ is our event fancily written for condition property.
+
+It is a very common mistake to thing $P( A | B) = P(B | A)$, which is easy to understand why just by looking to either venn diagrams or the equations we defined. Moreover, if $A$ and $B$ are independent from each other, then $P(A|B)= P(A)$, which comes from the definition of independence, $B$ can't effect $A$'s probability.
+\newline
+\par
+GENERALIZE THE THING!!!
+\section{Bayes' Theorem}
+
+In this section, we will learn about \textbf{Bayes' Theorem}, an important concept about probability. This rule is widely used by scientists and programmers. But, what is this rule exactly? Why is it useful?
+
+Bayes' Rule, in simple words, helps to calculate conditional probabilities. It helps us to view probabilities in a degree of belief. I highly recommend watching 3blue1brown's \href{https://www.youtube.com/watch?v=HZGCoVF3YvM&feature=emb_title}{video} about this concept (since visual teaching will always be more practical).
+
+\par
+
+We firstly begin by introducing the simple version of the theorem:
+\begin{theorem}[Simplified Bayes' Theorem]
+    $$ P(A|B) = \frac{P(A) \cdot P(B|A)}{P(B)} $$
+\end{theorem} 
+
+\begin{proof}
+    We apply the definition of conditional probability twice:
+    $$ P(A|B) = \frac{P(A \cap B)}{P(B)} \qquad \land \qquad  P(B|A) = \frac{P(B \cap A)}{P(A)}$$
+    Using above properties directly gives our theorem.
+\end{proof}
+
+\par 
+Let's try to comprehend the theorem more practically. The theorem can be understood as ``Updating the probability of $A$ with a new condition $B$''. You may think this is an obvious fact and couldn't be that useful. However, let's give some examples that are actually very ambigious without the theorem.
+
+\begin{example}
+    Steve is a middle aged man  living in USA and he is very patient and curious. He also likes debate with people.  Which is more likely about Steve: A known mathematician that earned a noble prize or a plumber? 
+    \newline
+    \par
+    Majority of people would immediately answer ``the mathematician'', however there is a bigger chance he is a plumber. The reason people get wrong on these questions is because they think that these specific attributes directly corresponds to a smart, wise man. However, they also forget that the number of  noble prize winner, middle aged mathematician men that lives in USA is quite low (maybe even zero, I don't really know).
+    The attributes may be likely to the mathematician, however there is also a low chance that a plumber can have these specific attributes. Also considering there are almost $300$k plumbers, the numbers add up.
+
+    \par 
+
+    To not make these kind of mistakes, we must think these attributes, or events as new updates on our main probability, which is a man either being mathematician or a plumber. That is the core idea of Bayes' Theorem.
+\end{example}
+
+\par 
+
+When using the Bayes' Theorem, it is not always practical to directly calculate the $P(A)$ or $P(B)$. Therefore we need another tool, called \textbf{Law of Total Probability} which states that.
+\\
+\begin{theorem}[Law of Total Probability] Let $A_1,A_2,...,A_n$ be partition of $\Omega$. Then for any event $B$,
+    $$P(B)= \sum_{i=1}^n P(B|A_i)P(A_i)$$
+    
+\end{theorem}
+\begin{proof}
+    Let $C_i=A_i \cap B$. Then we know that $C_1,C_2,...,C_n$ are the partition of $B$. Therefore using the partition property,
+    $$ P(B)= \sum_{i=1}^n P(C_i) = \sum_{i=1}^n P(A_i \cap B) =\sum_{i=1}^n P(B|A_i)P(A_i) $$
+    Last step is consequence of conditional probability definition of $P(B|A_i)P(A_i)=P(B \cap A_i)$
+\end{proof}
+
+\par
+This theorem becomes very handy in practical situations. Moreover, with the help of this theorem we can generalize our Bayes' Theorem,
+
+\begin{theorem}[Bayes' Theorem] Let $A_1,A_2,..,A_n$ be a partition of $\Omega$ such that $P(A_i) > 0$. For $P(B) \neq 0$ and for any $i=1,2,...,n$,
+    $$ P(A_i|B) = \frac{P(A_i) \cdot P(B|A_i)}{P(B)} =  \frac{P(A_i) \cdot P(B|A_i)}{\sum_{i=1}^n P(B|A_i)P(A_i) }$$
+\end{theorem}
+\begin{proof}
+    Similar to proof of Theorem 1.7.1, We use definition of conditional probability and  lastly apply Theorem 1.7.2  in the last step.
+\end{proof}
+
+
+\section{Counting}
