@@ -227,4 +227,20 @@ Examples \\
 
 
 %---------------------
-\section{Expectation, Invariance}
+\section{Transformations of a Random Variable}
+In some applications, we really are interested in distributions of some function of $X$. EXAMPLES \lipsum[1-1]. We call this concept \textbf{Transformation of X}.
+\begin{definition}
+    Let $X$ be R.V with PDF/PMF $f_X$ and CDF $F_X$. Let $Y=r(X)$ i.e $Y=X^2$ or $Y = \ln X$. We call $Y=r(X)$ \textbf{transformation of x}. \\
+    \newline
+    If $Y$ is discrete, PMF is given by,
+    \[f_Y(y)= P(Y=y) =  P( r(X) = y) = P( \{x \ : \ r(x) = y\})= P( X \in r^{-1}(y)) \]
+    \newline
+    If $Y$ is continuous, we first calculate CDF and find derivative of it. 
+    \begin{align*}
+        F_Y(y) &= P( Y \le y) = P(r(X) < y) \\
+               &= P(\{x \ : \ r(x) \le y \}) = P( A_y)    \\
+               &= \int_{A_y} f_X(x)dx
+    \end{align*}
+    And the last step, $f_Y(y) = F^{'}(y)$.
+\end{definition}
+We can also generalize this concepts for Multivariate distributions, which we just increase dimensions we work with (too lazy, add this later).
