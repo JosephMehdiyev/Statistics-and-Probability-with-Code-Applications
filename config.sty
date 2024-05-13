@@ -16,12 +16,30 @@
 \usepackage{pgf}
 \usepackage{mathrsfs}
 \usepackage{blindtext}
+
+% Bookmark numbering and stuff
 \usepackage{hyperref}
+\hypersetup{
+          bookmarksnumbered,
+            breaklinks=false,
+            linktocpage=false,
+            colorlinks=true,
+            linkcolor=blue,
+            citecolor=black,
+            urlcolor=blue,
+            menucolor=black}
+
+%-------------
+
 \usepackage{lastpage}
 \usepackage{fancyhdr}
 \pagestyle{fancy} 
+
 %dummy text generator, use \lipsum[NUMBER-NUMBER] where NUMBERS are natural numbers between 1 and 150.
 \usepackage{lipsum}  
+
+%fancy theorems, examples, definitions with boxes
+\usepackage{mdframed}
 
 
 %-------------------------------------------------
@@ -40,12 +58,19 @@
 }
 
 \newcommand{\jump}{\vspace*{0.5cm}}
+%-------------------------------------
+%Theorem, Definition, Lemma stuff with boxes
+
 
 \theoremstyle{definition}
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{example}{Example}[section]
-\newtheorem{definition}{Definition}[section]
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{lemma}{Lemma}[section]
-\newtheorem{diagram}{Diagram}[section]
+\newmdtheoremenv{theorem}{Theorem}[section]
+\newmdtheoremenv{example}{Example}[section]
+\newmdtheoremenv{definition}{Definition}[section]
+\newmdtheoremenv{corollary}{Corollary}[theorem]
+\newmdtheoremenv{lemma}{Lemma}[section]
+\newmdtheoremenv{diagram}{Diagram}[section]
+
+
+
 %--------------------------------------------------
+% Proof environment styling

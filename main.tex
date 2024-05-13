@@ -2,10 +2,18 @@
 \usepackage{config}
 
 \begin{document}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
+\fancyhead[R]{\thepage}
+\fancyhead[L]{\chaptername\ \thechapter\ --\ \leftmark}
+
 \include{others/titlepage.tex}
 \include{others/preface}
 \tableofcontents
 \part{Probability}
 \include{chapters/introductiontoprobability}
+\include{chapters/randomvariables}
+
+%Numbering the Pages
 \cfoot{\thepage\ of \pageref{LastPage}}
 \end{document}

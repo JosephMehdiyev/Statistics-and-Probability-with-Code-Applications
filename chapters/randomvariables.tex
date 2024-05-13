@@ -1,0 +1,230 @@
+\chapter{Random Variables}
+From the first chapter, we have been using events and sample spaces to develop the idea of probability and calculating it. But, in practical world,  we have to link the events and sample spaces to \textbf{data}. This concept is called ``Random Variable'' or R.V shortly.
+A Random Variable, in informal terms, places the $\Omega$ in real line so we can work with it more easily. There are still events, but in terms on Random Variables now.
+
+
+
+
+%----------------------------------------------------------
+
+\section{Introduction to Random Variables}
+A Random Variable describes the data or the outcome $\omega$ as a real number. There is a reason this concept exists, since it opens new concepts for practical applications.
+\newline
+Let's begin with the formal definition of \textit{ Random Variable}.
+
+\begin{definition}
+    A \textbf{Random Variable X} is a function,
+    $$ X \ : \ \Omega \rightarrow \mathbb{R}$$
+    That assigns a real number $X(\omega)$ to each outcome $\omega$.
+\end{definition}
+
+This concept is heavily used instead of sample spaces . From now on, sample space will be mentioned rarely. Think this way, when we work on functions in algebra or sometimes in calculus, we don't think about about the domain of the function, but the properties of function itself.
+Here are some examples to understand the concept better.
+
+\begin{example}
+    Flip a fair coin $n$ times. Let $X$ represent the number of heads we get. Then, $X$ is a random variable that takes values $\{0,1,2,...,n\}$.
+\end{example}
+
+\begin{example}
+    Toss a fair six sided dice 2 times. Let $X$ be the sum of the two rolls we get. Then, $X$ is a random variable that takes values $\{2,3,4,...,12\}$.
+\end{example}
+
+\begin{example}
+    A students wants to write a real number in intervals $[0,1]$. Let $X$ be the number student writes. Then, $X$ is also a random variable that takes any real numbers in that interval.
+\end{example}
+
+As you may guess, this extremely looks similar to events. Random Variables also have \textit{Independence, Conditional Random Variable, a probability function} and so on. Additionally , Random Variables can be either \textbf{Discrete} or \textbf{Continous}.
+\par 
+Discrete Random Variable's range is finite or countably infinite. The first two examples we gave are Discrete. Continuous Random Variables's range is uncountably infinite like the third example \newline
+
+I want to emphasize  that Random Variables are neither random or a variable, they are functions. It is a bit hard to grasp the idea of this concept, so I highly recommend lurking in mathematical forums and try to understand it ( that is what I did). But in short, we use Random Variables instead of outcomes, since Random variables are \textbf{numbers}. Numbers are easier to work with, we can process the numbers, do algebraic operations to them, also they have a structure that outcomes do not.
+Turn \textbf{ Example 2.1.1} to in sample space and events language, which is easier to work with? Bunch of $H,T$ or just a number?
+
+
+%--------------------------------------------------------
+
+
+
+\section{Distribution Functions CDF,PMF,PDF}
+\subsection*{PMF}
+We define  \textbf{Cumulative Distribution Function} as,
+
+\begin{definition}
+    The \textbf{Cumulative Distribution Function} or shortly \textbf{CDF} is a function $F_X \ : \ \mathbb{R} \rightarrow [0,1]$ such that
+    \[ F_X(x) = P( X \le x) \]
+    \textbf{Remark :} Every R.V (discrete and continuous) have CDF. For this reason, we can use CDF for unified treatment of R.V properties (that is, generalized concepts for all R.V).
+\end{definition}
+\par
+In informal terms, CDF is the probability that $X$ will take a value less than or equal to $x$. This property holds both for continuous and discrete R.V.
+\par 
+
+Later on the book we will learn that CDF practically contains all the information about R.V, including continuous ones. Let's look at a example for CDF.
+
+\begin{example}
+    We toss a fair coin two times. Let $X$ represent the number of heads we get. Then CMF of $X$ is,
+    \[F_X(x) = 
+        \begin{cases} 
+          0 \qquad &x < 0\\
+          1/4 \qquad &0 \le x <1 \\
+          3/4 \qquad &1 \leq < 2 \\
+          1 \qquad &x \ge 2
+        \end{cases} 
+\]
+\end{example}
+
+The variable $x$ can get $\textbf{any real numbers}$, such as $2, 4.14$ and $\pi$. It a bit tricky, they simply take the values from corresponding inequalities.
+\\
+Now, let's look at some properties of CDF,
+\begin{theorem}
+    Let $X$ have \textit{CDF} $F$ and $Y$  have \textit{CDF} $G$. If $F(x)=G(x)$ for all $x$, then,
+    \[ P(X \in A) = P(Y \in A) \quad \text{for all $A$} \] 
+\end{theorem}
+
+\begin{theorem}
+    the function $F \ : \mathbb{R} \rightarrow [0,1]$ is a CDF for some R.V if and only if $F$ satisfies three conditions:
+    \begin{enumerate}
+        \item $F$ is non-decreasing
+        \item $F$ is normalized i.e \[ \lim_{x \rightarrow -\infty} F(x) = 0\ \ \land \ \lim_{x \rightarrow \infty} F(x) =1 \]
+        \item $F$ is right continuous.
+    \end{enumerate}
+\end{theorem}
+
+%------------------------------
+\subsection*{CDF and PDF}
+Similar to probabilities of Events, we can calculate probability of $X$ , depending on discrete or Continuous with functions called \textbf{ Probability Mass Function} and $\textbf{Probability Density Function}$, shortly $\textbf{PMF}$ and $\textbf{PDF}$ respectively,
+
+\begin{definition}
+    If $X$ is discrete, and it takes \textit{countably} values $ \{ x_1,x_2,..,x_n \}$ we define \textbf{Probability Mass Function} of X as follows:
+    $$f_X(x)= P(X = x)$$
+    \textbf{Remark}: $ \{ X=x \} $ are disjoint events that form partition of $\Omega$.
+\end{definition}
+
+   With the properties of probability, we have $f_X \ge 0$ for all $x \in \mathbb{R}$ and $\sum_{i} f_X (x_i) =1 $. Let's revisit our Example 2.2.1
+
+   \begin{example}
+    We toss a fair coin two times. Let $X$ represent the number of heads we get. Then CMF of $X$ is,
+    \[f_X(x) = 
+        \begin{cases} 
+          1/4 \qquad &x=0\\
+          1/2 \qquad &x=1 \\
+          1/4 \qquad &x=2\\
+          0 \qquad &\text{otherwise}
+        \end{cases} 
+\]
+\end{example}
+
+
+
+Moreover, for any set of real numbers, $S$, we have
+\[ P (X \in S) = \sum_{x \in S} f_X(x)\]
+Since all $\{X = x \}$  are disjoint.\\
+\par
+We can apply similar rules to continuous R.Vs,
+\begin{definition}
+    If $X$ is continuous, we can represent the probability distribution of $X$ with,
+    \[ P(a < X < b) = \int_{a}^{b} f_X(x) dx \]
+    Function  $f_X$ is called \textbf{Probability Density Function} or PDF as shortly.
+\end{definition}
+Nothing new here really, we just change the properties of PMF that we can use it on continuous R.Vs. Now, let's look at some examples,\\
+\lipsum[1-5] \newline
+\par
+You may noticed that CDF is similar to PMF and PDF. Indeed, the are related, CDF is just sum of these functions we defined over some interval $x$.
+\begin{definition}
+    CDF is related to PMF and PDF. For discrete R.Vs,
+    \[F_X(x) = P(X \le x) = \sum_{x_i \le x} f_X(x_i)\]
+    And for continuous R.Vs,
+    \[F_X(x)= \int_{-\infty}^x f_X(x)dx \]
+    And $f_X(x) = F_X^{'}(x)$ for for all differentiable points $x$.
+\end{definition}
+\par
+
+
+
+%-------------------------------------------------------------------------------------
+
+
+\section{Some Important Random Variables and their PMF and PDF}
+There are some specific examples of R.V. that are very useful in practical applications. We will learn most important ones.
+
+\subsubsection*{Bernoulli R.V}
+Consider a cheating coin toss which has of probability $p$ for head, and a probability of $1-p$ for tails. \textbf{Bernoulli R.V} outputs two values: $1$ if head and $0$ if tails,
+\[X =\begin{cases}
+        1 \quad \text{if head} \\
+        0 \quad \text{if tails}
+\end{cases} \]
+
+Then its PMF is,
+\[f_X(x) =\begin{cases}
+    p \quad &\text{if} \ x=1\\
+    1-p \quad &\text{if} \ x=0
+\end{cases} \]
+
+This R.V is very simple and easy to understand. However, there are tons of applications in real life (Any True or False situations, for example) and it is very handy to construct more complex R.V.
+
+\subsubsection*{Binomial R.V}
+Instead of tossing a cheating coin one time, we toss $n$ times, that is generalized version of \textbf{Bernoulli R.V}. With same rules, $p$ is probability of heads and $1-p$ is probability of tails. Let $X$ be the number of heads we get. Then PMF of $X$ is,
+
+\[f_X(x) = P(X = x) =  \binom{n}{x}p^x (1-p)^{n-x}, \qquad x \in \{0,1,2,...,n \} \]
+
+%--------------------------
+
+\section{Multivariate Distribution}
+In practical word, we often work with multiple R.V in the same experiment, or the sample space. This can be a medical research with multiple tests, where tests are related with each other with the same sample space $\Omega$ and the same probability.\\
+We can apply multivariate CDF as
+\begin{definition}
+    For $n$  R.V $\{ X_1,X_2,..,X_n \}$, the multivariate CDF $F_{X_1,X_2,...,X_n}$ is given by,
+    \[F_{X_1,X_2,...,X_n}(x_1,x_2,...,x_n) = P(X_1 \le x_1,...,X_n \le x_n) \]
+\end{definition}
+There is nothing fancy here, actually. We simply redefine CDF in general sense for $n$ R.Vs.
+\par
+Similarly, we can define multivariate PMF as,
+\begin{definition} For $n$ discrete R.Vs of  $\{X_1,X_2,X_n\}$, the multivariate PMF  $f_{X_1,X_2,...,X_n}$ is given by,
+    \[ f_{X_1,X_2,...,X_n}(x_1,x_2,...,x_n) = P(X_1=x_1 \ \land ... \land \ X_n = x_n) \]
+\end{definition}
+
+The Properties and theorems are similar, but are generalized for $n$ R.Vs.
+
+\section{Marginal Distribution}
+If more than one variable is defined in an experiment, it is important to distinguish between the multivariate probability of $(X_1,X_2,..,X_n)$ and individual probability distributions of $X_1,X_2,..,X_n$\\
+
+\begin{definition}
+    If $(X_1,X_2,...,X_n)$ are joint distributions with PMF $f_{X_1,X_2,..,X_n}$, then we define marginal distribution as,
+    \[f_{X_1}= P(X_1 = x_1)= \sum_{x_1 \ constant} P(X_1=x_1,..,X_n=x_n)= \sum_{x_1\ constant} f_{X_1,X_2,..,X_n}(x_1,x_2,...,x_n)\]
+\end{definition}
+Examples 
+\par
+\lipsum[1-3]
+%------------------------
+\section{Independence}
+Similar to events, R.Vs also can be independent,
+\begin{definition}
+    Two R.Vs $X$ and $Y$ are \textbf{independent} if, for every $A$ and $B$,
+    \[P(X \in A, Y \in B)= P(X \in A)P(Y \in B)\]
+\end{definition}
+To check Independence, we need to check the above question for every subsets $A,B$. Additionally, we have the theorem,
+\begin{theorem}
+    Let $X$ and $Y$ have PMF $f_{X_y}$. THen $X$ and $Y$ are independent only and only if ,
+    \[f_{X,Y}(x,y)=f_X(x)f_Y(y) \]
+\end{theorem}
+
+EXAMPLES \\
+\lipsum[1-3]
+%--------------------------
+\section{Conditioning}
+Similar to events, R.V $X$ can also have conditional distributions given that we have $Y=y$. We show the conditionality with,
+\begin{definition}
+    We can show conditional distribution of $X$ respect to $Y$ with,
+    \[P(X=x| Y=y) = \frac{ P(X=x,Y=y)}{P(Y=y)} \]
+\end{definition}
+Moreover we can also define \textbf{conditional PMF} as,
+\begin{definition}
+    PMF of $X$ conditional respect to $Y$ can be written as 
+    \[ f_{X|Y}(x|y)= \frac{f_{X,Y}(x,y)}{f_Y{y}}\]
+\end{definition}
+
+Examples \\
+\lipsum[1-5]
+
+
+%---------------------
+\section{Expectation, Invariance}

@@ -17,6 +17,11 @@ Bayesian Probability, however, takes its name from \textbf{Bayes' Rule}, which w
 
 There are also other intersections, but they are not that widely used nor useful. It is enough to know above concepts.
 
+\section{Discrete Versus Continuous Concepts}
+Before we even begin with our concepts. we must learn the difference between the terms \textbf{Discrete} and \textbf{Continuous} probabilities. Through the book, we will use these terms many times.
+The Mathematics bluntly can be divided into two distinct categories: \textit{Continuous} mathematics is the study of the objects are uncountable values i.e real numbers, intervals of real numbers and so on; \textit{Discrete} mathematics are study of countable objects.
+Take probability for example. The probability of simple head and tails experiment is considered discrete, while the probability of weighting 150 kg from intervals 100kg and 200kg is continuous. We will dive deep into these concepts later on, however it is nice to know these terms' meanings beforehand.
+
 \section{Set Theory}
 Set Theory is a branch of mathematics that studies \textit{sets}, which we will define shortly. This branch is, like other parts of mathematics, very deep and complex. We will learn only the most important concepts , which is in high-school level, needed to understand later sections and chapters.
 \par
@@ -177,7 +182,8 @@ $$
 
 %--------------------------------------------------
 
-\section{Discrete Probability Distribution}
+\section{Probability Distribution}
+There are two kinds of Probability Distribution: \textbf{Discrete} and \textbf{Continous}
 Discrete Probability distribution is the mathematical  description of probability of events, that are subsets of \textbf{finite or countable infinite} set $\Omega$. 
 If each outcome is equal, then probability of getting 2 even numbers from tossing a six sided dice, which is $\frac{1}{4}$,is an example of this. We can generalize this for event $A$ of finite $\Omega$,
 $$ P(A) = \frac{|A|}{|\Omega |}$$
@@ -185,10 +191,13 @@ $$ P(A) = \frac{|A|}{|\Omega |}$$
 This is the equation almost everybody gets taught in high-school. We can calculate probability of getting heads from tossing a coin, getting a red ball from a box, getting a number from tossing $n$ sided coin and so on.
 To compute this probability, we first have to count $ | \Omega | $ and $|A |$. 
 
-\par 
-
 For simple experiments, it is rather easy just do count by finger.
 However, sometimes things get rather complex and we have to use new tools to count them. For example, how many possible outcomes are there from tossing a coin $10^{64^{100}}$ times? We will learn more about counting techniques in Chapter $1.7$.
+
+\par 
+
+Continuous Probability Distribution is similar to its discrete counterpart, however the outcomes are uncountably infinite. Consequently, any probability of selected outcome is $0$. Only the events that include these outcomes, making a countable collection of events, have probability themselves.
+We will learn more about this property in \textbf{Chapter 2}.
 
 
 
