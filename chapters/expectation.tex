@@ -1,27 +1,61 @@
 \chapter{Expectations and Invariance}
-\section{Expectation of a random variable}
-The the word expectation OF R.v. is a fancy way of describing the mean of a R.V. That is, expectation is just an average value.
+\section{Expectation of a Random Variable}
+The distribution of $X$ contains all the probabilistic data we need about $X$. However, we need additional tools to describe these data more cleanly. 
+\par
+One of these tools is \textbf{Expectation}, or \textbf{Expected Value} or \textbf{Mean} of $X$.
 \begin{definition}
     The \textbf{expected value} of $X$ is defined as,
     \[\mathbb{E}(X)= \begin{cases}
         \sum xf(x)& \text{if $X$ is discrete} \\
         \int xf(x)dx &\text{if $X$ is continous}
     \end{cases}\]
+    Assuming that the integral is well defined.
     We can also combinte both the notations into a whole generalized equation with a notation,
     \[\mathbb{E}(X) = \int x dF(x)= \mu = \mu_X\]
-    We have discussed the relationship between $F(x)$ and $f(x)$ in the second chapter.
+    We have discussed that $dF(x) = f(X)$. in the second chapter.
 \end{definition}
-The expectation is that simple. It is just a mean.\\
-HERE ARE SOME EXAMPLES
-\lipsum[1-3]
+By definition of probability, sum of all $f(x)$ is is simply $1$. Then, the above equation is weighted mean of $X$, which is what we wanted to convey.
+
+\begin{example}
+    Suppose that we have  a discrete R.V $X$ to describe the probability of getting heads from tossing a coin $3$ times.  Let  c.d.f of $X$ be $f$. Then,
+    \[X = \begin{cases}
+        &f(0) = 1/8\\
+        &f(1) = 3/8 \\
+        &f(2) = 3/8 \\
+        &f(3) = 1/8
+    \end{cases}\]
+    Let's use our above formula to calculate $\E(X)$,
+    \[\E(X) =  \frac{1}{8} \cdot 0 + \frac{3}{8} \cdot 1 + \frac{3}{8} \cdot 2 + \frac{1}{8} \cdot 3 = 1.5\]
+    This number shows that if we repeat our experiment for a very long time, the mean of the heads we got woud be  ( or approach to) $1.5$.
+    \\Observe that weighted mean is equivalent to arithmetic mean. Because gettings $X=2$ is simply getting $X=1$ two times.
+\end{example}
 \par
 \vspace{10cm}
-But, what if $Y= g(X)$ and we want to compute $E(X)$? We have a theorem for that,
+But, what if $Y= g(X)$ and we want to compute $E(Y)$? We have a theorem for that,
 \begin{theorem}[Law of the Unconscious Statistician]
     Let $Y = g(X)$. Then,
-    \[\mathbb{E}(Y)= \mathbb{E}(g(X))= \int g(X) dF_X(x)\]
-    \begin{proof}
-       Lazy, will write it after finishing more important parts.
-    \end{proof}
+    \[\mathbb{E}(Y)= \E (g(X))= \int g(x) dF_X(x)\]
+       The general proof of this theorem is out of the scope of this book. Comparing this to original expectation equation, we can see that the only thing that changes is $g(x)$ and $x$, which intuitively makes sense if you think about it. In transformations, probabiltiies remains unchanged, while the result of probabiltiies gets transformed by a function.
+       \\ Moreover, for a special case $g(x) = I_A(x)$, where $I_A(x) \in \{ 0,1\}$ depending on $x \in A$, then,
+       \[\E (I_A(X)) = \int I_A(x) d F_X(x) = \int_A dF_X(x) = \mathbb{P} (X \in A)\]
+       This means that probability is special case of expectation, which makes sense, considering probability itself is some average by definition.
 \end{theorem}
 \section{Variance}
+We have dicussed about the expectation, a way of showing a property of a distribution. However, the expectation alone doesn't convey much. We have another tool called `\textbf{Variance}'.
+Variance, in layman terms, describes how value of random variable varies are spread in the graph. Or in other terms, the distance between the expectation value. 
+\par
+
+We can define variance ass,
+\begin{definition}
+    Let $X$ be a R.V with mean $\mu = \E(X)$. The Variance of $X$, denoted as $\V(X)$ or  Var$(X)$ or $\sigma ^2$ is defined by,
+    \[ \sigma^2 = \E [(X- \mu)^2] = \int (x -\mu)^2 dF(X)\]
+    We also define \textbf{standart deviation} as sd$(X) = \sqrt{\V (X)}= \sqrt{\sigma^2}= \sigma$.
+\end{definition}
+The standart deviation and variance convey the same information. They both represent the spread of our data. 
+The difference between them is purely mathematical. The variance is more useful in mathematical applications, where standart deviation is very intuitive and practical. 
+\href{https://www.mathsisfun.com/data/standard-deviation.html}{mathisfun} explains it very well.
+
+\section{Covariance and Corelation}
+\section{Properties of Expectation and Variance}
+We can also apply or conditionality, indepedence, transformations, and other properties on Expectation and Variance. It is very useful for practical purposes.
+\section{The moments}
