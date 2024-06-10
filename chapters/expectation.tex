@@ -1,0 +1,27 @@
+\chapter{Expectations and Invariance}
+\section{Expectation of a random variable}
+The the word expectation OF R.v. is a fancy way of describing the mean of a R.V. That is, expectation is just an average value.
+\begin{definition}
+    The \textbf{expected value} of $X$ is defined as,
+    \[\mathbb{E}(X)= \begin{cases}
+        \sum xf(x)& \text{if $X$ is discrete} \\
+        \int xf(x)dx &\text{if $X$ is continous}
+    \end{cases}\]
+    We can also combinte both the notations into a whole generalized equation with a notation,
+    \[\mathbb{E}(X) = \int x dF(x)= \mu = \mu_X\]
+    We have discussed the relationship between $F(x)$ and $f(x)$ in the second chapter.
+\end{definition}
+The expectation is that simple. It is just a mean.\\
+HERE ARE SOME EXAMPLES
+\lipsum[1-3]
+\par
+\vspace{10cm}
+But, what if $Y= g(X)$ and we want to compute $E(X)$? We have a theorem for that,
+\begin{theorem}[Law of the Unconscious Statistician]
+    Let $Y = g(X)$. Then,
+    \[\mathbb{E}(Y)= \mathbb{E}(g(X))= \int g(X) dF_X(x)\]
+    \begin{proof}
+       Lazy, will write it after finishing more important parts.
+    \end{proof}
+\end{theorem}
+\section{Variance}
