@@ -9,7 +9,7 @@ One of these tools is \textbf{Expectation}, or \textbf{Expected Value} or \textb
         \sum xf(x)& \text{if $X$ is discrete} \\
         \int xf(x)dx &\text{if $X$ is continous}
     \end{cases}\]
-    Assuming that the integral is well defined.
+    If expected value is infinite, we say that expected value of $X$ doesn't exist.\\
     We can also combinte both the notations into a whole generalized equation with a notation,
     \[\mathbb{E}(X) = \int x dF(x)= \mu = \mu_X\]
     We have discussed that $dF(x) = f(X)$. in the second chapter.
@@ -40,6 +40,17 @@ But, what if $Y= g(X)$ and we want to compute $E(Y)$? We have a theorem for that
        \[\E (I_A(X)) = \int I_A(x) d F_X(x) = \int_A dF_X(x) = \mathbb{P} (X \in A)\]
        This means that probability is special case of expectation, which makes sense, considering probability itself is some average by definition.
 \end{theorem}
+\begin{definition}
+We call  $n$-th \textbf{ raw moment} of $X$ as 
+\[ \mu_n = \E (X^n) = \int x^n dF_X(x)\] 
+If $ \E ( |X^k|)$ is infinite, then $k^{th}$ moment do not exist.\\
+We also define \textbf{ $k$-th central moment} as moments about its mean $\mu$ i.e $\E [(X - \mu)^k   ]$. Additionally, \textbf{ $k$-th standardized moments} as $\frac{\E [ (X - \mu)^n]}{\sigma^n}$.
+\par
+The $1$st moment, the $2$nd central moment, $3$rd  and $4$rd standarized moments are called mean (expected value), \textbf{variance} ,\textbf{skewness} and \textbf{kurtosis} in order. We will learn more about them in later chapters.
+
+\par 
+The moments are very useful and practical. Although there  are infinitely many moments, only smaller ones are important for practical purposes. We already know the first moment and its significance. 
+\end{definition}
 \section{Variance}
 We have dicussed about the expectation, a way of showing a property of a distribution. However, the expectation alone doesn't convey much. We have another tool called `\textbf{Variance}'.
 Variance, in layman terms, describes how value of random variable varies are spread in the graph. Or in other terms, the distance between the expectation value. 
@@ -47,15 +58,57 @@ Variance, in layman terms, describes how value of random variable varies are spr
 
 We can define variance ass,
 \begin{definition}
-    Let $X$ be a R.V with mean $\mu = \E(X)$. The Variance of $X$, denoted as $\V(X)$ or  Var$(X)$ or $\sigma ^2$ is defined by,
-    \[ \sigma^2 = \E [(X- \mu)^2] = \int (x -\mu)^2 dF(X)\]
-    We also define \textbf{standart deviation} as sd$(X) = \sqrt{\V (X)}= \sqrt{\sigma^2}= \sigma$.
+    Let $X$ be a R.V with mean $\mu = \E(X)$. The Variance of $X$, denoted as $\V(X)$ or  Var$(X)$ or $\sigma ^2$ is the $2^{nd}$ central moment and is defined by,
+    \[ \sigma^2 = \E [(X- \mu)^2] = \int (x -\mu)^2 dF(x)\]
+    
+    We also define \textbf{standart deviation} as sd$(X) = \sqrt{\sigma^2}= \sigma$.
 \end{definition}
 The standart deviation and variance convey the same information. They both represent the spread of our data. 
 The difference between them is purely mathematical. The variance is more useful in mathematical applications, where standart deviation is very intuitive and practical. 
 \href{https://www.mathsisfun.com/data/standard-deviation.html}{mathisfun} explains it very well.
+\par
+Calculating variance directly can be complicated  and tedious directly sometimes. We can derive a theorem from the original definition for practical purposes.
+\begin{theorem}
+    Let $X$ be a random variable. Then,
+    \[\sigma^2 = E([ (X-\mu)^2]) = E(X^2) - \mu^2\]
+    \begin{proof}
+        It is derived directly by algebraic manipulation and basic calculus,
+        \begin{align*}
+            \sigma^2 &= \int (x- \mu)^2 dF(x)  \\
+                     &= \int x^2 dF(x) -2\mu \int x dF(x) + \mu^2 \int dF(x) \\
+                     &= \int x^2 dF(x) - \mu^2 \\
+                     &= \E(X^2) - \mu^2
+        \end{align*}
+    \end{proof}
+\end{theorem}
 
 \section{Covariance and Corelation}
-\section{Properties of Expectation and Variance}
-We can also apply or conditionality, indepedence, transformations, and other properties on Expectation and Variance. It is very useful for practical purposes.
-\section{The moments}
+Ley $X$ and $Y$ be R.V.  \textbf{ Covariance} and \textbf{ Corelation} describes the linear relationship between $X$ and $Y$.
+\begin{definition}
+    If $X$ and $Y$ are R.V with mean $\mu_X$, $\mu_Y$ and standart deviations $\sigma_X$, $\sigma_Y$, we define \textbf{covariance} as,
+    \[\mathrm{Cov}(X,Y) = \E \bigg((X- \mu_X)(Y - \mu_Y) \bigg)\]
+    and \textbf{corelation} as,
+    \[\rho = \rho_{X,Y} = \frac{\mathrm{Cov}(X,Y)}{\sigma_X\sigma_Y}\]
+    Notice that $\mathrm{Cov}(X,X) = \mathbb{V}(X)$ and $\rho_{X,X} = 1$.
+\end{definition}
+Similiar to variance, calculatig covariance can be tedious. We can derive a better formula by simple algebraic manipulations,
+\begin{theorem}
+    For all random variables with non-infinite means, we have
+    \[\mathrm{Cov}{(X,Y) = \E(XY)-\E(X)\E(Y)}\]
+    \begin{proof}
+        Similar to Variance one, we have,
+        \begin{align*}
+                    \mathrm{Cov(X,Y)}  &= \E \bigg( (X- \mu_X)(Y - \mu_Y) \bigg)\\
+                                        &= \E ( XY- X\mu_Y-Y\mu_X+\mu_X\mu_Y ) \\
+                                        &= \E(XY) - \mu_Y\E(X) - \mu_X\E(Y) + \mu_X\mu_Y \\ 
+                                        &= \E(XY) - \E(X)\E(Y)
+        \end{align*}
+    \end{proof}
+\end{theorem}
+\begin{theorem}
+    For all random variables with non-infinite means, we have,
+    \[ -1 \le \rho_{X,Y} \le 1\]
+    \begin{proof}
+        It is direct consequence of Cauchy-Schwarz inequality.
+    \end{proof}
+\end{theorem}
