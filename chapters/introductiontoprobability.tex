@@ -80,7 +80,7 @@ $$A \cap B = \{n:n \in A  \land  n  \in B\}$$
 The Sample Space, usually denoted as $S$ or $\Omega$, is the $\textit{set}$ of all possible outcomes of an experiment. It is also called  \textbf{universal set}. Subsets of $\Omega$ are called $\textbf{events}$. A sample element of $\Omega$ is denoted as $\omega$.
 
 \begin{example}
-    If we toss a six sided dice once, then $\Omega = \{1,2,3,4,5,6\}$, the even that the side is even is $A= \{2,4,6\}$ while $\omega \in \{1,2,3,4,5,6\}$
+    If we toss a six sided dice once, then $\Omega = \{1,2,3,4,5,6\}$, the event that the side is even is $A= \{2,4,6\}$ while $\omega \in \{1,2,3,4,5,6\}$
 \end{example}
 
 \begin{example}
@@ -223,11 +223,6 @@ In almost all cases, simple logic is enough to determine this property. Another 
 Conditional Probability, as the name implies, is the probability of an event with a condition. More precisely, \textbf{Conditional Probability}  is the probability of an event $A$, given that another event $B$ is already occurred. In such probability, the sample space is reduced to $B$'s, while we want to find probability of $A$ from $B$'s space (Which increases of probability of $A$, since sample space is also reduced). We can show this neatly in venn diagram:
 
 \par 
-
-PICTURE HERE
-
-\par
-
 Here are some examples:
 \begin{example}
     If we tossed a six sided dice one time, and we rolled an even number $B$, what is the probability of getting number $2$, event $A$?
@@ -241,10 +236,8 @@ $$ P(A | B) = \frac{P(A \cap B)}{P(B)} \qquad \text{for}\ P(B) \neq 0$$
 \par
 If we revisit to our simple probability equation, this equation starts making sense since $P(B)$ becomes our reduced sample space, while $P(A \cap B)$ is our event fancily written for condition property.
 
-It is a very common mistake to thing $P( A | B) = P(B | A)$, which is easy to understand why just by looking to either venn diagrams or the equations we defined. Moreover, if $A$ and $B$ are independent from each other, then $P(A|B)= P(A)$, which comes from the definition of independence, $B$ can't effect $A$'s probability.
-\newline
-\par
-GENERALIZE THE THING!!!
+It is a very common mistake to think $P( A | B) = P(B | A)$, which is easy to understand why just by looking to either venn diagrams or the equations we defined. Moreover, if $A$ and $B$ are independent from each other, then $P(A|B)= P(A)$, which comes from the definition of independence, $B$ can't effect $A$'s probability.
+
 \section{Bayes' Theorem}
 
 In this section, we will learn about \textbf{Bayes' Theorem}, an important concept about probability. This rule is widely used by scientists and programmers. But, what is this rule exactly? Why is it useful?
@@ -302,6 +295,3 @@ This theorem becomes very handy in practical situations. Moreover, with the help
 \begin{proof}
     Similar to proof of Theorem 1.7.1, We use definition of conditional probability and  lastly apply Theorem 1.7.2  in the last step.
 \end{proof}
-
-
-\section{Counting}
