@@ -51,6 +51,50 @@ The $1$st moment, the $2$nd central moment, $3$rd  and $4$rd standarized moments
 \par 
 The moments are very useful and practical. Although there  are infinitely many moments, only smaller ones are important for practical purposes. We already know the first moment and its significance. 
 \end{definition}
+\subsection*{Properties of Expectation}
+\begin{theorem}[Non-negativity] If $X \ge 0$ is a R.V, then $\E (X) \ge 0$.
+    \begin{proof}
+        By definition of expectation, we have
+        \[ \E(X) = \int x dF_X(x)  \ge 0 \]
+        since by definition, $dF_X(X) \ge 0$ and $x \ge 0$.
+    \end{proof}
+\end{theorem}
+\begin{theorem}[Linearity] For \textbf{any} random variables $X_1,X_2,...,X_n$ and constants $a_1,a_2,...,a_n$, we have 
+    \[\E \bigg[ \sum^n_i a_iX_i \bigg] = \sum^n_i a_i\E({X_i})\]
+    \begin{proof}
+        We will first prove the theorem for $n=2$ with $X,Y$.. $n=1$ is trivial.
+        \begin{align*}
+            \E \bigg[ a_1X_1 + a_2Y\bigg] &= \int (a_1x+a_2y) dF_{X,Y}(x,y) \\
+                                            &=\int (a_1x)dF_{X}(x) + \int (a_2y)dF_{Y}(y)\\
+                                            &= a_1\int x dF_{X}(x) + a_2 \int y dF_{X}(y) \\
+                                            &= a_1\E(X) + a_2\E(Y)
+        \end{align*}
+        The second line is the direct consequence of marginality.
+        With induction, $n\ge 3$ is also true, however I will omit the solution for the sake of briefity.
+    \end{proof}
+    This theorem is very useful and very practical.
+\end{theorem}
+\begin{theorem}[multiplicity]
+    For \textbf{independent} R.V $X_1,X_2,...,X_n$,  we have
+    \[\E \bigg( \prod _{i=1}^nX_i \bigg) = \prod_{i=1}^n \E(X_i)\]
+    \begin{proof}
+        Similiar to last one, we will use indiction. $n=1$ is trivial. For $n=2$, let R.V be $X,Y$. Remember that independence has property $dF_{X,Y}(x,y)= dF_{X}(x)\cdot dF_{Y}(y)$.
+        \[\E(XY) = \int (xy)dF_{X,Y}(x,y) = \int xydF_{X}(x)dF_{Y}(y)= \int ydF_Y(y)\int xdF_X(x)= \E(X)\E(Y)\]
+        For the sake of briefity, I won't show the induction part.
+    \end{proof}
+\end{theorem}
+\section{Conditional Expectation}
+Suppose that we we want to calculate mean of $X$ when $Y=y$. This is called conditional expectation, similar to conditional R.V and probability.
+\begin{definition} \textbf{conditional expectation} of $X$ by $Y=y$ is given by,
+\[\E(X | Y=y) = \int x dF_{X|Y}(x|y)\]
+\end{definition}
+\begin{theorem}[Iterated Expectations] for all R.V $X$ and $Y$,
+    \[\E[\E(Y|X)] = \E(Y) \qquad \text{and} \qquad  \E[\E(X|Y)] = \E(X)\]
+    \begin{proof}
+        It is direct consequence of definition of conditional expectation and the fact that $dF(x,y) = dF(x)dF(y|x)$
+        \[ \E[\E(Y|X)] = \int \E(Y|X=x) dF(x)\]
+    \end{proof}
+\end{theorem}
 \section{Variance}
 We have dicussed about the expectation, a way of showing a property of a distribution. However, the expectation alone doesn't convey much. We have another tool called `\textbf{Variance}'.
 Variance, in layman terms, describes how value of random variable varies are spread in the graph. Or in other terms, the distance between the expectation value. 
