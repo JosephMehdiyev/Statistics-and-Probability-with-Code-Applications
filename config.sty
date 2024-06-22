@@ -17,6 +17,20 @@
 \usepackage{mathrsfs}
 \usepackage{blindtext}
 
+% A library to show code, with syntax color
+\usepackage{minted}
+\usepackage{color}
+
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+
+\setminted[python]{
+  bgcolor = bg,
+  xleftmargin = 3pt,
+  breaklines=true}
+% A package to share the source code easier
+\usepackage{embedfile}
+\usepackage{hypgotoe}
+\newcommand*{\embed}[2]{\embedfile{#1}\href{gotoe:embedded=#1}{#2}}
 % Bookmark numbering and stuff
 \usepackage{hyperref}
 \hypersetup{
@@ -77,3 +91,14 @@
 \def\R{{\mathbb{R}}}
 \def\E{{\mathbb{E}}}
 \def\V{{\mathbb{V}}}
+
+
+% for exercises chapters
+\newcounter{question}
+\setcounter{question}{0}
+
+\newcommand\Que[1]{%
+   \leavevmode\par
+   \stepcounter{question}
+   \noindent
+   \thequestion. Q --- #1\par}

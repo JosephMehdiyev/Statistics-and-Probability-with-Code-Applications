@@ -13,6 +13,7 @@ One of these tools is \textbf{Expectation}, or \textbf{Expected Value} or \textb
     We can also combinte both the notations into a whole generalized equation with a notation,
     \[\mathbb{E}(X) = \int x dF(x)= \mu = \mu_X\]
     We have discussed that $dF(x) = f(X)$. in the second chapter.
+    \textbf{Important Note}. Expectation, by nature, is a theorical mean of the variables we get. It is sometimes possible to get mean that you can't get in a practical settings.
 \end{definition}
 By definition of probability, sum of all $f(x)$ is is simply $1$. Then, the above equation is weighted mean of $X$, which is what we wanted to convey.
 
@@ -87,12 +88,13 @@ The moments are very useful and practical. Although there  are infinitely many m
 Suppose that we we want to calculate mean of $X$ when $Y=y$. This is called conditional expectation, similar to conditional R.V and probability.
 \begin{definition} \textbf{conditional expectation} of $X$ by $Y=y$ is given by,
 \[\E(X | Y=y) = \int x dF_{X|Y}(x|y)\]
+Note that $\E(X|Y)$ is a R.V itself since we don't know value of $Y$ beforehand, or more precisely $Y$ is a "function".
 \end{definition}
-\begin{theorem}[Iterated Expectations] for all R.V $X$ and $Y$,
+\begin{theorem}[ Law of total Expectations] for all R.V $X$ and $Y$,
     \[\E[\E(Y|X)] = \E(Y) \qquad \text{and} \qquad  \E[\E(X|Y)] = \E(X)\]
     \begin{proof}
         It is direct consequence of definition of conditional expectation and the fact that $dF(x,y) = dF(x)dF(y|x)$
-        \[ \E[\E(Y|X)] = \int \E(Y|X=x) dF(x)\]
+        \[ \E[\E(Y|X)] = \int \E(Y|X=x) dF(x)\]writelater
     \end{proof}
 \end{theorem}
 \section{Variance}
@@ -125,7 +127,16 @@ Calculating variance directly can be complicated  and tedious directly sometimes
         \end{align*}
     \end{proof}
 \end{theorem}
-
+\section{Conditional Variance}
+\begin{definition}
+    Let $\mu = \E (X |Y=y)$. The \textbf{conditional variance} is defined as,
+    \[ \V(X| Y=y) = \int (x- \mu)^2 dF_{X|Y}(x|y)\]
+    The conditional variance tells us how much of spread is left after  We use $Y=y$. Reminder that $\V(X|Y)$ is a R.V itself since Y is a sort of "function" here.
+\end{definition}    
+\begin{theorem}[Law of Total Variance] for any R.V $X,Y$, it is always true that,
+    \[\V(Y)= \E\big[\V(Y|X)\big]+ \V\big(\E[Y|X]\big)\]
+    We have stated before that $V(Y|X)$ and $E(Y|X)$ are random variables, not numbers. Therefore We compute variance and expectation of these random variables, and add them up to get the variance $V(Y)$.
+\end{theorem}
 \section{Covariance and Corelation}
 Ley $X$ and $Y$ be R.V.  \textbf{ Covariance} and \textbf{ Corelation} describes the linear relationship between $X$ and $Y$.
 \begin{definition}
