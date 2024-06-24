@@ -3,21 +3,7 @@ The concept ``probability'' is used very often in everyday language to describe 
 This chapter will introduce necessary and basic concepts and namely, \textbf{Probability Theory}. We will start the chapter about interpretations of probability.
 %-------------------------------------------------
 
-\section{Interpretations of Concept of Probability}
-We will briefly skim through this section.
-\par 
-In a theorical environment i.e tossing a coin with fifty to fifty chance, probabilities can be represented  as fractions. This called \textbf{Theorical Probability}. However, in practical applications, there are two major categories on interpretations:\textbf{Frequency} and \textbf{Bayesian}
-\par  
-Frequentist Probability, as name implies, gets its name from frequency. In this perspective probability is interpreted same as frequency. Repeating the experiment high number of times, one may find approximate probability of an \textit{event}. 
-This is the dominant form of probability that is taught in schools and universities.
-
-\par
-Bayesian Probability, however, takes its name from \textbf{Bayes' Rule}, which we will learn later. In this intersection, the probabilities represents the degree of belief on an event i.e the more information or conditions we have about an event, its probability changes.
-
-
-There are also other intersections, but they are not that widely used nor useful. It is enough to know above concepts.
-
-\section{Discrete Versus Continuous Concepts}
+\section*{Discrete Versus Continuous Concepts}
 Before we even begin with our concepts. we must learn the difference between the terms \textbf{Discrete} and \textbf{Continuous} probabilities. Through the book, we will use these terms many times.
 The Mathematics bluntly can be divided into two distinct categories: \textit{Continuous} mathematics is the study of the objects are uncountable values i.e real numbers, intervals of real numbers and so on; \textit{Discrete} mathematics are study of countable objects.
 Take probability for example. The probability of simple head and tails experiment is considered discrete, while the probability of weighting 150 kg from intervals 100kg and 200kg is continuous. We will dive deep into these concepts later on, however it is nice to know these terms' meanings beforehand.
@@ -50,11 +36,6 @@ $$A \subsetneq B$$
 \textbf{Union} of sets $A$,$B$ is a set that contains the elements of $A$ and $B$:
 $$A \cup B = \{n:n \in A  \lor  n  \in B\}$$
 We can visualize the sets in 2D with circles and their intersections.  
-\begin{figure}[!h]
-    \centering
-    \input{diagrams/1.1.1.tex}
-    \caption{$A \cup B$}
-\end{figure}
 
 
 
@@ -68,6 +49,8 @@ We can visualize the sets in 2D with circles and their intersections.
 
 \textbf{Intersection} of sets $A$,$B$ is a set that contains both the elements of $A$ and $B$:
 $$A \cap B = \{n:n \in A  \land  n  \in B\}$$
+For simplicity we also write $A \cap B = AB$.
+
 
 \par
 
@@ -182,7 +165,8 @@ $$
 
 %--------------------------------------------------
 
-\section{Probability Distribution}
+\section{Probability Distributions}
+% Rewrite this part
 There are two kinds of Probability Distribution: \textbf{Discrete} and \textbf{Continous}
 Discrete Probability distribution is the mathematical  description of probability of events, that are subsets of \textbf{finite or countable infinite} set $\Omega$. 
 If each outcome is equal, then probability of getting 2 even numbers from tossing a six sided dice, which is $\frac{1}{4}$,is an example of this. We can generalize this for event $A$ of finite $\Omega$,
@@ -192,13 +176,15 @@ This is the equation almost everybody gets taught in high-school. We can calcula
 To compute this probability, we first have to count $ | \Omega | $ and $|A |$. 
 
 For simple experiments, it is rather easy just do count by finger.
-However, sometimes things get rather complex and we have to use new tools to count them. For example, how many possible outcomes are there from tossing a coin $10^{64^{100}}$ times? We will learn more about counting techniques in Chapter $1.7$.
+However, sometimes things get rather complex and we have to use new tools to count them. For example, how many possible outcomes are there from tossing a coin $10^{64^{100}}$ times? We use counting techniques, namely combinatorics. However, the book assumes the reader has knowledge of Combinatorics, therefore we won't introduce the concept here.
 
 \par 
 
 Continuous Probability Distribution is similar to its discrete counterpart, however the outcomes are uncountably infinite. Consequently, any probability of selected outcome is $0$. Only the events that include these outcomes, making a countable collection of events, have probability themselves.
-We will learn more about this property in \textbf{Chapter 2}.
 
+\par
+
+After we learn about \textbf{Random Variables}, we will talk about specific distributions.
 
 
 \section{Independent Events}
@@ -219,8 +205,16 @@ The formal definition of independence is,
 But how can we  know the events are \textit{Independent}? Sometimes, it is rather simple, we know it by logic. Probability of the author being successful is not depended on tossing a coin, it is just simple logic.
 
 In almost all cases, simple logic is enough to determine this property. Another property, is that \textit{disjoint events are never Independent}. Other than that, we have to manually check if the events satisfy the above equation.
+\begin{example}
+    Let $A = \{ 2,4,6 \}$, $B = \{ 1,2,3,4 \}$. Since $P(A)P(B) = P(AB)$, they are independent.
+\end{example}
+\begin{example}
+    Let $A = {2,4,6}$, $B = \{2,4,5 \}$. Since $P(A)P(B) \neq P(AB)$, they are dependent. \\
+\end{example}
+Note that even though $A \cap B  \neq \emptyset$, in above examples, the result is not the same. The independence merely shows that another event can't change other event's probability, even though intuitively it makes no sense.
 \section{Conditional Probability}
 Conditional Probability, as the name implies, is the probability of an event with a condition. More precisely, \textbf{Conditional Probability}  is the probability of an event $A$, given that another event $B$ is already occurred. In such probability, the sample space is reduced to $B$'s, while we want to find probability of $A$ from $B$'s space (Which increases of probability of $A$, since sample space is also reduced). We can show this neatly in venn diagram:
+
 
 \par 
 Here are some examples:
@@ -310,8 +304,8 @@ This theorem becomes very handy in practical situations. Moreover, with the help
     \inputminted{python}{src/chapter1/2.py}
     \begin{center} \input{src/chapter1/fig2.pgf} \end{center}
 
-    Graph shows that  the red and green graphs will converge to the same value for a larne $n$.\\
+    Graph shows that  the red and green graphs will converge to the same value for a large $n$. Note that the result will be the same even though $A$ and $B$ are different events, even if they are dependent.\\
 
-    3. Repeat the above experiment for dependent events.
+    
 
 
