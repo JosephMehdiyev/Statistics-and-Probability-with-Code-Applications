@@ -298,10 +298,20 @@ This theorem becomes very handy in practical situations. Moreover, with the help
 
 \section{Exercises}
 
-     1. Suppose a coin has probability  $p$ of getting heads. Logically, if we tossed coin in a large sum, the proportion of heads would be near $p$. Write a simulation with $n$ tosses and $p$ probability to show the claim. \\
-    \textbf{Solution}
-    \inputminted[bgcolor = bg]{python}{src/chapter1/1.py} \\
+     1. Suppose a coin has probability  $p$ of getting heads. Logically, if we tossed coin in a large sum many times, and take average of our data, the proportion of heads would be near $p$. Write a simulation with $n$ tosses and $p$ probability to show the claim. \\
+    \textbf{Solution}    \embed{src/chapter1/1.py}{Source}  
+
+    \inputminted{python}{src/chapter1/1.py} 
     \begin{center} \input{src/chapter1/fig1.pgf} \end{center}
-    \embed{src/chapter1/1.py}{Source}  
+
+    2. Let  $ A = \{2, 4, 6\}$ and $B = \{ 1, 2, 3, 4 \}$. Let $\widehat{P}(A)$ be the proportion of times we get $A$ in the experiment. Then by simulation, prove that $\widehat{P}(AB) = \widehat{P}(A)\widehat{P}(B)$.\\
+    \textbf{Solution} \embed{src/chapter1/2.py}{Source}
+
+    \inputminted{python}{src/chapter1/2.py}
+    \begin{center} \input{src/chapter1/fig2.pgf} \end{center}
+
+    Graph shows that  the red and green graphs will converge to the same value for a larne $n$.\\
+
+    3. Repeat the above experiment for dependent events.
 
 
