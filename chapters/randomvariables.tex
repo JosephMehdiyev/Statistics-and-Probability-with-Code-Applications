@@ -51,7 +51,7 @@ Turn \textbf{ Example 2.1.1} to in sample space and events language, which is ea
 
 
 \section{Distribution Functions c.d.f, p.m.f, p.d.f}
-\subsection*{PMF}
+\subsection*{p.m.f}
 We define  \textbf{Cumulative Distribution Function} as,
 
 \begin{definition}
@@ -101,6 +101,7 @@ Similar to probabilities of Events, we can calculate probability of $X$ , depend
 \begin{definition}
     If $X$ is discrete, and it takes \textit{countably} values $ \{ x_1,x_2,..,x_n \}$ we define \textbf{Probability Mass Function} of X as follows:
     $$f_X(x)= P(X = x)$$
+    Note that $P(X = x)$ is a function, not a number. We have to specify $x$ first to get a number.
     \textbf{Remark}: $ \{ X=x \} $ are disjoint events that form partition of $\Omega$.
 \end{definition}
 
@@ -130,11 +131,11 @@ We can apply similar rules to continuous r.vs,
     \[ P(a < X < b) = \int_{a}^{b} f_X(x) dx \]
     Function  $f_X$ is called \textbf{Probability Density Function} or PDF as shortly.
 \end{definition}
-Nothing new here really, we just change the properties of PMF that we can use it on continuous r.vs. Now, let's look at some examples,\\
+Nothing new here really, we just change the properties of p.m.f that we can use it on continuous r.vs. Now, let's look at some examples,\\
 \par
-You may noticed that c.d.f is similar to PMF and PDF. Indeed, the are related, c.d.f is just sum of these functions we defined over some interval $x$.
+You may noticed that c.d.f is similar to p.m.f and PDF. Indeed, the are related, c.d.f is just sum of these functions we defined over some interval $x$.
 \begin{definition}
-    c.d.f is related to PMF and PDF. For discrete r.vs,
+    c.d.f is related to p.m.f and PDF. For discrete r.vs,
     \[F_X(x) = P(X \le x) = \sum_{x_i \le x} f_X(x_i)\]
     And for continuous r.vs,
     \[F_X(x)= \int_{-\infty}^x f_X(x)dx \]
@@ -151,29 +152,58 @@ You may noticed that c.d.f is similar to PMF and PDF. Indeed, the are related, c
 \begin{definition}
     If $X$ has distribution $A$, we write
     \[ X \sim A\]
+    Usually $A$ depends on some fixed numbers to define properly, we call them $\textbf{parameters}$. For example, the distribution \textbf{Bernoulli}$(p)$ has parameter $p$. We show parameters in c.d.f and p.m.f as,
+    \[ f(x; parameters) \quad \text{and} \quad F(x; parameters) \]
+    
 \end{definition}
-There are some specific examples of r.v. that are very useful in practical applications. We will learn most important ones.
+There are some specific examples of r.v. that are very useful in practical applications. We will show most important ones, and briefly discuss them. In later chapters, we will learn more about them. Note that we will write the notation with the name of the distribution.
 
-\subsubsection*{Bernoulli r.v}
-Consider a cheating coin toss which has of probability $p$ for head, and a probability of $1-p$ for tails. \textbf{Bernoulli r.v} outputs two values: $1$ if head and $0$ if tails,
-\[X =\begin{cases}
-        1 \quad \text{if head} \\
-        0 \quad \text{if tails}
-\end{cases} \]
+\subsubsection{Degenerate distribution or Point mass distribution: $X \sim \delta_a$}
+Consider tossing coin or dice where all the sides show the same value. The p.m.f is ,
+\[f_X(x; \delta_a) = 1 \quad \text{for} \ x = a\]
+\subsubsection{Discrete Uniform distribution}
+This distribution is the one of the most known ones. When there are finitely many values and each of them have the same probability, then $p = \frac{1}{n}$. Simple coin tossing, dice rolling are prime example of these. The p.m.f is,
+\[f_X(x) = \frac{1}{n}\]
+Where $x \in \{1,2,...,n \}$. Nothing new here.
+for other cases, $f_X(x) = 0$. You might guess why it is called degenerate sometimes. It is not random, but the distribution satisfies the definitions!
+\subsubsection*{Bernoulli distribution: $X \sim \op{Bernoulli}(p)$ }
+This distribution describes ``Yes or No'' type of experiments such as coin flipping. Therefore, $P(X = 1) = p$, $P(X = 0) = 1-p$. We can also calculate p.m.f,
+\[f_X(x; p) = p^x(1-p)^{1-x} \quad \text{for} \ x \in \{0,1\}\]
 
-Then its PMF is,
-\[f_X(x) =\begin{cases}
-    p \quad &\text{if} \ x=1\\
-    1-p \quad &\text{if} \ x=0
-\end{cases} \]
-
-This r.v is very simple and easy to understand. However, there are tons of applications in real life (Any True or False situations, for example) and it is very handy to construct more complex r.v.
-
-\subsubsection*{Binomial r.v}
-Instead of tossing a cheating coin one time, we toss $n$ times, that is generalized version of \textbf{Bernoulli r.v}. With same rules, $p$ is probability of heads and $1-p$ is probability of tails. Let $X$ be the number of heads we get. Then PMF of $X$ is,
-
-\[f_X(x) = P(X = x) =  \binom{n}{x}p^x (1-p)^{n-x}, \qquad x \in \{0,1,2,...,n \} \]
-
+\subsubsection*{Binomial distribution:  $ X \sim \op{Binomial}(n,p)$}
+This distribution is generalized form of \textbf{Bernoulli distribution}. Similar to Bernoulli, this distribution describes ``Yes or no'' type of experiments, but for $n$ times of tries e.g tossing a coin $n$ times. Assuming tries are independent of each other, we can show p.m.f as,
+\[f_X(x; n,p) = \binom{n}{x}p^x(1-p)^{n-x} \quad \text{for} \ x \in \{0,1,...,n\}\]
+Notice that Binomial$(1,p)$ = Bernoulli$(p)$.
+\subsubsection*{Geometric distribution: $X \sim \op{Geom}(p)$}
+This distribution is also specified with Bernoulli. The geometric distribution describes the probability of the first occurrence of success requires after $x$ independent trials e.g getting the first head after $x$ tosses. The p.m.f is,
+\[ f_{X}(x; p) = (1-p)^{x-1}p \quad \text{for} \ x \ge 1 \]
+\subsubsection*{Poisson distribution: $X \sim \op{Poisson}(\lambda)$}
+This distribution is mainly used for counts of events like photons hitting a detector in a time interval, number of car accidents, students achieving a low and high mark on exam, or number of pieces of chewing gum on a tile of a sidewalk. its p.m.f is,
+\[f_X(x; \lambda) = e^{-\lambda} \frac{\lambda^{x}}{x!} \quad \text{for} \ x \ge 0 \]
+Usually, $\lambda = rt$ where $r$ is average rate the events occur and $t$ is the time interval. The r.v $X$ represents the number of events.
+\subsubsection*{Unfiorm distribution: $X \sim \op{Uniform}(a,b)$}
+The p.d.f of $X$ is defined as,
+\[f_X(x; a,b)= \frac{1}{b-a} \quad \text{for} \ x \in [a,b]\]
+\subsubsection*{Normal (Gaussian) distribution: $X \sim N(\mu, \sigma^2)$ or $X \sim \mathcal{N}(\mu, \sigma^2)$}
+This distribution is one of the most popular ones even for non-mathematician, layman people. The famous IQ graph, badly made ``memes'' are example of this. This distribution plays important role in statistics and probability. Moreover, we can observe this distribution in nature. p.d.f is defined as,
+\[f_X(x; \mu, \sigma^2) = \frac{1}{\sigma \sqrt{2 \pi}}  e^{- \frac{(x- \mu)^2}{2\sigma^2}} \quad \text{for} \ x \in \R \]
+We will learn about $\mu$ and $\sigma$ in later chapters. For now, just assume they are some random parameters. \\
+We define  \textbf{standart Normal distribution} as $N(0,1)$, r.v as $Z$. This specific distribution is very important, so much that we show its p.d.f and c.d.f with new notation, namely $\phi(z)$ and $\Phi(z)$. There is no closed form expression for $\Phi(z)$. In modern days, the programming libaries calculate them. \\
+It can be shown that we can show \textbf{any normal  probabilities} we want with $\Phi(z)$.
+\subsubsection*{Exponential distribution: $X \sim \op{Exp}(\lambda)$}
+This distribution is continous analogue of the geometric distribution. This distribution (and the ones after this) has complex properties so we will be brief with this.
+We define its c.d.f as ,
+\[f_X(x; \lambda) = \lambda e^{-x \lambda}\]
+\subsubsection*{Gamma distribution: $X \sim \op{Gamma} (\alpha, \beta)$}
+First, we start with a definition,
+\begin{definition}
+    For $\alpha > 0$, we define \textbf{Gamma function} as,
+    \[\Gamma(\alpha) = \int_{0}^{\infty} t^{\alpha-1} e^{-t}dt\]
+\end{definition}
+    We define p.d.f of $x$ as,
+    \[f_X(x; \alpha, \beta) =  \frac{1}{\beta^{\alpha} \Gamma(\alpha)} x^{\alpha-1} e^{-x/ \beta} \quad x > 0\]
+    Notice that $ \operatorname{Gamma}(1, \beta) =\operatorname{Exp}( \beta)$. That is, exponentional distribution is a specific case of gamma distribution.
+    Gamma distribution itself is very useful and heavily used in this field. Moreover, we can derive more advanced distributions from the gamma function. For now, we will end our discussion here.
 %--------------------------
 
 \section{Multivariate Distribution}
@@ -185,8 +215,8 @@ We can apply multivariate c.d.f as
 \end{definition}
 There is nothing fancy here, actually. We simply redefine c.d.f in general sense for $n$ r.vs.
 \par
-Similarly, we can define multivariate PMF as,
-\begin{definition} For $n$ discrete r.vs of  $\{X_1,X_2,X_n\}$, the multivariate PMF  $f_{X_1,X_2,...,X_n}$ is given by,
+Similarly, we can define multivariate p.m.f as,
+\begin{definition} For $n$ discrete r.vs of  $\{X_1,X_2,X_n\}$, the multivariate p.m.f  $f_{X_1,X_2,...,X_n}$ is given by,
     \[ f_{X_1,X_2,...,X_n}(x_1,x_2,...,x_n) = P(X_1=x_1 \ \land ... \land \ X_n = x_n) \]
 \end{definition}
 
@@ -196,7 +226,7 @@ The Properties and theorems are similar, but are generalized for $n$ r.vs.
 If more than one variable is defined in an experiment, it is important to distinguish between the multivariate probability of $(X_1,X_2,..,X_n)$ and individual probability distributions of $X_1,X_2,..,X_n$\\
 
 \begin{definition}
-    If $(X_1,X_2,...,X_n)$ are joint distributions with PMF $f_{X_1,X_2,..,X_n}$, then we define marginal distribution as,
+    If $(X_1,X_2,...,X_n)$ are joint distributions with p.m.f $f_{X_1,X_2,..,X_n}$, then we define marginal distribution as,
     \[f_{X_1}= P(X_1 = x_1)= \sum_{x_1 \ constant} P(X_1=x_1,..,X_n=x_n)= \sum_{x_1\ constant} f_{X_1,X_2,..,X_n}(x_1,x_2,...,x_n)\]
 \end{definition}
 Examples 
@@ -207,10 +237,10 @@ Similar to events, r.vs also can be independent,
 \begin{definition}
     Two r.vs $X$ and $Y$ are \textbf{independent} if, for every $A$ and $B$,
     \[P(X \in A, Y \in B)= P(X \in A)P(Y \in B)\]
-\end{definition}
+\end{definition}F
 To check Independence, we need to check the above question for every subsets $A,B$. Additionally, we have the theorem,
 \begin{theorem}
-    Let $X$ and $Y$ have PMF $f_{X_y}$. THen $X$ and $Y$ are independent only and only if ,
+    Let $X$ and $Y$ have p.m.f $f_{X_y}$. THen $X$ and $Y$ are independent only and only if ,
     \[f_{X,Y}(x,y)=f_X(x)f_Y(y) \]
 \end{theorem}
 
@@ -222,9 +252,9 @@ Similar to events, r.v $X$ can also have conditional distributions given that we
     We can show conditional distribution of $X$ respect to $Y$ with,
     \[P(X=x| Y=y) = \frac{ P(X=x,Y=y)}{P(Y=y)} \]
 \end{definition}
-Moreover we can also define \textbf{conditional PMF} as,
+Moreover we can also define \textbf{conditional p.m.f} as,
 \begin{definition}
-    PMF of $X$ conditional respect to $Y$ can be written as 
+    p.m.f of $X$ conditional respect to $Y$ can be written as 
     \[ f_{X|Y}(x|y)= \frac{f_{X,Y}(x,y)}{f_Y(y)}\]
 \end{definition}
 
@@ -235,9 +265,9 @@ Examples \\
 \section{Transformations of a Random Variable}
 In some applications, we really are interested in distributions of some function of $X$. We call this concept \textbf{Transformation of X}.
 \begin{definition}
-    Let $X$ be r.v with PDF/PMF $f_X$ and c.d.f $F_X$. Let $Y=r(X)$ i.e $Y=X^2$ or $Y = \ln X$. We call $Y=r(X)$ \textbf{transformation of x}. \\
+    Let $X$ be r.v with PDF/p.m.f $f_X$ and c.d.f $F_X$. Let $Y=r(X)$ i.e $Y=X^2$ or $Y = \ln X$. We call $Y=r(X)$ \textbf{transformation of x}. \\
     \newline
-    If $Y$ is discrete, PMF is given by,
+    If $Y$ is discrete, p.m.f is given by,
     \[f_Y(y)= P(Y=y) =  P( r(X) = y) = P( \{x \ : \ r(x) = y\})= P( X \in r^{-1}(y)) \]
     \newline
     If $Y$ is continuous, we first calculate c.d.f and find derivative of it. 
