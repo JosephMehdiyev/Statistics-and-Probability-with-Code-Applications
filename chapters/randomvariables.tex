@@ -139,7 +139,8 @@ You may noticed that c.d.f is similar to p.m.f and PDF. Indeed, the are related,
     \[F_X(x) = P(X \le x) = \sum_{x_i \le x} f_X(x_i)\]
     And for continuous r.vs,
     \[F_X(x)= \int_{-\infty}^x f_X(x)dx \]
-    And $f_X(x) = F_X^{'}(x)$ for for all differentiable points $x$.
+    And $f_X(x) = F_X^{'}(x)$ for for all differentiable points $x$.\\
+    Note that this definition is heavily used instead of direct definitions above, since we can work with c.d.f only, and derive it to get needed functions.
 \end{definition}
 \par
 
@@ -161,11 +162,12 @@ There are some specific examples of r.v. that are very useful in practical appli
 \subsubsection{Degenerate distribution or Point mass distribution: $X \sim \delta_a$}
 Consider tossing coin or dice where all the sides show the same value. The p.m.f is ,
 \[f_X(x; \delta_a) = 1 \quad \text{for} \ x = a\]
+You might guess why it is called degenerate sometimes. It is not random, but the distribution satisfies the definitions!
 \subsubsection{Discrete Uniform distribution}
 This distribution is the one of the most known ones. When there are finitely many values and each of them have the same probability, then $p = \frac{1}{n}$. Simple coin tossing, dice rolling are prime example of these. The p.m.f is,
 \[f_X(x) = \frac{1}{n}\]
 Where $x \in \{1,2,...,n \}$. Nothing new here.
-for other cases, $f_X(x) = 0$. You might guess why it is called degenerate sometimes. It is not random, but the distribution satisfies the definitions!
+for other cases, $f_X(x) = 0$. 
 \subsubsection*{Bernoulli distribution: $X \sim \op{Bernoulli}(p)$ }
 This distribution describes ``Yes or No'' type of experiments such as coin flipping. Therefore, $P(X = 1) = p$, $P(X = 0) = 1-p$. We can also calculate p.m.f,
 \[f_X(x; p) = p^x(1-p)^{1-x} \quad \text{for} \ x \in \{0,1\}\]
@@ -199,15 +201,26 @@ First, we start with a definition,
 \begin{definition}
     For $\alpha > 0$, we define \textbf{Gamma function} as,
     \[\Gamma(\alpha) = \int_{0}^{\infty} t^{\alpha-1} e^{-t}dt\]
+    It is generalized form of more simple and specific version, 
+    \[ \Gamma(n) = (n-1)! \quad \op{for} \ n \in \mathbb{N} \]
 \end{definition}
     We define p.d.f of $x$ as,
     \[f_X(x; \alpha, \beta) =  \frac{1}{\beta^{\alpha} \Gamma(\alpha)} x^{\alpha-1} e^{-x/ \beta} \quad x > 0\]
     Notice that $ \operatorname{Gamma}(1, \beta) =\operatorname{Exp}( \beta)$. That is, exponentional distribution is a specific case of gamma distribution.
-    Gamma distribution itself is very useful and heavily used in this field. Moreover, we can derive more advanced distributions from the gamma function. For now, we will end our discussion here.
+    Gamma distribution itself is very useful and heavily used in this field. Moreover, we can derive more advanced ( which I have difficulties understanding) distributions from the gamma function. For now, we will end our discussion here.
 %--------------------------
 
 \section{Multivariate Distribution}
-In practical word, we often work with multiple r.v in the same experiment, or the sample space. This can be a medical research with multiple tests, where tests are related with each other with the same sample space $\Omega$ and the same probability.\\
+In practical word, we often work with multiple r.v in the same experiment. This can be a medical research with multiple tests, where tests are related with each other with the same sample space $\Omega$ and the same probability.\\
+First, we define a special vector,
+\begin{definition}
+    Let $X_1,X_2,..,X_n$ be r.vs. We call $X = \{ X_1, X_2, ... ,X_n\}$ \textbf{a random vector}.
+\end{definition}
+\begin{definition}
+    If r.vs $X_1,X_2,...,X_n$ are \textbf{independent} an have the same \textbf{marginal distribution} with c.d.f $F$, we define these r.vs as \textbf{independent and identically distributed}, shortly $\op{IID}$, with notation,
+    \[X_1,...,X_n \sim F\]
+    similarly, we show the p.d.f the same way. IID property is very important in statistical field.
+\end{definition}
 We can apply multivariate c.d.f as
 \begin{definition}
     For $n$  r.v $\{ X_1,X_2,..,X_n \}$, the multivariate c.d.f $F_{X_1,X_2,...,X_n}$ is given by,
@@ -216,8 +229,16 @@ We can apply multivariate c.d.f as
 There is nothing fancy here, actually. We simply redefine c.d.f in general sense for $n$ r.vs.
 \par
 Similarly, we can define multivariate p.m.f as,
-\begin{definition} For $n$ discrete r.vs of  $\{X_1,X_2,X_n\}$, the multivariate p.m.f  $f_{X_1,X_2,...,X_n}$ is given by,
-    \[ f_{X_1,X_2,...,X_n}(x_1,x_2,...,x_n) = P(X_1=x_1 \ \land ... \land \ X_n = x_n) \]
+\begin{definition} For random vector $X$,, the multivariate p.m.f  $f_{X_1,X_2,...,X_n}$ is given by,
+    \[ f_{X_1,X_2,...,X_n}(x_1,x_2,...,x_n) = P(X_1=x_1 ,...,  \ X_n = x_n) \]
+    This is generalized form of p.m.f
+
+\end{definition}
+Similarly, we define,
+\begin{definition}
+    We know that c.d.f and p.d.f are related by derivative. Then,
+    For random vector $X$, the multivariate p.d.f $f_{X_1,..,x_N}$ is given by,
+    \[f_{X_1,X_2,...,X_n}(x_1,x_2,...,x_n) = \frac{{\partial}^nF_{X_1,..,X_n}(x_1,...,x_n)}{\partial x_1\partial x_2...\partial x_n}\]
 \end{definition}
 
 The Properties and theorems are similar, but are generalized for $n$ r.vs.
@@ -225,11 +246,18 @@ The Properties and theorems are similar, but are generalized for $n$ r.vs.
 \section{Marginal Distribution}
 If more than one variable is defined in an experiment, it is important to distinguish between the multivariate probability of $(X_1,X_2,..,X_n)$ and individual probability distributions of $X_1,X_2,..,X_n$\\
 
+Formally, \textbf{Marginal distribution is the probability of a single event (or r.v) occuring, independent of other events}. Therefore implementing marginal distributions are rather easy. In multivariate distributions, we redefine the needed variable as a ``constant'' and work with other variables only.
 \begin{definition}
-    If $(X_1,X_2,...,X_n)$ are joint distributions with p.m.f $f_{X_1,X_2,..,X_n}$, then we define marginal distribution as,
+    If $X$ is a random vector with p.m.f $f_{X_1,X_2,..,X_n}$, then we define marginal distribution as,
     \[f_{X_1}= P(X_1 = x_1)= \sum_{x_1 \ constant} P(X_1=x_1,..,X_n=x_n)= \sum_{x_1\ constant} f_{X_1,X_2,..,X_n}(x_1,x_2,...,x_n)\]
 \end{definition}
-Examples 
+Similarly,
+\begin{definition}
+    We define marginal p.d.f as ,
+    \[f_{X_i}(x_i) =  \int \int \int ... \int f(x_1,x_2,..,x_n)dx_1..dx_{i-1}dx_{i+1}...dx_n \]
+\end{definition}
+Similarly, c.d.f follows the same rule. $F_X(x)= F(x,a,b,c,...)$. \\
+\textbf{Remark:} Marginality and conditionality are not the same thing. They look similiar, but their definitions are subtly different.
 \par
 %------------------------
 \section{Independence}
@@ -237,11 +265,13 @@ Similar to events, r.vs also can be independent,
 \begin{definition}
     Two r.vs $X$ and $Y$ are \textbf{independent} if, for every $A$ and $B$,
     \[P(X \in A, Y \in B)= P(X \in A)P(Y \in B)\]
-\end{definition}F
+    The definition persists for multivariate distributions.
+\end{definition}
 To check Independence, we need to check the above question for every subsets $A,B$. Additionally, we have the theorem,
 \begin{theorem}
     Let $X$ and $Y$ have p.m.f $f_{X_y}$. THen $X$ and $Y$ are independent only and only if ,
     \[f_{X,Y}(x,y)=f_X(x)f_Y(y) \]
+    The definiton persists for multivariate distributions.
 \end{theorem}
 
 
@@ -257,8 +287,6 @@ Moreover we can also define \textbf{conditional p.m.f} as,
     p.m.f of $X$ conditional respect to $Y$ can be written as 
     \[ f_{X|Y}(x|y)= \frac{f_{X,Y}(x,y)}{f_Y(y)}\]
 \end{definition}
-
-Examples \\
 
 
 %---------------------
