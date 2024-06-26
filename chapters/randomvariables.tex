@@ -51,33 +51,31 @@ Turn \textbf{ Example 2.1.1} to in sample space and events language, which is ea
 
 
 \section{Distribution Functions c.d.f, p.m.f, p.d.f}
-\subsection*{p.m.f}
+\subsection*{c.d.f}
 We define  \textbf{Cumulative Distribution Function} as,
 
 \begin{definition}
     The \textbf{Cumulative Distribution Function} or shortly \textbf{c.d.f} is a function $F_X \ : \ \mathbb{R} \rightarrow [0,1]$ such that
     \[ F_X(x) = P( X \le x) \]
-    \textbf{Remark :} Every r.v (discrete and continuous) have c.d.f. For this reason, we can use c.d.f for unified treatment of r.v properties (that is, generalized concepts for all r.v).
+    \textbf{Remark :} Every r.v (discrete and continuous) have c.d.f. For this reason, we can use c.d.f for unified treatment of r.v properties (that is, generalized concepts for all r.v). Moreover, c.d.f contains all the information about r.v, both continous and discrete ones. That is why c.d.f is very useful, even in practical world.
 \end{definition}
 \par
 In informal terms, c.d.f is the probability that $X$ will take a value less than or equal to $x$. This property holds both for continuous and discrete r.v.
-\par 
 
-Later on the book we will learn that c.d.f practically contains all the information about r.v, including continuous ones. Let's look at a example for c.d.f.
 
 \begin{example}
-    We toss a fair coin two times. Let $X$ represent the number of heads we get. Then CMF of $X$ is,
+    We toss a fair coin two times. Let $X$ represent the number of heads we get. Then c.d.f of $X$ is,
     \[F_X(x) = 
         \begin{cases} 
           0 \qquad &x < 0\\
           1/4 \qquad &0 \le x <1 \\
-          3/4 \qquad &1 \leq < 2 \\
+          3/4 \qquad &1 \leq x < 2 \\
           1 \qquad &x \ge 2
         \end{cases} 
 \]
 \end{example}
 
-The variable $x$ can get $\textbf{any real numbers}$, such as $2, 4.14$ and $\pi$. It a bit tricky, they simply take the values from corresponding inequalities.
+The variable $x$ can get $\textbf{any real numbers}$, such as $2, 4.14$ and $\pi$. It is just that in discrete case the probability equals to $0$ (Which in other words converts discrete to continous function?). It a bit tricky, they simply take the values from corresponding inequalities.
 \\
 Now, let's look at some properties of c.d.f,
 \begin{theorem}
@@ -92,6 +90,11 @@ Now, let's look at some properties of c.d.f,
         \item $F$ is normalized i.e \[ \lim_{x \rightarrow -\infty} F(x) = 0\ \ \land \ \lim_{x \rightarrow \infty} F(x) =1 \]
         \item $F$ is right continuous.
     \end{enumerate}
+    \begin{proof}[Remarks]
+        The first and second properties are simple and intuitive, therefore we will ignore them ( I know it is not the mathematical way, but whatever   ). \\
+        
+        Third property, however, is worth having discussion about. This property directly follows from the inequality $\le$. We could even define c.d.f with strict inequality $F= P(X<x)$, and it would still work. It is matter of convention.
+    \end{proof}
 \end{theorem}
 
 %------------------------------
@@ -99,7 +102,8 @@ Now, let's look at some properties of c.d.f,
 Similar to probabilities of Events, we can calculate probability of $X$ , depending on discrete or Continuous with functions called \textbf{ Probability Mass Function} and $\textbf{Probability Density Function}$, shortly $\textbf{p.m.f}$ and $\textbf{PDF}$ respectively,
 
 \begin{definition}
-    If $X$ is discrete, and it takes \textit{countably} values $ \{ x_1,x_2,..,x_n \}$ we define \textbf{Probability Mass Function} of X as follows:
+    If $X$ is discrete, and it takes \textit{countably} values $ \{ x_1,x_2,..,
+    x_n \}$ we define \textbf{Probability Mass Function} of X as follows:
     $$f_X(x)= P(X = x)$$
     Note that $P(X = x)$ is a function, not a number. We have to specify $x$ first to get a number.
     \textbf{Remark}: $ \{ X=x \} $ are disjoint events that form partition of $\Omega$.
@@ -108,7 +112,7 @@ Similar to probabilities of Events, we can calculate probability of $X$ , depend
    With the properties of probability, we have $f_X \ge 0$ for all $x \in \mathbb{R}$ and $\sum_{i} f_X (x_i) =1 $. Let's revisit our Example 2.2.1
 
    \begin{example}
-    We toss a fair coin two times. Let $X$ represent the number of heads we get. Then CMF of $X$ is,
+    We toss a fair coin two times. Let $X$ represent the number of heads we get. Then c.d.f of $X$ is,
     \[f_X(x) = 
         \begin{cases} 
           1/4 \qquad &x=0\\
@@ -140,6 +144,7 @@ You may noticed that c.d.f is similar to p.m.f and PDF. Indeed, the are related,
     And for continuous r.vs,
     \[F_X(x)= \int_{-\infty}^x f_X(x)dx \]
     And $f_X(x) = F_X^{'}(x)$ for for all differentiable points $x$.\\
+  
     Note that this definition is heavily used instead of direct definitions above, since we can work with c.d.f only, and derive it to get needed functions.
 \end{definition}
 \par
@@ -287,7 +292,7 @@ Moreover we can also define \textbf{conditional p.m.f} as,
     p.m.f of $X$ conditional respect to $Y$ can be written as 
     \[ f_{X|Y}(x|y)= \frac{f_{X,Y}(x,y)}{f_Y(y)}\]
 \end{definition}
-
+ 
 
 %---------------------
 \section{Transformations of a Random Variable}
