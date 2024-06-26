@@ -32,7 +32,7 @@ for element in result:
 experimentOrder = np.arange(1,n+1,1)
 
 
-plt.figure(figsize=(6.5, 3.5))
+plt.figure(figsize=(6, 3.5))
 
 # The fancy expressions here just takes the average value. 
 # X axis is "experimentOrder" while the Y axis is our fancy expressions.

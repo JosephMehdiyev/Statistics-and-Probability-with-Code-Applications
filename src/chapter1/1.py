@@ -17,7 +17,7 @@ result3 = np.random.binomial(n = n,p = p3, size = numberOfExperiments)
 
 #
 nn = np.arange(0, n, 1)
-plt.figure(figsize=(6.5, 3.5))
+plt.figure(figsize=(6, 3.5))
 plt.plot(nn, np.cumsum(result1) / (nn*n), label='p = 0.3')
 plt.plot(nn, np.cumsum(result2) / (nn*n), label='p = 0.5')
 plt.plot(nn, np.cumsum(result3) / (nn*n), label='p = 0.07')
