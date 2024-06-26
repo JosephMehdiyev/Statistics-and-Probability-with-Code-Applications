@@ -322,7 +322,7 @@ We can also generalize this concepts for Multivariate distributions, which we ju
         \item plot p.d.f of $X$ and $Y$.
         \item (The practical experiment) let $x$ be a vector with 10000 numbers randomly selected from $N(0,1)$, i .e $x = (x_1,..,x_{10000})$. Let $y$ be a similiar vector where $y_i = e^{x_i}$, and plot the result of the histogram. Compare with the theorical $p.d.f$
     \end{enumerate}
-    \textbf{Solution1}    \embed{src/chapter1/3.py}{Source}  \\
+    \textbf{Solution1}    \embed{src/chapter2/1.py}{Source}  \\
     First, let's derive $f_Y(y)$.
     \begin{align*}
         F_Y(y) = P(Y \le y) & = P (e^X \le y) = P( X \le \ln y) \\
@@ -330,8 +330,8 @@ We can also generalize this concepts for Multivariate distributions, which we ju
                             f_Y(y) = \odv{\Phi(\ln y)}{y} &= \odv{\Phi(\ln y)}{\ln y} \odv{\ln y}{y} = \phi(\ln y) / y
     \end{align*}
 
-    \inputminted{python}{src/chapter1/3.py} \\
-    \begin{center} \input{src/chapter1/fig3.pgf}  \end{center}
+    \inputminted{python}{src/chapter2/1.py} \\
+    \begin{center} \input{src/chapter2/fig1.pgf}  \end{center}
 
     
     It is kind of wrong to name y and x labels and "p.d.f" and "r.v", but I really can't think of better labels.\\

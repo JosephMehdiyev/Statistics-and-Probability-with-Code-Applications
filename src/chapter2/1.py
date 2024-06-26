@@ -21,6 +21,6 @@ totalPoints = 10000 # total number we will randomly select
 arrayX = rng.normal(loc = 0, scale = 1, size = totalPoints) # array of selected numbers
 barSize = 200 # number of the bars
 plt.hist(np.exp(arrayX), bins = barSize, range = (0,6),density = True, color = 'g', alpha = 0.6 )
-plt.savefig('src/chapter1/fig3.pgf')
+plt.savefig('src/chapter2/fig1.pgf')
 
 
