@@ -1,0 +1,49 @@
+\chapter{Estimation}
+Through the last chapter, we have talked about multiple probability distributions and their functions such as c.d.f, p.d.f, and p.m.f. 
+However, we have assumed that we already knew the distribution and their functions. In practical world, it is not the case.
+Statistical inference, in shortly, discusses about finding, or \textbf{infer} the properties of an distribution.
+
+Distribution, in definition, is a function. So in a more mathematical terms, we have some $f$ such that $f(X)= \op{\theta}$, where $\theta$ is our already know data, or $\textbf{sample data}$. We will learn ways of learning properties of, and constructing $f$ just from the sample data $\theta$.
+
+\section{Introduction}
+Majority of times we work with multiple parameters. However, we might be interested on only one of them. Therefore,  we call the parameter of our interest to be \textbf{target parameter}.
+\par
+    Suppose we want to estimate $\mu$ of some experiment. We could give our estimate in two forms: $\textbf{point estimate and interval estimate}$. As name implies, point estimate is a single value, however interval estimate is an interval.
+\begin{example}
+    Suppose we want to estimate the average score  $\mu$ the students will get from SAT score this year. We could use just a number $1240$, a \textbf{point estimate}, or an interval $(1200,1260)$, a \textbf{interval estimate}.
+\end{example}
+
+One such point estimator is  the sample mean,
+\[\overline{Y} = \frac{1}{n}\sum_{i=1}^nY_i\]
+Which esimates the mean $\mu$. Notice that $\E(\overline{Y}) = \mu$. 
+\section{Point Estimation}
+By convention we write the point estimate of $\theta$ as $\widehat{\theta}$. Since $\theta$ is constant and by definition $\widehat{\theta}$ is a function, $\widehat{\theta}$ is a r.v. Remark that funtion of r.vs is a r.v. In more mathematical way,
+\begin{definition}
+    Let $X_1,..X_n \sim F$ be i.i.d. A point estimator $\widehat{\theta}$ is defined as,
+    \[\widehat{\theta} = g(X_1,..,X_n)\]
+    We also define a very useful variable \textbf{bias} as,
+    \[\op{bias}(\widehat{\theta}, \theta) = \op{E}(\widehat{\theta}) - \theta\]
+    Here, $\theta$ is our target parameter, $\widehat{\theta}$ is the function we use to estimate our target, or the estimator. We usually write $\op{bias}(\widehat{\theta},\theta) = \op{bias}(\widehat{\theta})$ 
+    \\
+    Bias, in a literal sense, tells us the bias of the estimator we use. That is, the error that we may find when we estimate our parameter. We say that $\widehat{\theta}$ is \textbf{unbiased} if,
+    \[\op{bias} (\widehat{\theta}) = 0 \Rightarrow \E(\widehat{\theta}) = \theta \]
+\end{definition}
+We know that $\theta$ is a r.v. We call this r.v's distribution as $\textbf{sampling distribution}$. We also define,
+\textbf{standart error of} $\t$ or standard deviation,
+\[\sigma_{\t}= \sqrt{\V(\t)}\]
+It is logical to think that the estimator should converge to its target value, we define such property as,
+\begin{definition}
+    A point estimator $\t$ is said to be $\textbf{consistent}$ if  $\t$ converges to $\theta$.
+\end{definition}
+
+\par
+With bias alone, we can't characterize the quality of the estimator. Because the values of $\t$ may be far away than real value $\theta$, but still be $\E(\t) = \theta$. Therefore, we also have to measure the variance in some way.
+\\
+For such thing, we already have a tool,
+\begin{definition}
+    \textbf{The mean square error} of $\t$ is defined as,
+    \[\op{MSE}(\t) = \E([\t - \theta]^2)\]
+    in similiar fashion to the Variance definition, we can rewrite this equation as,
+    \[\op{MSE}(\t) =\op{bias}^2(\t) + V(\t)\]
+\end{definition}
+Now, let's look at some examples,
