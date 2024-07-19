@@ -1,14 +1,17 @@
 \chapter{Estimation}
 Through the last chapter, we have talked about multiple probability distributions and their functions such as c.d.f, p.d.f, and p.m.f. 
-However, we have assumed that we already knew the distribution and their functions. In practical world, it is not the case.
-Statistical inference, in shortly, discusses about finding, or \textbf{infer} the properties of an distribution.
+However, we have assumed that we already knew the distribution and its properties. In practical world, it is not the case.
+We may try to find the average salary of the country, the fatality rate of a virus, and so on.
+Statistical inference, in shortly, is study of using the information sample we are given to deduce the characteristics of a population.
+Since majority of population is defined with \textbf{paramateres}, our investigation is mainly on finding, or estimating such paramteres.
 
-Distribution, in definition, is a function. So in a more mathematical terms, we have some $f$ such that $f(X)= \op{\theta}$, where $\theta$ is our already know data, or $\textbf{sample data}$. We will learn ways of learning properties of, and constructing $f$ just from the sample data $\theta$.
+
 
 \section{Introduction}
 Majority of times we work with multiple parameters. However, we might be interested on only one of them. Therefore,  we call the parameter of our interest to be \textbf{target parameter}.
 \par
     Suppose we want to estimate $\mu$ of some experiment. We could give our estimate in two forms: $\textbf{point estimate and interval estimate}$. As name implies, that point estimate is a single value, however interval estimate is an interval.
+
 \begin{example}
     Suppose we want to estimate the average score  $\mu$ the students will get from SAT score this year. We could use just a number $1240$, a \textbf{point estimate}, or an interval $(1200,1260)$, a \textbf{interval estimate}.
 \end{example}
@@ -16,6 +19,7 @@ Majority of times we work with multiple parameters. However, we might be interes
 One such point estimator is  the sample mean,
 \[\overline{Y} = \frac{1}{n}\sum_{i=1}^nY_i\]
 Which esimates the mean $\mu$. Notice that $\E(\overline{Y}) = \mu$. 
+There can be multiple estimators estimating the same parameter. It is logical, since not all estimators are ideal for practical purposes because of quality of estimator.
 \section{Point Estimation}
 By convention we write the estimate of $\theta$ as $\widehat{\theta}$. Since $\theta$ is constant and by definition $\widehat{\theta}$ is a function, $\widehat{\theta}$ is a r.v. Remark that funtion of r.vs is a r.v. In more mathematical way,
 \begin{definition}
@@ -31,19 +35,23 @@ By convention we write the estimate of $\theta$ as $\widehat{\theta}$. Since $\t
 We know that $\t$ is a r.v. We call this r.v's distribution as $\textbf{sampling distribution}$. We also define,
 \textbf{standart error of} $\t$ or standard deviation,
 \[\sigma_{\t}= \sqrt{\V(\t)}\]
-It is logical to think that the estimator should converge to its target value, we define such property as,
+It is logical to think that the estimator should converge (with more samples) to its target value, we define such property as,
 \begin{definition}
     If a point estimator $\t$ converges to $\theta$, we call that $\t$ is \textbf{consistent}
 \end{definition}
 
 \par
-With bias alone, we can't characterize the quality of the estimator. Because the values of $\t$ may be far away than real value $\theta$, but still be $\E(\t) = \theta$. Therefore, we also have to measure the variance in some way.
+With bias alone, we can't characterize the quality of the estimator. Because the values of $\t$ may be far away than real value $\theta$, but still be $\E(\t) = \theta$. 
+Therefore, we also have to measure the variance in some way.
 \\
 For such thing, we already have a tool,
 \begin{definition} 
+    \textbf{The mean square error} is defined as,
+    \[\op{MSE}(\t) = \E([\t - \theta]^2) \]
     in similiar fashion to the Variance definition, we can rewrite this equation as,
     \[\op{MSE}(\t) =\op{bias}^2(\t) + V(\t)\]
 \end{definition}
+MSE is function of both its variance and bias, hence it is a better way of showing the quality of the estimator.
 \section{Confidence Intervals}
 Let's assume we are a scientist that want to measure the mean of the specific kind of mice's weight.
 It is unrealistic to measure \textbf{all of the mice}, hence we catch a small amount of them, probably in hundreds, measure them and gather the data in a datasheet. We \textbf{bootstrap} (we will learn what that term is in later chapters) the sample data, and find the sample mean. Now, we repeat the bootstrapping process thousands of times, which now we have a sample mean data.
@@ -54,7 +62,7 @@ Now, let's find numbers $a,b$ such that $95\%$ of our sample mean data resides i
     \[ P(a \le \theta \le b) \ge  1 - \alpha \]
     Note that $\theta$ is unknown constant value, while  $a$ and $b$ are random variables. 
    \\
-   Taking the above example, $\alpha = 0.05$, which is a mathematical standard number used majority of time. $1 - \alpha$ is called \textbf{confidence coefficient}. We also call \textbf{lower and upper confidence limits} to $a$ and $b$, sometimes also donates as $\theta_{L}$ and $\theta_{U}$.
+   Taking the above example, $\alpha = 0.05$, which is a mathematical standard number used majority of time. $1 - \alpha$ is called \textbf{confidence coefficient}. We also call \textbf{lower and upper confidence limits} to $a$ and $b$, sometimes also donated as $\theta_{L}$ and $\theta_{U}$.
 \end{definition}
 It is also possible to form \textit{one sided confidence interval}, i.e,
 \[ P( \theta_{L} \le \theta ) \ge 1 - \alpha  \qquad \text{or} \qquad P( \theta \le \theta_{U}) \ge 1 - \alpha\]
