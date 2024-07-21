@@ -37,16 +37,23 @@ But, do the $\overline{X}$ retain all the information about $X$?. If it does, we
 
 We can mathematically convery this property as conditional distribution of our sample data, given the estimator. If the distribution is dependent on our target parameter, it can't be sufficient. In more mathematical way,
 \begin{definition}
-    A \textbf{statistic} is a function of data. A statistic $U = t(X_1,..,X_n)$ of $\theta$ is sufficient if conditional distribution of $X_1,...,X_n$ given $U$ is not dependent on $\theta$.
+    A \textbf{statistic} is a function of data (Remark: all estimators are statistic but not all statistic are estimators). A statistic $U = t(X_1,..,X_n)$ of $\theta$ is sufficient if conditional distribution of $X_1,...,X_n$ given $U$ is not dependent on $\theta$.
     \newline
     \newline
     If conditional distribution is dependent on the target parameter, it is intuitive to think the statistic does not contain all the information.
 \end{definition}
 Sufficiency is useful since it helps us to \textit{assessing information on the entire population without the need of all the data}.\\
-Say you get your grade on an exam and you want to know how well you did compared to your classmates. If you are given a sample mean and variance, you can do this without asking everyone's grades
-
-\section{Rao-Blackwell theorem}
+Say you get your grade on an exam and you want to know how well you did compared to your classmates. If you are given a sample mean and variance, you can do this without asking everyone's grades.
 \section{Method of Moments}
+Until now, we have used our intuiton to find estimators. For example, it is logical to think that $\overline{X}$ would be an ideal estimator for $\mu$ of $X$. However, in practical world we have to generate the parametric estimators more ``mathematically''.
+First, we introduce with a new simple definition,
+\begin{definition}
+    \textbf{k-th sample moment} $m_k$ is average of $\mu_{k}$ i.e 
+    \[m_k = \frac{1}{n} \sum_{i = 1}^n X_{i}^k \]
+\end{definition}
+In section 3.1 we talked about \textbf{raw moments}. Raw moments convey the properties of the distribution i.e raw moments are some functions of the desired parameters. The first raw moment is the mean $\mu_1 = \mu$, the second raw moment is expression of variance  $\mu_{2}= \sigma^2+ \mu^2$ and so on.
+
+The idea method of moment is  we can use $m_k$ as good estimator of $\mu_k$, and from $\mu_k$ we can derive expressions for our target parameter.G
 \section{Method of Maximum Likelihood}
 \section{Method of Delta}
 \section{Multi-Parameter Models}
