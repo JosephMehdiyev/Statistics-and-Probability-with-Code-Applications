@@ -55,6 +55,19 @@ In section 3.1 we talked about \textbf{raw moments}. Raw moments convey the prop
 
 The idea method of moment is  we can use $m_k$ as good estimator of $\mu_k$, and from $\mu_k$ we can derive expressions for our target parameter.G
 \section{Method of Maximum Likelihood}
+The method of moments are very simple and intuitive, but it is unefficient. We have a better and sophisticated method called 
+\textbf{method of maximum likelihood}. There is a great \href{https://www.youtube.com/watch?v=XepXtl9YKwc}{video}  by Josh Starmer that explains the method very well.
+
+Assume that we have a sample data, and we want to estimate parameters of the distribution that describes the sample data. The idea is that we find such estimator that maximaze the \textbf{likelihood} of getting our sample data relative to the parameter.
+\begin{definition}
+    The \textbf{Likelihood function} is defined as,
+    \[ \mathcal{L}_n(\theta) = \prod_{i=1}^n f(X_i; \theta) \]
+    Also we define \textbf{log-likelihood function} as,
+    \[\ell_n( \theta) = \log \mathcal{L}_n(\theta) \]
+    At last, we define the \textbf{maximum likelihood estimator} MLE denoted by $\t_n$ as the value of $\theta$ that maximizes $\mathcal{L}_n(\theta)$, or better $\ell_n( \theta)$, since working with logs are easier that multiplicative functions for maximizing.
+\end{definition}
+We already know that $\theta$ is a unknown constant we want to estimate. The $\mathcal{L}_n(\theta)$ describes the likelihood of each sample data, respect to $\theta$. Since it is intuitive to maximize the likelihood (because the sample data is already happened and should be maximized), it should also estimate our value $\theta$.
+
 \section{Method of Delta}
 \section{Multi-Parameter Models}
 
