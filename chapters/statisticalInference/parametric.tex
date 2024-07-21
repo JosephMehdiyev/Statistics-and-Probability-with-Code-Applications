@@ -27,6 +27,24 @@ Since consistent estimators converge to the target parameter, it is logical to t
 \end{theorem}
 \textbf{REMARK:} There are multiple concepts of "convergence". In this case, it is \textbf{convergence in probability}. I really should study real analysis huh.
 
+\begin{center} \resizebox{0.7\textwidth}{!}{\input{src/chapter1/fig2.pgf}}  \end{center}
+
+
+
+\subsection*{Sufficiency}
+We know that the value $\overline{X}$ (average value) is a unbiased estimator for mean $\mu$ of $X$. At this point, we no longer need the sample data to estimate the $\mu$, since we can summarize the information just with the estimator $\overline{X}$.
+But, do the $\overline{X}$ retain all the information about $X$?. If it does, we call such estimator \textbf{sufficient}. That is all the sufficiency is for.
+
+We can mathematically convery this property as conditional distribution of our sample data, given the estimator. If the distribution is dependent on our target parameter, it can't be sufficient. In more mathematical way,
+\begin{definition}
+    A \textbf{statistic} is a function of data. A statistic $U = t(X_1,..,X_n)$ of $\theta$ is sufficient if conditional distribution of $X_1,...,X_n$ given $U$ is not dependent on $\theta$.
+    \newline
+    \newline
+    If conditional distribution is dependent on the target parameter, it is intuitive to think the statistic does not contain all the information.
+\end{definition}
+Sufficiency is useful since it helps us to \textit{assessing information on the entire population without the need of all the data}.\\
+Say you get your grade on an exam and you want to know how well you did compared to your classmates. If you are given a sample mean and variance, you can do this without asking everyone's grades
+
 \section{Rao-Blackwell theorem}
 \section{Method of Moments}
 \section{Method of Maximum Likelihood}
