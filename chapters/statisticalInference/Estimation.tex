@@ -16,15 +16,17 @@ Majority of times we work with multiple parameters. However, we might be interes
     Suppose we want to estimate the average score  $\mu$ the students will get from SAT score this year. We could use just a number $1240$, a \textbf{point estimate}, or an interval $(1200,1260)$, a \textbf{interval estimate}.
 \end{example}
 
-One such point estimator is  the sample mean,
-\[\overline{Y} = \frac{1}{n}\sum_{i=1}^nY_i\]
-Which esimates the mean $\mu$. Notice that $\E(\overline{Y}) = \mu$. 
+Examples for such estimators can be
+\[\overline{Y} = \frac{1}{n}\sum_{i=1}^n Y_i \]
+Which esimates the mean $\mu$. Notice that $\E(\overline{Y}) = \mu$ and,
+\[ S^2 = \frac{1}{n-1} \biggl(  \sum_{i = 1}^n  (X_i - \overline{X})^2 \biggr) \]
+Which estimates the variance $\sigma^2$. Notice that $\E(S^2) = \sigma^2$.\newline
 There can be multiple estimators estimating the same parameter. It is logical, since not all estimators are ideal for practical purposes because of quality of estimator.
 \section{Point Estimation}
 By convention we write the estimate of $\theta$ as $\widehat{\theta}$. Since $\theta$ is constant and by definition $\widehat{\theta}$ is a function, $\widehat{\theta}$ is a r.v. Remark that funtion of r.vs is a r.v. In more mathematical way,
 \begin{definition}
     Let $X_1,..X_n \sim F$ be i.i.d. A point estimator $\widehat{\theta}$ is defined as,
-    \[\widehat{\theta} = g(X_1,..,X_n)\]
+    \[\widehat{\theta} = g(X_1, \ldots,X_n)\]
     We also define a very useful variable \textbf{bias} as,
     \[\op{bias}(\widehat{\theta}, \theta) = \op{E}(\widehat{\theta}) - \theta\]
     Here, $\theta$ is our target parameter, $\widehat{\theta}$ is the function we use to estimate our target, or the estimator. We usually write $\op{bias}(\widehat{\theta},\theta) = \op{bias}(\widehat{\theta})$ 
@@ -49,9 +51,17 @@ For such thing, we already have a tool,
     \textbf{The mean square error} is defined as,
     \[\op{MSE}(\t) = \E([\t - \theta]^2) \]
     in similiar fashion to the Variance definition, we can rewrite this equation as,
-    \[\op{MSE}(\t) =\op{bias}^2(\t) + V(\t)\]
+    \[\op{MSE}(\t) =\op{bias}^2(\t) + \V(\t)\]
 \end{definition}
 MSE is function of both its variance and bias, hence it is a better way of showing the quality of the estimator.
+
+\begin{example}
+    Let $X_1, \ldots ,X_n \sim \op{Bernoulli}(p)$. Let $\widehat{p} = n^{-1}\sum_{i=1}^n X_i$. We already know that $\E(X) = p$ and $\V(X) = p(1-p)$.  Our estimator is unbiased since,
+    \[ \E( \widehat{p}) = \frac{1}{n} \sum \E(X_i) = p\]
+    Moreover, the estimator's variance is, 
+    \[ \sigma_{\widehat{p}}^2 = \E(\widehat{p}^2) - \E(\widehat{p})^2 = p - p^2 \]
+\end{example}
+We can intutively guess some estimators that could be effective for our purposes. But for many complex problems, it is not the case. We will learn new methods to calculate estimators in later chapters.
 \section{Confidence Intervals}
 Let's assume we are a scientist that want to measure the mean of the specific kind of mice's weight.
 It is unrealistic to measure \textbf{all of the mice}, hence we catch a small amount of them, probably in hundreds, measure them and gather the data in a datasheet. We \textbf{bootstrap} (we will learn what that term is in later chapters) the sample data, and find the sample mean. Now, we repeat the bootstrapping process thousands of times, which now we have a sample mean data.
