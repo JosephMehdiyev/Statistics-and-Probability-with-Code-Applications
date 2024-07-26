@@ -1,2 +1,43 @@
-\chapter{Inequalities}
-not yet sure, may delete this chapter
+\chapter{Statistical Inequalities}
+Statistical Inequalities provide a means of bounding measures and quantities, which is very useful practically and theorically. These inequalities are used for computations on Machine learning and AI, developing new methods and techniques for practical purposes and so on. IMO, International Mathematical Olympiads, also have a ``Inequalities'' section with questions that heavily use some of the methods and techniques soon be discussed here.
+\section{Probability inequalities}
+Probability inequaltiies are useful for boundign quantities that is hard to compute. Moreover, they are heavily used in the \textbf{theory of convergence}. Our first theory is,
+\begin{theorem}
+    Let $X$ be  non-negative r.v and assume $\E(X)$ exists. Then \textbf{Markov's inequality} states that for any  $a > 0$,
+    \[ P(X \ge a) \le \frac{\E(X)}{a}\]
+
+    \begin{proof}
+        \begin{align*}
+            E(X) &= \int_{-\infty}^{\infty} xf(x)dx  = \int_{0}^{\infty} xf(x)dx \\
+                 &=  \int_{0}^a xf(x)dx + \int_{a}^{\infty} xf(x)dx \\
+                 & \ge \int_{a}^{\infty} xf(x)dx \ge a \int_{a}^{\infty}f(x)dx \\
+                 & = a P(X \ge a)
+        \end{align*}
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}
+    Let $\mu = E(X)$ and $\sigma^2 = V(X)$. \textbf{Chebyshev's inequality} states that,
+    \[ P(| X - \mu | \ge a) \le  \frac{\sigma^2}{a^2} \quad \text{and} \quad P(|Z| \ge k ) \le \frac{1}{k^2}\]
+    Where $Z$ is \textbf{standard score} i.e $Z = \frac{x - \mu}{\sigma}$.
+    \begin{proof}
+        The theorem is the direct consequence of the markov ineqaulity
+        \[ P(|X- \mu| \ge a) = P(|X - \mu|^2 \ge a^2) \le \frac{\E([X- \mu]^2)}{a^2} = \frac{\sigma^2}{a^2}\]
+        The second one is just a substituion.
+    \end{proof}
+\end{theorem}
+\section{Expectation ineqaulities}
+Probably one of the most known ineqaulities of all time, that is also used in different field of mathematics, \textbf{Cauchy-Scwartz inequality} Simply states that,
+\begin{theorem} Cauchy-Scwarz ineqaulity states that,
+ \[ \E^2(|XY|) \le \E(X^2)\E(Y^2) \]
+ Another form of this theorem is,
+ \[ \op{Cov}^2(X,Y) \le \sigma^2_{X}\sigma^2_{Y} \]
+This theorem is also known with its vector form. Consequently, this ineqaulity is very useful and practical, hence there are many unique and different proofs. \newline
+This ineqaulity is also popular on mathematical olympiads, with its familiar algebraic form.
+\end{theorem}
+Recall that a function $f$ is \textbf{convex} if $f$ is twice differentiable $f''(x) \ge 0 $. Moreover $f$ is \textbf{concave} if $-f$ is convex. Another very well known and popular ineqaulity,
+\begin{theorem} \textbf{Jensen's ineqaultiy} states that if $g$ is convex,
+    \[ \mathbb{E}g(X) \ge g(\mathbb{E}X) \]
+    If $g$ is concave, the inequality symbol flips. Note that we used $\mathbb{E}X$ instead of $\E(X)$ for asthetical purposes.
+\end{theorem}
+
