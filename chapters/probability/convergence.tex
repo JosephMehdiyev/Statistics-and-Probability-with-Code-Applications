@@ -1,0 +1,60 @@
+\chapter{Convergence, CLT and LLN}
+\section{Introduction}
+We already know the caclulus definition of convergence. We say that $x_n$ \textbf{converges} to $x$ if, for every $\epsilon > 0 $.
+\[|x_n - x| < \epsilon \]
+as $n$ goes to infinity. \\
+However, there are multiple definitions of convergence in Probability and Statistics. The core idea is simple, in layman terms, as we repeat a process for a long time, something approaches to a thing. Mathematics requires regirousity, and hence there are multiple convergence definitions for the use case. We will learn convergence in the next section \\
+\par
+\textbf{CLT}, in other words, \textbf{Central Limit theorem}, states that, under correct conditions, the distribution of \textbf{normalized verison} of the sample mean \textbf{converges in distribution} to a standard normal distribution. There are multiple types of CLT. \\
+\par
+\textbf{LLN}, or \textbf{Law of Large Numbers} states that under right conditions,  the sample average $\overline{X}$ \textbf{convergec in probability}  to the expectation $\mu = \E(X)$. There are also types of LLN.
+
+\section{Types of Convergence}
+There are two main, most used types of convergence in the Statistics and Probability. The weakest one is, the \textbf{convergence in distribution}
+\begin{definition}
+    Let $X_1,X_2, ...$ be a sequence of r.v  with c.d.f $F_1, \ldots $. $F_n$ is sait to be \textbf{converging in distribution} or \textbf{converge weakly} to c.d.f $F$ of a r.v $X$ if
+    \[ \lim_{n \rightarrow \infty} F_n(x) = F(x)\]
+    For every $x$ that  $F$ is \textbf{continous}. Convergence in distribution may be denoted as 
+    \[ X_n \stackrel{d}{\rightarrow} X \]
+\end{definition}
+More stronger covnergence, \textbf{convergence in probability} is defined as,
+\begin{definition}
+    Let $X_1,X_2, \ldots $ be a sequence of r.v. $X_n$ is said to be \textbf{converging in probability} to r.v $X$ if for all $\epsilon > 0$,
+    \[ \lim_{n \rightarrow \infty} P(|X_n - X| > \epsilon) = 0 \]
+    Convergence in probabiltiy is denoted as, 
+    \[ X_n \stackrel{p}{\rightarrow} X\]
+\end{definition}
+And other two less commonly used convergences,
+\begin{definition}
+    Sequence $\{ X_n \}$  converges \textbf{Almost surely} or \textbf{strongly} towards $X$ if,
+    \[ P \biggl( \lim_{n \rightarrow \infty}X_n = X \biggr) = 1\]
+    Almost surely convergence is denoted as, 
+    \[ X_n \stackrel{a.s}{\rightarrow} X\]
+    There is also stronger type of this version, called \textbf{sure convergence}. However, it is rarely used and there is no practical difference between this and the weaker version almost sure convergence. Therefore we don't talk about it.
+\end{definition}
+and lastly, \textbf{convergence in mean},
+\begin{definition}
+    For  a real number $r \ge 1$, $X_n$ said to be \textbf{converges in r-th mean} to a r.v $X$ if, 
+    \[\lim_{x \rightarrow \infty} \E(|X_n - X|^r) = 0 \]
+    This convergence is also called $L_r$ convergence or $L^r$ convergence and is denoted as,
+    \[ X_n  \stackrel{L^{r}}{\rightarrow} X \]
+\end{definition}
+
+\section{Properties of Convergences}
+Here is a basic diagram showing the chain of implications, from Wikipedia.
+\begin{align*}
+    \stackrel{L^{s}}{\longrightarrow} \quad \underset{s>r\ge 1}{\Rightarrow} \quad &\stackrel{L^{r}}{\longrightarrow} \\
+    & \ \  \Downarrow \\
+    \stackrel{a.s}{\longrightarrow} \quad  \Rightarrow \quad &\stackrel{p}{\longrightarrow} \quad \Rightarrow \quad \stackrel{d}{\longrightarrow}
+\end{align*}
+
+\begin{itemize}
+    \item Almost surely convergence implies convergence in probability
+        \[ X_n \stackrel{a.s}{\longrightarrow} X\quad \Rightarrow \quad X_n \stackrel{p}{\longrightarrow} X\]
+    \item Convergence in probability implies convergence in distribution
+        \[ X_n \stackrel{p}{\longrightarrow} X \quad \Rightarrow  \quad X_n  \stackrel{a.s}{\longrightarrow} X\]
+    \item Convergence in $L^s$ implies convergence in $L^r$ such that $s > r \ge 1$.
+        \[ X_n \stackrel{L^s}{\longrightarrow} X \quad \Rightarrow \quad X_n \stackrel{L^r}{\longrightarrow} X\]
+    \item Convergence in $L^r$ implies convergence in probability.
+        \[ X_n \stackrel{L^r}{\longrightarrow} X \quad \Rightarrow \quad  X_n \stackrel{p}{\longrightarrow} X\]
+\end{itemize}
