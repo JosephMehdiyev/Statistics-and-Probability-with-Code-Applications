@@ -16,6 +16,7 @@ There are two main, most used types of convergence in the Statistics and Probabi
     \[ \lim_{n \rightarrow \infty} F_n(x) = F(x)\]
     For every $x$ that  $F$ is \textbf{continous}. Convergence in distribution may be denoted as 
     \[ X_n \stackrel{d}{\rightarrow} X \]
+    Concept of convergence in distribution \textbf{does not require} $X_n$ to be close to $X$. \\
 \end{definition}
 More stronger covnergence, \textbf{convergence in probability} is defined as,
 \begin{definition}
@@ -23,14 +24,20 @@ More stronger covnergence, \textbf{convergence in probability} is defined as,
     \[ \lim_{n \rightarrow \infty} P(|X_n - X| > \epsilon) = 0 \]
     Convergence in probabiltiy is denoted as, 
     \[ X_n \stackrel{p}{\rightarrow} X\]
+    Visually, the converge in probability states that, as $n$ grows large $X_n$ tends to be inside the $\epsilon$ brackets of $X$. However, \textbf{it is still possible that $X_n$ goes out of the bound for some time}, but very unlikely. \\
+    Almost surely converge is just stronger version of this converge, eliminating the "out of the bound" chance.
 \end{definition}
 And other two less commonly used convergences,
 \begin{definition}
     Sequence $\{ X_n \}$  converges \textbf{Almost surely} or \textbf{strongly} towards $X$ if,
-    \[ P \biggl( \lim_{n \rightarrow \infty}X_n = X \biggr) = 1\]
+    \[ P \biggl( \lim_{n \rightarrow \infty}|X_n - X | = 0 \biggr) = 1\]
     Almost surely convergence is denoted as, 
     \[ X_n \stackrel{a.s}{\rightarrow} X\]
-    There is also stronger type of this version, called \textbf{sure convergence}. However, it is rarely used and there is no practical difference between this and the weaker version almost sure convergence. Therefore we don't talk about it.
+    We can also rewrite the definition as, (Ferguson 1996, p. 5)
+    \[ \lim_{n\to\infty} P\left({\sup_{m\geq n}|X_m-X|>\epsilon }\right) = 0\]
+Notice how this equation similar is to probability convergence.\\
+This converge states that, there exists a large number $n$ that $X_n$ \textbf{will always be} in the bounds of $\epsilon$.
+There is also stronger type of this version, called \textbf{sure convergence}. However, it is rarely used and there is no practical difference between this and the weaker version almost sure convergence. Therefore we don't talk about it.\\
 \end{definition}
 and lastly, \textbf{convergence in mean},
 \begin{definition}
@@ -52,9 +59,51 @@ Here is a basic diagram showing the chain of implications, from Wikipedia.
     \item Almost surely convergence implies convergence in probability
         \[ X_n \stackrel{a.s}{\longrightarrow} X\quad \Rightarrow \quad X_n \stackrel{p}{\longrightarrow} X\]
     \item Convergence in probability implies convergence in distribution
-        \[ X_n \stackrel{p}{\longrightarrow} X \quad \Rightarrow  \quad X_n  \stackrel{a.s}{\longrightarrow} X\]
+        \[ X_n \stackrel{p}{\longrightarrow} X \quad \Rightarrow  \quad X_n  \stackrel{d}{\longrightarrow} X\]
     \item Convergence in $L^s$ implies convergence in $L^r$ such that $s > r \ge 1$.
         \[ X_n \stackrel{L^s}{\longrightarrow} X \quad \Rightarrow \quad X_n \stackrel{L^r}{\longrightarrow} X\]
     \item Convergence in $L^r$ implies convergence in probability.
         \[ X_n \stackrel{L^r}{\longrightarrow} X \quad \Rightarrow \quad  X_n \stackrel{p}{\longrightarrow} X\]
 \end{itemize}
+All of these are intuitively, from the definition, makes sense. No proofs shall be provided.
+\begin{theorem} \textbf{Continous mapping theorem} Let $\{ X_n \}$ be r.v sequence, and let $X$ be a r.v. Let $g$ be a continous function. then, the below is true,
+    \begin{align*}
+        X_n \stackrel{p}{\longrightarrow} X \qquad \Rightarrow \qquad g(X_n)\stackrel{p}{\longrightarrow} g(X) \\
+        X_n \stackrel{d}{\longrightarrow} X \qquad \Rightarrow \qquad g(X_n) \stackrel{d}{\longrightarrow} g(X) \\
+        X_n \stackrel{a.s}{\longrightarrow} X \qquad \Rightarrow \qquad g(X_n) \stackrel{a.s}{\longrightarrow} g(X)
+    \end{align*}
+\end{theorem}
+Note to myself: Add addivity and multiplicative property with its proof , Slutzky's theorem.
+\section{LLN, Law of Large Numbers}
+There are \textbf{strong} and \textbf{weak} type of LLN, Law of large Numbers. However, both of them state the same idea, $\overline{X_n}$ converges to $\mu$ as  $n$ goes to infinity.
+\begin{theorem}
+    \textbf{The weak Law of Large Numbers} or shortly \textbf{WLLN} states that if $X_1, \ldots X_n$ are i.i.d r.vs, then,
+    \[ \overline{X}_n \stackrel{p}{\longrightarrow} \mu\]
+    \begin{proof}
+        For the sake of simplicity, assume variance is finite.
+        The theorem is the direct consequence of  Chebysev's inequality.
+        \[ P( |\overline{X}_n - \mu| \ge \epsilon) \le \frac{\V(\overline{X}_n)}{\epsilon^2} = \frac{\V(X_1)}{n\epsilon^2}\]
+    Which right side obviously converges to $0$.
+    \end{proof}
+\end{theorem}
+\begin{theorem}
+    \textbf{The strong Law of Large Number} or shortly SLLN states that if $X_1,..,X_n$ are i.i.d r.vs and $\mu < \infty$, then,
+    \[ \overline{X}_n \stackrel{a.s}{\longrightarrow} \mu \]
+    Proof is complex, so I will avoid giving it here.
+\end{theorem}
+Practically there is not much difference between WLLN and SLLN, therefore SLLN is preferred.
+\section{CLT, Central Limit Theorem}
+\begin{theorem}
+    \textbf{Central Limit Theorem}, or shortly \textbf{CLT} states that for i.i.d r.vs $X_1, \ldots X_n$ with mean $\mu$ and variance $\sigma^2$,
+    \[ \frac{\overline{X}_n - \mu}{\sqrt{\V ( \overline{X}_n)}} \stackrel{d}{\longrightarrow} N(0,1)\]
+\end{theorem}
+
+\section{References}
+\begin{enumerate}
+    \item \url{https://www.stat.cmu.edu/~larry/=stat325.01/chapter5.pdf} 
+    \item \url{https://en.wikipedia.org/wiki/Convergence_of_random_variables}
+    \item \url{https://imai.fas.harvard.edu/teaching/files/Convergence.pdf}
+    \item \url{https://stats.stackexchange.com/questions/2230/convergence-in-probability-vs-almost-sure-convergence}
+    \item \url{Lafaye de Micheaux, P.,  Liquet, B. (2009). Understanding Convergence Concepts: A Visual-Minded and Graphical Simulation-Based Approach. The American Statistician, 63(2), 173–178. doi:10.1198/tas.2009.0032}
+    \item \url{https://stats.stackexchange.com/questions/3734/what-intuitive-explanation-is-there-for-the-central-limit-theorem}
+\end{enumerate}
