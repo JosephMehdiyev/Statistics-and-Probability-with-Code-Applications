@@ -17,6 +17,8 @@ We have already talked about consistency before, we say the estimator is consist
 \begin{definition}
         The estimator $\t$ of $\theta$ is consistent if for any positive number $\epsilon$,
     \[ \lim_{n \rightarrow \infty} P(| \t_{n} - \theta| \le \epsilon) = 1 \]
+        That is, $\t \stackrel{p}{\longrightarrow} \theta$
+
 \end{definition}
 The graph (below) from latter exercises is also consistent, since visually it becomes a straight line where it equals to the target parameter.
 
@@ -25,7 +27,6 @@ Since consistent estimators converge to the target parameter, it is logical to t
     The unbiased estimator $\t$ of $\theta$ is a consistent estimator if, 
     \[ \lim_{n \rightarrow \infty} \V(\t_{n}) = 0 \]
 \end{theorem}
-\textbf{REMARK:} There are multiple concepts of "convergence". In this case, it is \textbf{convergence in probability}. I really should study real analysis huh.
 
 \begin{center} \resizebox{0.7\textwidth}{!}{\input{src/chapter1/fig2.pgf}}  \end{center}
 

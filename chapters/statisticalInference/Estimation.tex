@@ -1,4 +1,4 @@
-\chapter{Estimation}
+\chapter{Statistical Models and Statistical Inference}
 Through the last chapter, we have talked about multiple probability distributions and their functions such as c.d.f, p.d.f, and p.m.f. 
 However, we have assumed that we already knew the distribution and its properties. In practical world, it is not the case.
 We may try to find the average salary of the country, the fatality rate of a virus, and so on.
@@ -7,21 +7,17 @@ Since majority of population is defined with \textbf{paramateres}, our investiga
 
 
 
-\section{Introduction}
-Majority of times we work with multiple parameters. However, we might be interested on only one of them. Therefore,  we call the parameter of our interest to be \textbf{target parameter}.
-\par
-    Suppose we want to estimate $\mu$ of some experiment. We could give our estimate in two forms: $\textbf{point estimate and interval estimate}$. As name implies, that point estimate is a single value, however interval estimate is an interval.
+\section{Model and Inference}
+Assume that $ X \sim N(0,1)$ and $Y \sim N(0,2)$. The $X$ and $Y$ don't have the same probability characteristics, more cleanly, they don'thave the same distribution. However, we generalize them in a ``group'' called \textit{normal distribution}. That is, there are infinitely many distribution with $N(\mu, \sigma^2)$, and to convey them in a more general way, we use \textbf{statistical models}
+\begin{definition}
+    \textbf{Statistical Model} is a set of distribution such as,
+    \[ \mathfrak{F} = \biggl \{ f(x; \theta ): \theta \in \Theta \biggr \} \]
+    where $\Theta$ is a \textbf{parameter space}.\\
+    There are also \textbf{nonparametric} $\mathfrak{F}$. 
+\end{definition}
+In a parametric model, if we are interested in only one parameter $\theta$, we call it \textbf{target parameter} or \textbf{estimand}.  The process of getting the estimand is called \textbf{Statistical Inference}. Majority of inferental problems are divided into three types: \textbf{estimation, confidence sets, hypothesis testing}.
 
-\begin{example}
-    Suppose we want to estimate the average score  $\mu$ the students will get from SAT score this year. We could use just a number $1240$, a \textbf{point estimate}, or an interval $(1200,1260)$, a \textbf{interval estimate}.
-\end{example}
 
-Examples for such estimators can be
-\[\overline{Y} = \frac{1}{n}\sum_{i=1}^n Y_i \]
-Which esimates the mean $\mu$. Notice that $\E(\overline{Y}) = \mu$ and,
-\[ S^2 = \frac{1}{n-1} \biggl(  \sum_{i = 1}^n  (X_i - \overline{X})^2 \biggr) \]
-Which estimates the variance $\sigma^2$. Notice that $\E(S^2) = \sigma^2$.\newline
-There can be multiple estimators estimating the same parameter. It is logical, since not all estimators are ideal for practical purposes because of quality of estimator.
 \section{Point Estimation}
 By convention we write the estimate of $\theta$ as $\widehat{\theta}$. Since $\theta$ is constant and by definition $\widehat{\theta}$ is a function, $\widehat{\theta}$ is a r.v. Remark that funtion of r.vs is a r.v. In more mathematical way,
 \begin{definition}
@@ -78,4 +74,4 @@ It is also possible to form \textit{one sided confidence interval}, i.e,
 \[ P( \theta_{L} \le \theta ) \ge 1 - \alpha  \qquad \text{or} \qquad P( \theta \le \theta_{U}) \ge 1 - \alpha\]
 The confidence intervals may be \textbf{closed or open}. For our purpose they are indifferent. 
 
-
+https://math.stackexchange.com/questions/1767877/in-laymans-terms-what-is-the-difference-between-a-model-and-a-distribution
