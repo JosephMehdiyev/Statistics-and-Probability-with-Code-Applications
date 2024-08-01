@@ -24,23 +24,32 @@ In order to test the hypothesis, it is logical to calculate $\overline{X}$ and c
 In above example, $\overline{X}$ is our $T$. We will learn about finding $c$ now.
 \newline
 
+A hypothesis in the form of $\theta = \theta_0$ is called \textbf{simple} i.e $\theta$ has only one value, while in the form of $\theta > \theta_0$ or $\theta < \theta_0$ is called \textbf{composite} i.e $\theta$ has multiple values
+
 There are $4$ different possibilities we can conclude from our test. See the table for the brief introduction.\newline
-If $H_0$ is true, and we reject it, we call this error \textbf{type I error}. The probability of type I error is denoted as $\alpha$. $\alpha$ is also called \textbf{size/level of the test}. Similarly, if $H_1$ is true and we keep the $H_0$, (or reject $H_1$) we call this error \textbf{type II error}. The probability of type II error is denoted as $\beta$. Summarize this in table,
+If $H_0$ is true, and we reject it, we call this error \textbf{type I error}. Similarly, if $H_1$ is true and we keep the $H_0$, (or reject $H_1$) we call this error \textbf{type II error}. Summarize this in table,
 \begin{center}
-\begin{tabular}{|c|c|p{3.8cm}|}
+\begin{tabular}{|c|c|p{4.1cm}|}
     \hline
      & Retain Null & Reject Null \\
     \hline
-    $H_0$ \text{true} & ($1 - \alpha$) & type I error $(\alpha)$\\
+    $H_0$ \text{true} & ($1 - \alpha$) & type I error ($\alpha$) signifigance level of the test\\
     \hline
-    $H_1$  \text{true} & type II error $(\beta)$ &  power of the test ($1 - \beta$)\\
+    $H_1$  \text{true} & type II error ($\beta$) &  power of the test ($1 - \beta$)\\
     \hline
 \end{tabular}
 \end{center}
 \begin{definition}
-    The $\textbf{power function}$ of a test with critical region $R$ is a function that gives the \textbf{power of the hypothesis test}, that is $(1- \beta)$, defined as,
-    \[ \pi (\theta) = P( X \in R)\]
-    Some of the  books notate this function as $B(\theta)$, $\op{power(\theta)}$ and even $\beta(\theta)$. \
-    \textbf{The power of the hypothesis test}, in literal sense, measures how powerful our hypothesis test is i.e the probability of rejecting $H_0$ while $H_1$ is true. It is commonly denoted as $1- \beta$. See the table for more clarity.
+    The $\textbf{power function}$ of a test with critical region $R$ is a function defined as,
+    \[ \beta (\theta) = P_{\theta}( X \in R)\]
+    that is, $\beta(\theta)$ represents the  probability of rejecting $H_0$ if $\theta \in \Theta_0 \cup \Theta_1$ i.e $H_0$ or $H_1$ true. It is very general\\
+    The \textbf{size} of the test is defined by,
+    \[ \alpha = \sup_{\theta \in \Theta_{0}} \beta(\theta) \]
+    that is, for $\theta$ that $H_0$ is true, $\alpha$ is the worst case scenario probability, representing \textbf{type I error}. We also call this probability \textbf{signifigance level} of the test.\\
 \end{definition}
 
+\section{References}
+\begin{enumerate}
+    \item \url{https://en.wikipedia.org/wiki/Statistical_hypothesis_test#Definition_of_terms}
+    \item \url{https://stats.stackexchange.com/questions/183800/how-to-understand-the-size-of-hypothesis-tests?rq=1}
+\end{enumerate}
