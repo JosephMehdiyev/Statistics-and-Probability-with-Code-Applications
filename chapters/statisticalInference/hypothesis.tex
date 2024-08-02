@@ -45,11 +45,27 @@ If $H_0$ is true, and we reject it, we call this error \textbf{type I error}. Si
     that is, $\beta(\theta)$ represents the  probability of rejecting $H_0$ if $\theta \in \Theta_0 \cup \Theta_1$ i.e $H_0$ or $H_1$ true. It is very general\\
     The \textbf{size} of the test is defined by,
     \[ \alpha = \sup_{\theta \in \Theta_{0}} \beta(\theta) \]
-    that is, for $\theta$ that $H_0$ is true, $\alpha$ is the worst case scenario probability, representing \textbf{type I error}. We also call this probability \textbf{signifigance level} of the test.\\
+    that is, for $\theta$ that $H_0$ is true, $\alpha$ is the worst case scenario probability, representing \textbf{type I error} (if the test is simple).\\
+    We also define \textbf{significance level} of the test as $\alpha$  if its size is less than or equal to $\alpha$. That is, upper bound for incorrectly rejecting $H_0$. Significance level is chosen independent of data or the tests, usually as $0.05$. Note in particular that both size and level don't relate to the sample.
 \end{definition}
 
+If we are conducting pointwise test, for example $\mu = \mu_0$, then \textbf{significance level, the size of the test, and type I error} coincide, that is they are equal. However, for some special cases they may differ. Similarly, \textbf{power,1- type II error} may also differ.
+
+\section{p-value}
+The size of the test and power of the test is not that much related to our sample data. That is where \textbf{p-value} comes in. \\
+The p-value is the probability under the null hypothesis of obtaining a real-valued test statistic at least as extreme as the one obtained, more rigirously,
+\begin{definition}
+    Suppose for every $\alpha \in \{ 0,1 \}$ we have a rejection region $R_{\alpha}$. Then \textbf{p-value} is defined as,
+\[ p = \inf \biggl \{  \alpha: T(X) \in R  \biggr \} \]
+That is, the p-value is the smallest level at which we can reject $H_0$. We can calculate $p$ with,
+\[ p = \sup_{\theta \in \Theta_{0}} P_{\theta}( T(X) \ge T(x)) \]
+Notice that the expression contains sample data $x$.
+\end{definition}
 \section{References}
 \begin{enumerate}
     \item \url{https://en.wikipedia.org/wiki/Statistical_hypothesis_test#Definition_of_terms}
     \item \url{https://stats.stackexchange.com/questions/183800/how-to-understand-the-size-of-hypothesis-tests?rq=1}
+    \item \url{https://stats.stackexchange.com/questions/299873/differences-between-p-value-level-of-significane-and-size-of-a-test}
+    \item \url{https://en.wikipedia.org/w/index.php?title=P-value&oldid=554910098}
 \end{enumerate}
+
