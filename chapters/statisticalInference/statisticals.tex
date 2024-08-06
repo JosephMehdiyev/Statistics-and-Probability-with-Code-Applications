@@ -1,0 +1,41 @@
+\chapter{Estimating Statistical Functions (Non-Parametric Inference)}
+\section{Emprical Distribution Function, e.d.f}
+\begin{definition}
+    let $X_1, \ldots, X_n \sim F$ be i.i.d sample with $F$ as $c.d.f$. \\
+    We can estimate $F$ with \textbf{empriical distribution function} or shortly \textbf{e.d.f} $\widehat{F}$,
+    \[\widehat{F}_n(x) = n^{-1} \sum_{n=1}^n I(X \le x) \]
+\end{definition}
+
+\begin{theorem}
+    e.d.f $\widehat{F_n}$ coverges almost surely to $F$, or is \textbf{consistent} that is,
+    \[ \widehat{F}_n(x) \stackrel{a.s}{\longrightarrow} F(x) \]
+    It also estimates $F$ with no bias, that is,
+    \[ \E(\widehat{F}_n(x)) = F(x)\]
+\end{theorem}
+
+\begin{theorem}
+    \textbf{Dvoretzky–Kiefer–Wolfowitz–Massart inequality (DKW)}\\
+    Let $X_1, \ldots, X_n \sim F$. Then,
+    \[ P\biggl( \sup_{x \in \mathbb{R}} |F(x) - \widehat{F}_n(x)| > \epsilon \biggr) \le 2e^{-2n\epsilon^2} \ \forall \epsilon > 0\]
+    This inequality is useful for constructing \textbf{confidence intervals} such that,
+    \[ P \biggl( \widehat{F}_n(x) - \epsilon \le F(x) \le \widehat{F}_n(x) + \epsilon \biggr ) = 1 - \alpha \quad \forall \epsilon = \sqrt{\frac{1}{2n}\log\biggl(\frac{2}{\alpha} \biggr)}\]
+\end{theorem}
+
+\section{Statistical Functionals}
+Statistical functionals are functions of data, that is $T(F)$. Examples are mean, variance, median and so on.
+\begin{definition}
+    \textbf{plug-in estimator} of $\theta = T(F)$ is defined as,
+    \[  \t_n = T(\widehat{F}_n)\]
+    That is, plug in $\widehat{F}_n$ to estimate our statistical function $T(F)$.
+\end{definition}
+
+\begin{definition}
+    $T$ is \textbf{linear functional} if $T(F) = \int r(x) dF(x)$. Linear functional $T$ satisfishes linearity properties, that is,
+    \[T(aF + bG) = aT(F) = bT(G) \]
+\end{definition}
+
+\section{References}
+\begin{enumerate}
+    \item \url{https://en.wikipedia.org/wiki/Empirical_distribution_function}
+    \item \url{https://en.wikipedia.org/wiki/Dvoretzky%E2%80%93Kiefer%E2%80%93Wolfowitz_inequality}
+\end{enumerate}
