@@ -315,25 +315,6 @@ In some applications, we really are interested in distributions of some function
     And the last step, $f_Y(y) = F^{'}(y)$.
 \end{definition}
 We can also generalize this concepts for Multivariate distributions, which we just increase dimensions we work with (too lazy, add this later).
-
+t
+\section{References}
 \section{Exercises}
-    1. Let $X \sim N(0,1)$ and $Y= e^X$.
-    \begin{enumerate}
-        \item plot p.d.f of $X$ and $Y$.
-        \item (The practical experiment) let $x$ be a vector with 10000 numbers randomly selected from $N(0,1)$, i .e $x = (x_1,..,x_{10000})$. Let $y$ be a similiar vector where $y_i = e^{x_i}$, and plot the result of the histogram. Compare with the theorical $p.d.f$
-    \end{enumerate}
-    \textbf{Solution1}    \embed{src/chapter2/1.py}{Source}  \\
-    First, let's derive $f_Y(y)$.
-    \begin{align*}
-        F_Y(y) = P(Y \le y) & = P (e^X \le y) = P( X \le \ln y) \\
-                            &= F_X(\ln y ) = \Phi( \ln y) \Longrightarrow \\
-                            f_Y(y) = \odv{\Phi(\ln y)}{y} &= \odv{\Phi(\ln y)}{\ln y} \odv{\ln y}{y} = \phi(\ln y) / y
-    \end{align*}
-
-    \inputminted{python}{src/chapter2/1.py} \\
-    \begin{center} \input{src/chapter2/fig1.pgf}  \end{center}
-
-    
-    It is kind of wrong to name y and x labels and "p.d.f" and "r.v", but I really can't think of better labels.\\
-    As expected, the green histogram nicely overlaps with our yellow plot.
-    

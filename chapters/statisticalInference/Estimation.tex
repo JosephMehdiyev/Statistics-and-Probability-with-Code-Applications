@@ -31,8 +31,8 @@ By convention we write the estimate of $\theta$ as $\widehat{\theta}$. Since $\t
     \[\op{bias} (\widehat{\theta}) = 0 \Rightarrow \E(\widehat{\theta}) = \theta \]
 \end{definition}
 We know that $\t$ is a r.v. We call this r.v's distribution as $\textbf{sampling distribution}$. We also define,
-\textbf{standart error of} $\t$ or standard deviation,
-\[\sigma_{\t}= \sqrt{\V(\t)}\]
+\textbf{standard error of} $\t$ or standard deviation,
+\[\se= \sqrt{\V(\t)}\]
 It is logical to think that the estimator should converge (with more samples) to its target value, we define such property as,
 \begin{definition}
     If a point estimator $\t$ converges to $\theta$, we call that $\t$ is \textbf{consistent}
@@ -55,7 +55,7 @@ MSE is function of both its variance and bias, hence it is a better way of showi
     Let $X_1, \ldots ,X_n \sim \op{Bernoulli}(p)$. Let $\widehat{p} = n^{-1}\sum_{i=1}^n X_i$. We already know that $\E(X) = p$ and $\V(X) = p(1-p)$.  Our estimator is unbiased since,
     \[ \E( \widehat{p}) = \frac{1}{n} \sum \E(X_i) = p\]
     Moreover, the estimator's variance is, 
-    \[ \sigma_{\widehat{p}}^2 = \E(\widehat{p}^2) - \E(\widehat{p})^2 = p - p^2 \]
+    \[ \V(\widehat{p}) = \E(\widehat{p}^2) - \E(\widehat{p})^2 = p - p^2 \]
 \end{example}
 We can intutively guess some estimators that could be effective for our purposes. But for many complex problems, it is not the case. We will learn new methods to calculate estimators in later chapters.
 \section{Confidence Intervals}
@@ -76,11 +76,14 @@ The confidence intervals may be \textbf{closed or open}. For our purpose they ar
 
 
 \section{Hypothesis Testing}
-See the chapter 8.
+Please read the Hypothesis chapter instead. \\
 
 \section{References}
 
 \begin{enumerate}
     \item  \url{https://math.stackexchange.com/questions/1767877/in-laymans-terms-what-is-the-difference-between-a-model-and-a-distribution}
     \item \url{https://stats.stackexchange.com/questions/3911/when-are-confidence-intervals-useful}
+    \item \url{https://mason.gmu.edu/~alaemmer/bio214/sampling-distributions.pdf}
     \end{enumerate} 
+\section{Exercises}
+Since this chapter is more of an introduction, computer experiments would be out of the topic. Therefore, no exercises!
