@@ -2,13 +2,12 @@
 \section{Introduction}
 We already know the caclulus definition of convergence. We say that $x_n$ \textbf{converges} to $x$ if, for every $\epsilon > 0 $.
 \[|x_n - x| < \epsilon \]
-as $n$ goes to infinity. \\
+as $n$ goes to infinity.  \\
 However, there are multiple definitions of convergence in Probability and Statistics. The core idea is simple, in layman terms, as we repeat a process for a long time, something approaches to a thing. Mathematics requires regirousity, and hence there are multiple convergence definitions for the use case. We will learn convergence in the next section \\
 \par
 \textbf{CLT}, in other words, \textbf{Central Limit theorem}, states that, under correct conditions, the distribution of \textbf{normalized verison} of the sample mean \textbf{converges in distribution} to a standard normal distribution. There are multiple types of CLT. \\
-\par
-\textbf{LLN}, or \textbf{Law of Large Numbers} states that under right conditions,  the sample average $\overline{X}$ \textbf{convergec in probability}  to the expectation $\mu = \E(X)$. There are also types of LLN.
 
+\textbf{LLN}, or \textbf{Law of Large Numbers} states that under right conditions,  the sample average $\overline{X}$ \textbf{convergec in probability}  to the expectation $\mu = \E(X)$. There are also types of LLN. 
 \section{Types of Convergence}
 There are two main, most used types of convergence in the Statistics and Probability. The weakest one is, the \textbf{convergence in distribution}
 \begin{definition}
@@ -25,7 +24,7 @@ More stronger covnergence, \textbf{convergence in probability} is defined as,
     Convergence in probabiltiy is denoted as, 
     \[ X_n \stackrel{p}{\rightarrow} X\]
     Visually, the converge in probability states that, as $n$ grows large $X_n$ tends to be inside the $\epsilon$ brackets of $X$. However, \textbf{it is still possible that $X_n$ goes out of the bound for some time}, but very unlikely. \\
-    Almost surely converge is just stronger version of this converge, eliminating the "out of the bound" chance.
+    Almost surely converge is just stronger version of this converge, eliminating the ``out of the bound´´ chance.
 \end{definition}
 And other two less commonly used convergences,
 \begin{definition}
@@ -73,7 +72,7 @@ All of these are intuitively, from the definition, makes sense. No proofs shall 
         X_n \stackrel{a.s}{\longrightarrow} X \qquad \Rightarrow \qquad g(X_n) \stackrel{a.s}{\longrightarrow} g(X)
     \end{align*}
 \end{theorem}
-Note to myself: Add addivity and multiplicative property with its proof , Slutzky's theorem.
+Note to myself: Add addivity and multiplicative property with its proof, Slutzky's theorem.
 \section{LLN, Law of Large Numbers}
 There are \textbf{strong} and \textbf{weak} type of LLN, Law of large Numbers. However, both of them state the same idea, $\overline{X_n}$ converges to $\mu$ as  $n$ goes to infinity.
 \begin{theorem}
@@ -87,7 +86,7 @@ There are \textbf{strong} and \textbf{weak} type of LLN, Law of large Numbers. H
     \end{proof}
 \end{theorem}
 \begin{theorem}
-    \textbf{The strong Law of Large Number} or shortly SLLN states that if $X_1,..,X_n$ are i.i.d r.vs and $\mu < \infty$, then,
+    \textbf{The strong Law of Large Number} or shortly SLLN states that if $X_1, \ldots,X_n$ are i.i.d r.vs and $\mu < \infty$, then,
     \[ \overline{X}_n \stackrel{a.s}{\longrightarrow} \mu \]
     Proof is complex, so I will avoid giving it here.
 \end{theorem}

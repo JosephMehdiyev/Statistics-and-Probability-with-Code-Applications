@@ -64,7 +64,12 @@
 %fancy theorems, examples, definitions with boxes
 \usepackage{mdframed}
 
+
+% Makes line breaking possible for url links
+\usepackage{biblatex}
 \usepackage{url}
+\def\UrlBreaks{\do\/\do-}
+
 
 
 %-------------------------------------------------
@@ -95,7 +100,9 @@
 \newmdtheoremenv{lemma}{Lemma}[section]
 \newmdtheoremenv{diagram}{Diagram}[section]
 
-
+%--------------
+% This makes annoying underfull errors disappear
+\hbadness=99999
 
 %--------------------------------------
 \def\C{{\op{C}}}
