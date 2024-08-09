@@ -15,26 +15,26 @@ We will quickly introduce the concepts and briefly explain them. The reader may 
 
 \subsection*{Sets}
 A \textbf{Set} is a collection of different objects, which are called \textit{elements} of the set. The sets are notated as capital letters such as $S$.
-If $x$ is an element of a set $S$, we write $x \in S$. Otherwise we write $ x \not\in S$. A set with no elements is called \textbf{empty set} and is notated as $\emptyset$. \par
-If $x_1,x_2,...,x_n$ are the elements of the set $S$, we write:
-$$ S \in \{x_1,x_2,...,x_n\} $$
+If $x$ is an element of a set $S$, we write $x \in S$. Otherwise we write $ x \not\in S$. A set with no elements is called \textbf{empty set} and is notated as $\emptyset$. \\
+If $x_1,x_2, \ldots,x_n$ are the elements of the set $S$, we write:
+\[ S \in \{x_1,x_2, \ldots,x_n\} \]
 \par
 If S is set of all even numbers smaller than 12, we can draw the diagram as:
 
 
 
 We can specify our set  as a selection from a larger set. If we want to write the set of all even integers, we can write (Here the set of integers is the universal set):
-$$ S = \{n \in \mathbb{Z}: \frac{n}{2} \ \text{is an integer} \}$$
+ \[ S = \{n \in \mathbb{Z}: \frac{n}{2} \ \text{is an integer} \} \]
 \par 
 If a set $A$'s elements are also the elements of $B$, we say that $A$ is a \textbf{subset} of $B$. We can notate it as:
-$$ A \subseteq B $$
+\[ A \subseteq B \]
 \par
 If a set $A$ is subset of $B$, but is not equal to $B$, we say that $A$ is \textbf{proper subset} of $B$. We can notate it as:
-$$A \subsetneq B$$
+\[A \subsetneq B\]
 
 \subsection*{Set operations}
 \textbf{Union} of sets $A$,$B$ is a set that contains the elements of $A$ and $B$:
-$$A \cup B = \{n:n \in A  \lor  n  \in B\}$$
+\[A \cup B = \{n:n \in A  \lor  n  \in B\}\]
 We can visualize the sets in 2D with circles and their intersections.  
 
 
@@ -289,8 +289,49 @@ This theorem becomes very handy in practical situations. Moreover, with the help
 \begin{proof}
     Similar to proof of Theorem 1.7.1, We use definition of conditional probability and  lastly apply Theorem 1.7.2  in the last step.
 \end{proof}
+
 \section{References}
+\begin{enumerate}
+    \item \url{https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/resources/mit18_05_s22_class01-prep-a_pdf/}
+    \item \url{https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/resources/mit18_05_s22_class01-prep-b_pdf/}
+\end{enumerate}
 \section{Exercises}
+
+\begin{enumerate}
+    \item \textbf{6 card draw}.\\
+        In a poker game, find the probability of: Two cards have one rank, two cards have another rank, and the remaining two cards have two different ranks. \\
+    \\
+    \textbf{Solution:} \\
+    In a 6 card draw, we have total $\binom{52}{6}$ possibilities. \\
+    Drawing $2$ ranks: $\binom{13}{2}$.\\
+    Drawing $2$ card from ranks: $\binom{4}{2} \cdot \binom{4}{2}$.\\
+    Drawing $2$ different ranks again: $\binom{13-2}{2}$. \\
+    Drawing $1$ card from each ranks: $\binom{4}{1} \cdot \binom{4}{1}$.\\
+    Combining these results we get,
+    \[ P(two \  pair) = \frac{\binom{13}{2}\cdot \binom{4}{2}^2\cdot \binom{11}{2} \cdot \binom{4}{1}^2}{\binom{52}{6}} \approx  0.12\]
+\item \textbf{Birthdays: counting and simulation} \\
+    Consider a group of $n$ people. Consider a set $S$ that is sequence of  $n$ birthdays (not necessarly distinct). An example element of $S$,
+    \[ \omega = (b_1,b_2,\ldots,b_n)\]
+    \begin{enumerate}
+        \item Find the probability of $\omega$.
+        \item Consider $3$ events $A,B,C$ \\
+            $A:$ A specific number $\beta\in [1,365 ]$ exists in the sequence. \\
+            $B:$ There exists $i,j \in \mathbb{N}$ such that $b_i = b_j$. \\
+            $C_k:$ There exists $i_1,\ldots, i_k \in \mathbb{N}$ such that $b_{i_1}= \ldots - b_{i_k}$ where $k \le n$. \\
+            Find probabilities $P(A),P(B),P(C_k)$.
+        \item Find lower bound for $P(A)$ for a given $n = n_0$ via R simulation.
+        \item Repeat same simulation for $P(B)$.
+        \item Repeat same simulation for $P(C_k)$.
+    \end{enumerate}
+    \textbf{Solutions:}\\
+    \begin{enumerate}
+        \item there are total $365$ days. hence,
+            \[ P(\omega) = \frac{1}{365^n}\]
+        \item \[ P(A) = 1 - P(A^c) = 1 - \frac{364^n}{365^n}\] 
+            \[ P(B) = 1 - P(B^c) =1 - \frac{P^{n}_{365}}{365^n}\]
+        For $C$, the exact formula for $P(C_n)$ is complex, since we have to work with cases and such. (That is why simulations are useful).
+    \end{enumerate}
+\end{enumerate}
 
 
 
