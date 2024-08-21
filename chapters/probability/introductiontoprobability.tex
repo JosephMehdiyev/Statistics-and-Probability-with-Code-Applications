@@ -319,9 +319,7 @@ This theorem becomes very handy in practical situations. Moreover, with the help
             $B:$ There exists $i,j \in \mathbb{N}$ such that $b_i = b_j$. \\
             $C_k:$ There exists $i_1,\ldots, i_k \in \mathbb{N}$ such that $b_{i_1}= \ldots - b_{i_k}$ where $k \le n$. \\
             Find probabilities $P(A),P(B),P(C_k)$.
-        \item Find lower bound for $P(A)$ for a given $n = n_0$ via R simulation.
-        \item Repeat same simulation for $P(B)$.
-        \item Repeat same simulation for $P(C_k)$.
+        \item Calculate probability of $P(C_k)$ for $ 2 \le n \le 50$ via R simulation.
     \end{enumerate}
     \textbf{Solutions:}\\
     \begin{enumerate}
@@ -330,6 +328,12 @@ This theorem becomes very handy in practical situations. Moreover, with the help
         \item \[ P(A) = 1 - P(A^c) = 1 - \frac{364^n}{365^n}\] 
             \[ P(B) = 1 - P(B^c) =1 - \frac{P^{n}_{365}}{365^n}\]
         For $C$, the exact formula for $P(C_n)$ is complex, since we have to work with cases and such. (That is why simulations are useful).
+    \item  This simultion is one of the most standard introductory simulations \\ 
+        \inputminted{R}{src/chapter1/birthdays.R}
+        \begin{center}
+        \includegraphics[width=1\textwidth]{src/chapter1/birthday.pdf}
+        Here, the lines with dots show the exact theorical ratio. As intended, the lines grealy allign. We can extract whatever information we need from this exact plot. \\
+        \end{center}
     \end{enumerate}
 \end{enumerate}
 
