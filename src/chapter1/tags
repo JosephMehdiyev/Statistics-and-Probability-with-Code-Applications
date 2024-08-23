@@ -1,2 +1,0 @@
-crossed	./BirthdaysA.R	/^crossed <- crossing($/;"
-sim	./BirthdaysA.R	/^sim <- crossed %>%$/;"
