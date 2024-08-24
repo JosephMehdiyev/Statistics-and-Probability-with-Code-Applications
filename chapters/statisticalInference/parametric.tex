@@ -1,59 +1,27 @@
 \chapter{Methods of Estimation (Parametric Inference)}
 In later chapter we have shortly talked about the point estimation. The estimator $\t$ of a target parameter $\theta$ is a function of random variables of a sample, and therefore it itself is a random variable.
 The estimator has its own probability distribution, \textit{sampling distribution}. We already know about \textit{unbaised estimators} i.e $\E(\t) = \theta$ and the \textit{consistent estimator}. In this chapter, we will learn more deeply about the mathematical properties of the point estimators. Additionally, we will learn new methods to derive estimators, since until now we listened our intuition.
-\section{Properties of Point Estimation: Efficienty, Consistency, Sufficiency}
-\subsection*{Relative Efficiency}
-We already know that it is possible to have multiple estimators for one target parameter. 
-We even learnt a new definiion, MSE to convey the quality of such estimators.
-If we have two unique and unbiased estimators $\t_1$ and $\t_2$, it is logical to pick the estimator that has the lowest variance, since the lower the MSE, more efficient the estimator is. To convey such idea, we use, 
-\begin{definition}
-    Given two unbaised estimators $\t_1$ and $\t_2$, then \textbf{the efficiency of $\t_1$ relative to $\t_2$}, denoted as $\op{eff}(\t_1,\t_2)$, is defined as,
-    \[ \op{eff}(\t_1, \t_2) = \frac{\V(\t_2)}{\V(\t_1)} \]
-
-    Note that  if $\op{t_1:w, t_2}$ is bigger than one, then it is true that $\t_1$ is relatively more efficient than $\t_2$.
-\end{definition}
-\subsection*{Consistency}
-We have already talked about consistency before, we say the estimator is consistent of it converged to the target parameter,
-\begin{definition}
-        The estimator $\t$ of $\theta$ is consistent if for any positive number $\epsilon$,
-    \[ \lim_{n \rightarrow \infty} P(| \t_{n} - \theta| \le \epsilon) = 1 \]
-        That is, $\t \stackrel{p}{\longrightarrow} \theta$
-
-\end{definition}
-The graph (below) from latter exercises is also consistent, since visually it becomes a straight line where it equals to the target parameter.
-
-Since consistent estimators converge to the target parameter, it is logical to think the variance also converges to $0$. Think in a way that the graph of the estimator has to become straight from long wavy and curvy lines i.e it is direct consequence of convergence (real analysis stuff?). Indeed,
-\begin{theorem}
-    The unbiased estimator $\t$ of $\theta$ is a consistent estimator if, 
-    \[ \lim_{n \rightarrow \infty} \V(\t_{n}) = 0 \]
-\end{theorem}
-
-
-
-
-\subsection*{Sufficiency}
-We know that the value $\overline{X}$ (average value) is a unbiased estimator for mean $\mu$ of $X$. At this point, we no longer need the sample data to estimate the $\mu$, since we can summarize the information just with the estimator $\overline{X}$.
-But, do the $\overline{X}$ retain all the information about $X$?. If it does, we call such estimator \textbf{sufficient}. That is all the sufficiency is for.
-
-We can mathematically convery this property as conditional distribution of our sample data, given the estimator. If the distribution is dependent on our target parameter, it can't be sufficient. In more mathematical way,
-\begin{definition}
-    A \textbf{statistic} is a function of data (Remark: all estimators are statistic but not all statistic are estimators). A statistic $U = t(X_1,..,X_n)$ of $\theta$ is sufficient if conditional distribution of $X_1,...,X_n$ given $U$ is not dependent on $\theta$.
-    \newline
-    \newline
-    If conditional distribution is dependent on the target parameter, it is intuitive to think the statistic does not contain all the information.
-\end{definition}
-Sufficiency is useful since it helps us to \textit{assessing information on the entire population without the need of all the data}.\\
-Say you get your grade on an exam and you want to know how well you did compared to your classmates. If you are given a sample mean and variance, you can do this without asking everyone's grades.
 \section{Method of Moments}
 Until now, we have used our intuiton to find estimators. For example, it is logical to think that $\overline{X}$ would be an ideal estimator for $\mu$ of $X$. However, in practical world we have to generate the parametric estimators more ``mathematically''.
 First, we introduce with a new simple definition,
 \begin{definition}
-    \textbf{k-th sample moment} $m_k$ is average of $\mu_{k}$ i.e 
-    \[m_k = \frac{1}{n} \sum_{i = 1}^n X_{i}^k \]
+    \textbf{k-th sample moment} $\widehat{\alpha}_k$ is moment of sample i.e 
+    \[\widehat{\alpha}_k = \frac{1}{n} \sum_{i = 1}^n X_{i}^k \]
 \end{definition}
 In section 3.1 we talked about \textbf{raw moments}. Raw moments convey the properties of the distribution i.e raw moments are some functions of the desired parameters. The first raw moment is the mean $\mu_1 = \mu$, the second raw moment is expression of variance  $\mu_{2}= \sigma^2+ \mu^2$ and so on.
 
-The idea method of moment is  we can use $m_k$ as good estimator of $\mu_k$, and from $\mu_k$ we can derive expressions for our target parameter.G
+The idea method of moment is  we can use $\widehat{\alpha}_k$ as good estimator of $\mu_k$, and from $\mu_k$ we can derive expressions for our target parameter.
+
+\begin{example}
+Let $X_1, \ldots, X_n \sim N(\mu, \sigma^2)$. We have that $\E(X) = \mu$ and $\E(X^2) = \sigma^2 + \mu^2$.
+\begin{align*}
+    &\widehat{\alpha}_1 = \widehat{\mu} \\
+    &\widehat{\alpha}_2 = \widehat{\mu}^2 + \widehat{\sigma^2}
+\end{align*}
+Solving the system equation will give us estimators for $\mu$ and $\sigma$.
+
+\end{example}
+
 \section{Method of Maximum Likelihood}
 The method of moments are very simple and intuitive, but it is unefficient. We have a better and sophisticated method called 
 \textbf{method of maximum likelihood}. There is a great \href{https://www.youtube.com/watch?v=XepXtl9YKwc}{video}  by Josh Starmer that explains the method very well.
@@ -67,4 +35,5 @@ Assume that we have a sample data, and we want to estimate parameters of the dis
     At last, we define the \textbf{maximum likelihood estimator} MLE denoted by $\t_n$ as the value of $\theta$ that maximizes $\mathcal{L}_n(\theta)$, or better $\ell_n( \theta)$, since working with logs are easier that multiplicative functions for maximizing.
 \end{definition}
 We already know that $\theta$ is a unknown constant we want to estimate. The $\mathcal{L}_n(\theta)$ describes the likelihood of each sample data, respect to $\theta$. Since it is intuitive to maximize the likelihood (because the sample data is already happened and should be maximized), it should also estimate our value $\theta$.
-
+\section{Properties of MLE}
+Will write later.

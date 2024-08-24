@@ -58,6 +58,50 @@ MSE is function of both its variance and bias, hence it is a better way of showi
     \[ \V(\widehat{p}) = \E(\widehat{p}^2) - \E(\widehat{p})^2 = p - p^2 \]
 \end{example}
 We can intutively guess some estimators that could be effective for our purposes. But for many complex problems, it is not the case. We will learn new methods to calculate estimators in later chapters.
+\section{Properties of Point Estimation: Efficienty, Consistency, Sufficiency}
+\subsection*{Relative Efficiency}
+We already know that it is possible to have multiple estimators for one target parameter. 
+We even learnt a new definiion, MSE to convey the quality of such estimators.
+If we have two unique and unbiased estimators $\t_1$ and $\t_2$, it is logical to pick the estimator that has the lowest variance, since the lower the MSE, more efficient the estimator is. To convey such idea, we use, 
+\begin{definition}
+    Given two unbaised estimators $\t_1$ and $\t_2$, then \textbf{the efficiency of $\t_1$ relative to $\t_2$}, denoted as $\op{eff}(\t_1,\t_2)$, is defined as,
+    \[ \op{eff}(\t_1, \t_2) = \frac{\V(\t_2)}{\V(\t_1)} \]
+
+    Note that  if $\op{t_1:w, t_2}$ is bigger than one, then it is true that $\t_1$ is relatively more efficient than $\t_2$.
+\end{definition}
+\subsection*{Consistency}
+We have already talked about consistency before, we say the estimator is consistent of it converged to the target parameter,
+\begin{definition}
+        The estimator $\t$ of $\theta$ is consistent if for any positive number $\epsilon$,
+    \[ \lim_{n \rightarrow \infty} P(| \t_{n} - \theta| \le \epsilon) = 1 \]
+        That is, $\t \stackrel{p}{\longrightarrow} \theta$
+
+\end{definition}
+The graph (below) from latter exercises is also consistent, since visually it becomes a straight line where it equals to the target parameter.
+
+Since consistent estimators converge to the target parameter, it is logical to think the variance also converges to $0$. Think in a way that the graph of the estimator has to become straight from long wavy and curvy lines i.e it is direct consequence of convergence (real analysis stuff?). Indeed,
+\begin{theorem}
+    The unbiased estimator $\t$ of $\theta$ is a consistent estimator if, 
+    \[ \lim_{n \rightarrow \infty} \V(\t_{n}) = 0 \]
+\end{theorem}
+
+
+
+
+\subsection*{Sufficiency}
+We know that the value $\overline{X}$ (average value) is a unbiased estimator for mean $\mu$ of $X$. At this point, we no longer need the sample data to estimate the $\mu$, since we can summarize the information just with the estimator $\overline{X}$.
+But, do the $\overline{X}$ retain all the information about $X$?. If it does, we call such estimator \textbf{sufficient}. That is all the sufficiency is for.
+
+We can mathematically convery this property as conditional distribution of our sample data, given the estimator. If the distribution is dependent on our target parameter, it can't be sufficient. In more mathematical way,
+\begin{definition}
+    A \textbf{statistic} is a function of data (Remark: all estimators are statistic but not all statistic are estimators). A statistic $U = t(X_1,..,X_n)$ of $\theta$ is sufficient if conditional distribution of $X_1,...,X_n$ given $U$ is not dependent on $\theta$.
+    \newline
+    \newline
+    If conditional distribution is dependent on the target parameter, it is intuitive to think the statistic does not contain all the information.
+\end{definition}
+Sufficiency is useful since it helps us to \textit{assessing information on the  entire population without the need of all the data}.\\
+Say you get your grade on an exam and you want to know how well you did compared to your classmates. If you are given a sample mean and variance, you can do this without asking everyone's grades.
+
 \section{Confidence Intervals}
 Let's assume we are a scientist that want to measure the mean of the specific kind of mice's weight.
 It is unrealistic to measure \textbf{all of the mice}, hence we catch a small amount of them, probably in hundreds, measure them and gather the data in a datasheet. We \textbf{bootstrap} (we will learn what that term is in later chapters) the sample data, and find the sample mean. Now, we repeat the bootstrapping process thousands of times, which now we have a sample mean data.
