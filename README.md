@@ -18,4 +18,13 @@ The OpenCourseWare has its own license, you can find it here: https://creativeco
 As the book is precise and short, you may use the book as a revisit or a secondary material. The book shortly and simply explains the concepts and ideas. Important concepts' proofs are provided. However, other proofs explaned in sentences rather than other classic rigorous proofs.
 
 # R source code
+Each chapter have exercises with simulation problems. I provide solutions with **R**.
+
 In this book, I mainly used **tidyverse** packages to plot, visualize, model, clean data and more. My IDE for R is Rstudio. You can find R source code in my github, in src directory.
+# How to compile the book.
+Clone the directory and run your system's latex compile command on **main.tex**.
+# Roadmap
+* **Learn and Write linear statistical models, regression:** 
+* **Learn and Write Bayesian Inference:** Currently my knowledge is only about frequentist inference. I am planning to learn the Bayesian side once I mastered the the frequentists.
+* **Simulation Exercises:** Add R practice problems with solutions to each chapter. Currenly, specific chapters have it.
+
