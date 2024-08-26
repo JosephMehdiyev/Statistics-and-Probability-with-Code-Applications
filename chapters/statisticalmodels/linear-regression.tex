@@ -1,0 +1,41 @@
+\chapter{Linear Regression}
+Given the data with random vectors $X,Y$ of the form
+\[ (\mathbf{X}, \mathbf{Y}) \sim F_{X,Y}\]
+\textbf{Regression} is a method finding a linear function to fit properly our data. This way, we can predict the value of $Y_i$, or estimate in other words.
+\section{Simple Linear Regression Model}
+\begin{definition}
+We can write the simpliest linear regression as follows,
+
+\[Y_i = \beta_0 + \beta_1X_i + \epsilon_i \]
+Here, $\epsilon_i$ is called \textbf{error variable, disturbance term, or error term}. 
+Error term represents factors other than $x$ that affects $y$.
+It is normall assumed  that $\epsilon_i \sim N(0, \sigma^2)$. That is,
+\[ \E(\epsilon_i | X_i) = 0 \quad \land \quad \V(\epsilon | X_i) = \sigma^2 \]
+\end{definition}
+
+The unknown variables in our model are \textbf{intercept} $\beta_0$, \textbf{slope} $\beta_1$ and our $\epsilon_i$. We can estimate $\epsilon_i$ with \textbf{residual} $\widehat{\epsilon_i}$. 
+In practice we would like to minimize the values of,
+\begin{definition}
+    \textbf{Residual Sums of Squares} or shortly \textbf{r.s.s or RSS},
+    which measures how our model works with our data, defined as,
+    \[\op{RSS} = \sum_{i=1}^n \widehat{\epsilon_i}^2 \]
+We also define \textbf{least square estimates}, that are values 
+$\beta_0$ and $\beta_1$ such that minimizes RSS.
+We can derive an expression for least square estimates. In later chapters, we will also work with multivariate versions of the same topic.
+\begin{theorem}
+    The least square estimates are given by,
+    \begin{align*} &\widehat{\beta}_1 = \frac{\sum_{i = 1}^n(X_i - \overline{X})(Y_i - \overline{Y})}{\sum_{i = 1}^n (X_i - \overline{X})^2} \\
+        &\widehat{\beta}_0 = \overline{Y} - \widehat{\beta}_1\overline{X}
+\end{align*}
+    
+\end{theorem}
+\end{definition}
+\section{Properties of  Least Sqaure Estimators}
+\section{Multivariate Regression}
+\section{Logistic Regression}
+\section{References}
+\begin{enumerate}
+    \item \url{https://stats.stackexchange.com/questions/221891/difference-between-residual-and-disturbance-epsilon}
+    \item \url{https://stats.stackexchange.com/questions/46151/how-to-derive-the-least-square-estimator-for-multiple-linear-regression}
+\end{enumerate}
+
