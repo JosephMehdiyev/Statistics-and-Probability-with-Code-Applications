@@ -11,6 +11,7 @@ Here, $\epsilon_i$ is called \textbf{error variable, disturbance term, or error 
 Error term represents factors other than $x$ that affects $y$.
 It is normall assumed  that $\epsilon_i \sim N(0, \sigma^2)$. That is,
 \[ \E(\epsilon_i | X_i) = 0 \quad \land \quad \V(\epsilon | X_i) = \sigma^2 \]
+We work with conditionalities in linear regression, since the idea of the regression itself is conditional i.e Y depends on X.
 \end{definition}
 
 The unknown variables in our model are \textbf{intercept} $\beta_0$, \textbf{slope} $\beta_1$ and our $\epsilon_i$. We can estimate $\epsilon_i$ with \textbf{residual} $\widehat{\epsilon_i}$. 
@@ -27,15 +28,92 @@ We can derive an expression for least square estimates. In later chapters, we wi
     \begin{align*} &\widehat{\beta}_1 = \frac{\sum_{i = 1}^n(X_i - \overline{X})(Y_i - \overline{Y})}{\sum_{i = 1}^n (X_i - \overline{X})^2} \\
         &\widehat{\beta}_0 = \overline{Y} - \widehat{\beta}_1\overline{X}
 \end{align*}
-    
+We usually denote the least square estimators as matrices i.e $\widehat{\beta}^T = (\widehat{\beta_0},\widehat{\beta}_1)^T$, for convenience.
+\begin{proof}[Proof Sketch]
+    Notice that
+    \[\op{RSS} = \sum_{i=1}^n (Y_i - \beta_0 -\beta_1X_i) \]
+    Therefore it is enough to minimize the right expression, which is trivial via derivatives, and solving the system equations. We will later see the multivariate proof of the theorem via matrices and such.
+\end{proof}
 \end{theorem}
 \end{definition}
 \section{Properties of  Least Sqaure Estimators}
+We begin with the expectation and variance of least square estimators. Remember that we work with conditionals on $X$.
+\begin{theorem}
+    The least square estimator matrix $\widehat{\beta}$ is unbiased i.e
+    \[\E(\widehat{\beta} | X) = 
+    \begin{pmatrix}
+        \beta_0\\
+        \beta_1
+    \end{pmatrix}\]
+    \begin{proof}[Proof Sketch]
+        We already derived a way of writing least square estimators in the latter chapter, \textbf{Theorem 12.1.1}. Using that fact and $\E(\epsilon | X) = 0$, it is matter of manupilating the expectation until we get our result.
+    \end{proof}
+\end{theorem}
+\begin{theorem}
+    Following properties are true:
+    \begin{enumerate}
+        \item Consistency: $\widehat{\beta} \stackrel{p}{\longrightarrow} \beta$
+        \item Asymptotically normal: $\sqrt{n}(\widehat{\beta} - \beta) \stackrel{d}{\longrightarrow} N(0, \sigma^2)$
+    \end{enumerate}
+\end{theorem}
 \section{Multivariate Regression}
+Suppose that, now we have multiple input variables $X_1, \ldots X_k$ i.e 
+\[\boldsymbol{X} = 
+    \begin{pmatrix}
+        1 &X_{11} &\ldots &X_{1k} \\
+        1 &X_{21} &\ldots &X_{2k} \\
+        \vdots &\vdots &\vdots &\vdots \\
+        1 &X_{n1} &\ldots &X_{nk}
+    \end{pmatrix}\]
+    In this notation, we have $k$ variables with total $n$ datas for each variable. Similarly we define,
+    \[
+        \boldsymbol{Y} =
+        \begin{pmatrix}
+            Y_1 \\
+            Y_2 \\
+            \vdots \\
+            Y_n
+        \end{pmatrix}
+        \quad 
+        \boldsymbol{\beta} = 
+        \begin{pmatrix}
+            \beta_0 \\
+            \beta_1 \\
+            \vdots \\
+            \beta_k
+        \end{pmatrix}
+        \quad
+        \boldsymbol{\epsilon} = 
+        \begin{pmatrix}
+            \epsilon_1 \\
+            \epsilon_2 \\
+            \vdots \\
+            \epsilon_n
+        \end{pmatrix}
+    \]
+    Then we can write our simple regression model with matrix notations, i.e
+    \[\mathbf{Y} = \boldsymbol{ X\beta} + \boldsymbol{\epsilon} \]
+    It is very convenient to work with the matrices. The next theorem, which is the generalization of the least square estimate expressions, shows that
+    \begin{theorem}
+        Assume that $\boldsymbol{X^TX}$ is invertible, then
+        \begin{align*}
+            \boldsymbol{\widehat{\beta}} \quad &  = \quad (\boldsymbol{X^TX})^{-1}\boldsymbol{X^TY} \\
+            \V(\boldsymbol{\widehat{\beta}} | \boldsymbol{X^n}) \quad &  = \quad \sigma^2(\boldsymbol{X^TX})^{-1}
+        \end{align*}
+        \begin{proof}[Proof-Sketch]
+            Let $S = \sum_{i=1}^n \widehat{\epsilon_i}^2$ \\
+            Assuming the inverse of $\boldsymbol{X^TX}$ exists, we wish to minimize
+            \[ S( \boldsymbol{\beta}) = \left( \boldsymbol{Y} - \boldsymbol{X\beta} \right)^2\]
+            Opening the paranthesises, taking the derivative and equating to $0$, (note that $S$ is convex) proves the first part of the theorem. \\
+            Second theorem uses the definiton variance and matrix manipulation (simply put).
+        \end{proof}
+    \end{theorem}
 \section{Logistic Regression}
 \section{References}
 \begin{enumerate}
     \item \url{https://stats.stackexchange.com/questions/221891/difference-between-residual-and-disturbance-epsilon}
-    \item \url{https://stats.stackexchange.com/questions/46151/how-to-derive-the-least-square-estimator-for-multiple-linear-regression}
+    \item \url{https://stats.stackexchange.com/questions/46151/how-to-derive-the-least-square-estimator-for-multiple-linear-regression}a
+    \item \url{https://igpphome.ucsd.edu/~cathy/Classes/SIO223A/sio223a.chap7.pdf}
+    \item \url{https://en.wikipedia.org/wiki/Proofs_involving_ordinary_least_squares#Unbiasedness_and_variance_of_%7F'%22%60UNIQ--postMath-00000037-QINU%60%22'%7F}
 \end{enumerate}
 
