@@ -118,7 +118,20 @@ It is also possible to form \textit{one sided confidence interval}, i.e,
 \[ P( \theta_{L} \le \theta ) \ge 1 - \alpha  \qquad \text{or} \qquad P( \theta \le \theta_{U}) \ge 1 - \alpha\]
 The confidence intervals may be \textbf{closed or open}. For our purpose they are indifferent. 
 
+\begin{theorem}[Normal-Based Confidence Intervals]
+    Let $z_{\alpha/2} = \Phi^{-1}(1-\alpha/2)$. Then, there is $1- \alpha$ chance that the below interval,
+    \[\t \pm z_{\alpha/2}\op{\widehat{se}}\]
+    will containt the real value $\theta$.
+    \begin{proof}
+        Let the above interval be $C$. Then,
+        \begin{align*}
+            P(\theta \in C) =  & P( \t - z_{\alpha/2}\op{\widehat{se}} < \theta < \t + z_{\alpha/2}\op{\widehat{se}}) = \\
+                               &P(-z_{\alpha/2} < \frac{\t - \theta}{\op{\widehat{se}}} < z_{\alpha/2}) \stackrel{d}{\longrightarrow} \\
+                               &P(-z_{\alpha/2} < Z < z_{\alpha/2}) = 1 - \alpha
+        \end{align*}
+    \end{proof}
 
+\end{theorem}
 \section{Hypothesis Testing}
 Please read the Hypothesis chapter instead. \\
 

@@ -1,0 +1,18 @@
+\chapter{Statistical Decision Theory}
+Statistical Decision Theory is widely used in machine learning fields, for example training neural networks and other statistical models via computers.\\ 
+There are multiple methods of generating estimators. Decision Theory helps us decide which method is more suited for our job.\\
+The ``relationship'' between $\theta$ and $\t$ can be measured with a \textbf{loss function} $L(\theta, \t)$. The examples are,
+\begin{align*}
+        &\text{Squared Error Loss} \quad (\theta - \t)^2\\
+        &\text{absolute Error Loss} \quad |\theta - \t|1\\
+        &L_p \text{Loss} \quad |\theta - \t|^p
+\end{align*}
+We kind of already studied these functions before.
+\section{Risk Function}
+To judge the estimators, we use average of loss, or \textbf{risk}.
+\begin{definition}
+    The \textbf{risk} of an estimator $\t$ is,
+    \[ R(\theta, \t) = \E\left(L(\theta, \t)\right)\]
+    Notice that if our loss function is squared error,
+    \[ R(\theta ,\t) = \op{MSE}(\theta,\t)\]
+\end{definition}

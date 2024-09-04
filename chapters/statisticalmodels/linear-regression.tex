@@ -26,8 +26,11 @@ We can derive an expression for least square estimates. In later chapters, we wi
 \begin{theorem}
     The least square estimates are given by,
     \begin{align*} &\widehat{\beta}_1 = \frac{\sum_{i = 1}^n(X_i - \overline{X})(Y_i - \overline{Y})}{\sum_{i = 1}^n (X_i - \overline{X})^2} \\
-        &\widehat{\beta}_0 = \overline{Y} - \widehat{\beta}_1\overline{X}
+        &\widehat{\beta}_0 = \overline{Y} - \widehat{\beta}_1\overline{X} \\
+        &\widehat{\sigma}^2 = \left( \frac{1}{n-2}\right)\sum_{i=1}^n \widehat{\epsilon}^2
 \end{align*}
+The last estimator is also called \textbf{residual standar error} or shortly RSE.\\
+All of these estimators are unbiased.
 We usually denote the least square estimators as matrices i.e $\widehat{\beta}^T = (\widehat{\beta_0},\widehat{\beta}_1)^T$, for convenience.
 \begin{proof}[Proof Sketch]
     Notice that
@@ -58,7 +61,7 @@ We begin with the expectation and variance of least square estimators. Remember 
 \end{theorem}
 \section{Multivariate Regression}
 Suppose that, now we have multiple input variables $X_1, \ldots X_k$ i.e 
-\[\boldsymbol{X} = 
+\[\mathbf{X} = 
     \begin{pmatrix}
         1 &X_{11} &\ldots &X_{1k} \\
         1 &X_{21} &\ldots &X_{2k} \\
@@ -67,7 +70,7 @@ Suppose that, now we have multiple input variables $X_1, \ldots X_k$ i.e
     \end{pmatrix}\]
     In this notation, we have $k$ variables with total $n$ datas for each variable. Similarly we define,
     \[
-        \boldsymbol{Y} =
+        \mathbf{Y} =
         \begin{pmatrix}
             Y_1 \\
             Y_2 \\
@@ -75,7 +78,7 @@ Suppose that, now we have multiple input variables $X_1, \ldots X_k$ i.e
             Y_n
         \end{pmatrix}
         \quad 
-        \boldsymbol{\beta} = 
+        \mathbf{\beta} = 
         \begin{pmatrix}
             \beta_0 \\
             \beta_1 \\
@@ -83,7 +86,7 @@ Suppose that, now we have multiple input variables $X_1, \ldots X_k$ i.e
             \beta_k
         \end{pmatrix}
         \quad
-        \boldsymbol{\epsilon} = 
+        \mathbf{\epsilon} = 
         \begin{pmatrix}
             \epsilon_1 \\
             \epsilon_2 \\
@@ -92,28 +95,27 @@ Suppose that, now we have multiple input variables $X_1, \ldots X_k$ i.e
         \end{pmatrix}
     \]
     Then we can write our simple regression model with matrix notations, i.e
-    \[\mathbf{Y} = \boldsymbol{ X\beta} + \boldsymbol{\epsilon} \]
+    \[\mathbf{Y} = \mathbf{ X\beta} + \mathbf{\epsilon} \]
     It is very convenient to work with the matrices. The next theorem, which is the generalization of the least square estimate expressions, shows that
     \begin{theorem}
-        Assume that $\boldsymbol{X^TX}$ is invertible, then
+        Assume that $\mathbf{X^TX}$ is invertible, then
         \begin{align*}
-            \boldsymbol{\widehat{\beta}} \quad &  = \quad (\boldsymbol{X^TX})^{-1}\boldsymbol{X^TY} \\
-            \V(\boldsymbol{\widehat{\beta}} | \boldsymbol{X^n}) \quad &  = \quad \sigma^2(\boldsymbol{X^TX})^{-1}
+            \mathbf{\widehat{\beta}} \quad &  = \quad (\mathbf{X^TX})^{-1}\mathbf{X^TY} \\
+            \V(\mathbf{\widehat{\beta}} | \mathbf{X^n}) \quad &  = \quad \sigma^2(\mathbf{X^TX})^{-1}
         \end{align*}
         \begin{proof}[Proof-Sketch]
             Let $S = \sum_{i=1}^n \widehat{\epsilon_i}^2$ \\
-            Assuming the inverse of $\boldsymbol{X^TX}$ exists, we wish to minimize
-            \[ S( \boldsymbol{\beta}) = \left( \boldsymbol{Y} - \boldsymbol{X\beta} \right)^2\]
+            Assuming the inverse of $\mathbf{X^TX}$ exists, we wish to minimize
+            \[ S( \mathbf{\beta}) = \left( \mathbf{Y} - \mathbf{X\beta} \right)^2\]
             Opening the paranthesises, taking the derivative and equating to $0$, (note that $S$ is convex) proves the first part of the theorem. \\
             Second theorem uses the definiton variance and matrix manipulation (simply put).
         \end{proof}
     \end{theorem}
-\section{Logistic Regression}
 \section{References}
 \begin{enumerate}
     \item \url{https://stats.stackexchange.com/questions/221891/difference-between-residual-and-disturbance-epsilon}
-    \item \url{https://stats.stackexchange.com/questions/46151/how-to-derive-the-least-square-estimator-for-multiple-linear-regression}a
+    \item \url{https://stats.stackexchange.com/questions/46151/how-to-derive-the-least-square-estimator-for-multiple-linear-regression}
     \item \url{https://igpphome.ucsd.edu/~cathy/Classes/SIO223A/sio223a.chap7.pdf}
     \item \url{https://en.wikipedia.org/wiki/Proofs_involving_ordinary_least_squares#Unbiasedness_and_variance_of_%7F'%22%60UNIQ--postMath-00000037-QINU%60%22'%7F}
+    \item \url{https://stats.stackexchange.com/questions/124818/logistic-regression-error-term-and-its-distribution}
 \end{enumerate}
-

@@ -1,0 +1,18 @@
+\chapter{Resampling Methods}
+\section{Bootstrap}
+Bootstrap is a technique about generating more sample data from existing data. It is used for computing confidence intervals and estimating standard errors. The idea is simple. We have sample data $X_1, \ldots X_n$ from unknown distribution $F$. First we estimate $F$ with $\widehat{F}_n$, then we draw random resamples from $\widehat{F}_n$ multiple times and calculate our wanted statistical functions.
+\section{Basic Introduction}
+\begin{definition}\textbf{Bootstrapping}\\
+    Let $X = \{X_1, \ldots X_n \}$ be our sample data from unknown distribution $F$. That is,
+    \[X_1,X_2, \ldots X_n \sim F \]
+    Let' s assume we are interested in $T(X)$. In practical statistical problems, we need to know about the distribution of $T(X)$. We can estimate our unknown distribution $F$ with $\widehat{F}_n$, and draw random samples from that known distribution, that is,
+    \[X^*_1, X^*_2, \ldots, X^*_n  \sim \widehat{F}_n\]
+    and compute $T^*_n$ from these samples.
+\end{definition}
+\section{References}
+\begin{enumerate}
+    \item \url{https://stats.stackexchange.com/questions/26088/explaining-to-laypeople-why-bootstrapping-works}
+    \item \url{https://ocw.mit.edu/courses/14-384-time-series-analysis-fall-2013/2fdf997bca65d6ed82ba7a94f6cdc970_MIT14_384F13_lec9.pdf}
+\end{enumerate}
+
+
