@@ -39,6 +39,19 @@ We usually denote the least square estimators as matrices i.e $\widehat{\beta}^T
 \end{proof}
 \end{theorem}
 \end{definition}
+\section{Maximum Likelihood and Least Square Estimators}
+Assume that $Y$ is normally distributed. It is very practical, and holds true in practice. The likelihood function is then,
+\[ \prod_{i=1}^nf(X_i, Y_i) = \prod_{i=1}^n f_X(X_i) \prod_{i=1}^n f_{Y|X}(Y_i | X_i) = \mathcal{L}_{1} \cdot \mathcal{L}_2\]
+We can use maximum likelihood method to estimate our parameters $\beta_1, \beta_2$. $\mathcal{L}_1$ doesn't include our target parameters, so we will treat it as a constant. We wish to maximize $\mathcal{L}_2$. Using the log-likelihood and our normal distribution assumption,
+\begin{align*}
+    \ell(\beta_0, \beta_1, \sigma) = -n \ln(\sigma) - \frac{1}{2\sigma^2}\sum_{i=1}^n\left(Y_i - (\beta_0 + \beta_1 X_i)\right)^2
+\end{align*}
+Note that we used the p.d.f of normal distribution and the fact that $\mu = \beta_0 + \beta_1X_i$. To maximize the log-likelihood, we have to maximize $\op{MLE}$ of $(\beta_0, \beta_1)$
+\[\op{RSS} = \sum_{i=1}^n\left(Y_i - (\beta_0 + \beta_1 X_i)\right)^2\]
+Which is the least square estimator. In fact, we have the following theorem,
+\begin{theorem}
+    As long as we have the normality assumption, the least square estimator and likelihood estimator are equivalent.
+\end{theorem}
 \section{Properties of  Least Sqaure Estimators}
 We begin with the expectation and variance of least square estimators. Remember that we work with conditionals on $X$.
 \begin{theorem}
@@ -56,7 +69,9 @@ We begin with the expectation and variance of least square estimators. Remember 
     Following properties are true:
     \begin{enumerate}
         \item Consistency: $\widehat{\beta} \stackrel{p}{\longrightarrow} \beta$
-        \item Asymptotically normal: $\sqrt{n}(\widehat{\beta} - \beta) \stackrel{d}{\longrightarrow} N(0, \sigma^2)$
+        \item Asymptotically normal: $\sqrt{n}(\widehat{\beta} - \beta) \stackrel{d}{\longrightarrow} N(0, 1)$
+        \item $1-\alpha$ confidence intervals:
+            \[ \beta \pm z_{\alpha/2}\op{\widehat{se}(\beta)}\]
     \end{enumerate}
 \end{theorem}
 \section{Multivariate Regression}
@@ -118,4 +133,6 @@ Suppose that, now we have multiple input variables $X_1, \ldots X_k$ i.e
     \item \url{https://igpphome.ucsd.edu/~cathy/Classes/SIO223A/sio223a.chap7.pdf}
     \item \url{https://en.wikipedia.org/wiki/Proofs_involving_ordinary_least_squares#Unbiasedness_and_variance_of_%7F'%22%60UNIQ--postMath-00000037-QINU%60%22'%7F}
     \item \url{https://stats.stackexchange.com/questions/124818/logistic-regression-error-term-and-its-distribution}
+    \item \url{https://stats.stackexchange.com/questions/23479/why-do-we-assume-that-the-error-is-normally-distributed}
+    \item \url{https://stats.stackexchange.com/questions/148803/how-does-linear-regression-use-the-normal-distribution}
 \end{enumerate}
