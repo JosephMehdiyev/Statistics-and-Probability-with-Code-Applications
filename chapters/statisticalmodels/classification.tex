@@ -27,10 +27,34 @@ therefore we wish to maximize,
 \[ \ell(\beta_0, \beta_1) = \prod_{i = 1}^n p(x_i) \prod_{i = 1}^n 1-p(x_i) \]
 Statistical softwares such as R and python libraries can easily compute the MLE. There are also multiple algorithms, one of them being \textbf{Gradient Descent}, a very useful technique used heavily in Deep Learning.
 \section{Multinomial Logistic Regression}
-
+Assume our dependent variables $Y$ get more than 2 values. It is possible to use logistic model, with minor changes, for this purpose. This model is called \textbf{Multinomial Logistic Regression}.\\
+Let the number of classes (dependent variables) be $K$. The idea is choose a class as ``pivot'', in this example $Y = K$, and other $K-1$ outcomes are logictic regressed against the pivot. That is, we apply binary logistic regression multiple times, e.g (We wont write conditional part of the probabilities for the sake of the simplicity)
+\[ \ln \frac{P(Y_i = k)}{P(Y_i = K)} = \beta_k \cdot \mathbf{X_i}, \quad k < K\]
+Note that here $\beta_k$ is a matrix. \\
+Afterwards, we use the fact that all the probability sum up to $1$, then
+\[ P(Y_i = K) = 1 - \sum_{j=1}^{K-1} P(Y_i = j) =1 - \sum_{j=1}^{K-1} P(Y_i = K)e^{\beta_j \mathbf{X_i}}\]
+With basic algebraic manipulation, we derive that
+\[ P(Y_i  = K) = \frac{1}{1 + \sum_{j=1}^{K-1} e^{\beta_j \mathbf{X_i}}}\]
+Then other non-pivot probabilities are,
+\[P(Y_i = k) = \frac{e^{\beta_k \mathbf{X_i}}}{1+ \sum_{j=1}^{K-1} e^{\beta_j\mathbf{X_i}}} \]
+This statistical model works, and we estimate $K-1$ coefficients to generate our model. However, this model is not symmetrical i.e $K$th class is ``being ignored''. There is a better method, first we introduce \textbf{softmax function}, generalization of the logistic function
+\begin{definition} \textbf{Softmax Function} takes input matrix $\mathbf{X} = \{x_1, \ldots, x_K\} \in \mathbb{R}^K$ and converts the value to probabilities,
+    \[ \sigma(\mathbf{X})_i = \frac{e^{x_i}}{\sum_{j=1}^K e^{x_j}}\]
+Intuitively, this function is also called \textbf{normalized exponential function}, because this is what basically the function does. Moreover, the sum of all the components adds up to $1$.
+\end{definition}
+Using the above function, 
+\begin{definition}\textbf{Softmax Multinomial Logistic Regression}, for all $K$ classes, we have 
+    \[ P(Y_i = k) = \frac { e^{\beta_k \mathbf{X_i}}}{\sum_{j=1}^K e^{\beta_j\mathbf{X_i}}}\]
+\end{definition}
+\section{Estimating Multinomial Logistic coefficients}
+We can either use multinomial logit, or generalized maximum likelihood for joints of coefficients, which is out of the scope of my knowledge and the book.
+\section{Linear  Discriminant Analysis, l.d.a or LDA}
+\section{QDA}
+\section{KNN, write the above chapters after finish learning(*)}
 \section{References}
 \begin{enumerate}
     \item \url{https://stats.stackexchange.com/questions/124818/logistic-regression-error-term-and-its-distribution}
+    \item \url{https://en.wikipedia.org/wiki/Multinomial_logistic_regression#}
 \end{enumerate}
 
 
