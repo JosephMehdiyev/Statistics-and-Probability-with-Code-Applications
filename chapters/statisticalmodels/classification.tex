@@ -1,1 +1,36 @@
 \chapter{Classification}
+In linear regresison models, it is assumed that response variable $Y$ is quantative, that is, it issome real number. In practical world, $Y$ can be qualitative e.g blood type, eye color and so on. \\
+Study of predicting qualitative responess are called \textbf{classification}.
+\section{Logistic Regression}
+Assume our response variable $Y$ takes binary values i.e $Y \in \{0, 1 \}$. There is a method called \textbf{logistic regression} that models the probability that $Y$ belongs to a particular category, in this example $0$ or $1$, that is,
+\[P(Y = 1| X ) \quad \text{and} \quad P(Y = 2| X) \]
+Trying linear regression model, we see that the value is not in the interval $[0,1]$, e.g it sometimes takes negative values. To avoid this problem, we use \textbf{logistic function}.
+\begin{definition}
+    \textbf{Logistic function}, sometimes called \textbf{sigmoid function}, is  defined by formula,
+    \[\sigma(x)  = \frac{1}{1- e^{-x}} = \frac{e^x}{1+e^x} = 1 - \sigma(-x)\]
+Note that $\sigma$ in this formula do not represent the variance, but rather the logistic function.
+\end{definition}
+Using this function, we can derive a statistical model caleld \textbf{logistic regression},
+\begin{definition}
+    \textbf{Logistic regression} is defined as,
+    \[ p(X) \equiv P(Y_i = 1| X = x) = \frac{e^{\beta_0 + \sum_{i=1}^n\beta_i x_i}} {1+e^{\beta + \sum_{i=1}^n\beta_i x_i}} \]
+    With simple algebraic manipulation, we can find that,
+    \[ \ln\left( \frac{p(X)}{1-p(X)}\right) = \beta_0 +\sum_{i=1}^n\beta_i x_i\]
+    The log expresison in the left side is usually called \textbf{logit}, that is,
+    \[\op{logit}(p(X))= \ln\left( \frac{p(X)}{1-p(X)}\right)\]
+\end{definition}
+There are subtle differences between linear regression and logistic regression. (A chapter about this?+bernoulli+error term distirbution so on)
+\section{Estimating Logistic Coefficients}
+It is possible to generate the coefficient via MLE. Since $Y$ is binary, the data is in binomial distribution, that is,
+\[ Y | X \sim \op{Bernoulli}(p)\]
+therefore we wish to maximize,
+\[ \ell(\beta_0, \beta_1) = \prod_{i = 1}^n p(x_i) \prod_{i = 1}^n 1-p(x_i) \]
+Statistical softwares such as R and python libraries can easily compute the MLE. There are also multiple algorithms, one of them being \textbf{Gradient Descent}, a very useful technique used heavily in Deep Learning.
+\section{Multinomial Logistic Regression}
+
+\section{References}
+\begin{enumerate}
+    \item \url{https://stats.stackexchange.com/questions/124818/logistic-regression-error-term-and-its-distribution}
+\end{enumerate}
+
+
