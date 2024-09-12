@@ -7,7 +7,7 @@ Assume our response variable $Y$ takes binary values i.e $Y \in \{0, 1 \}$. Ther
 Trying linear regression model, we see that the value is not in the interval $[0,1]$, e.g it sometimes takes negative values. To avoid this problem, we use \textbf{logistic function}.
 \begin{definition}
     \textbf{Logistic function}, sometimes called \textbf{sigmoid function}, is  defined by formula,
-    \[\sigma(x)  = \frac{1}{1- e^{-x}} = \frac{e^x}{1+e^x} = 1 - \sigma(-x)\]
+    \[\sigma(x)  = \frac{1}{1+e^{-x}} = \frac{e^x}{1+e^x} = 1 - \sigma(-x)\]
 Note that $\sigma$ in this formula do not represent the variance, but rather the logistic function.
 \end{definition}
 Using this function, we can derive a statistical model caleld \textbf{logistic regression},
