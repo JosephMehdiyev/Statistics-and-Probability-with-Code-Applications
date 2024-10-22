@@ -1,4 +1,5 @@
 # NOTICE: The book is not finished.
+# Click the main.pdf to see the notes pdf.
 
 ### About the book
 The reason I wrote this is because I wanted to learn how the academic writings are made, also to learn the statistics field in a unique way. The main purpose of the book is to be a handbook or a notebook for my personal uses. You can find source code below.
