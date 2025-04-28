@@ -1,15 +1,18 @@
 % !TeX TXS-program:compile = txs:///pdflatex/[--shell-escape]
-\documentclass[oneside]{book}
-\usepackage{config}
-\begin{document}
-\pagestyle{fancy}
-\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
-\fancyhead[R]{\thepage}
-\fancyhead[L]{\chaptername\ \thechapter\ --\ \leftmark}
+\documentclass[11pt]{scrreprt}
+\usepackage{mehdiyev}
 
-\include{others/titlepage.tex}
-\include{others/preface}
+\begin{document}
+\renewcommand{\figurename}{Image}
+\numberwithin{figure}{chapter}
+
+\title{Probability and Statistics Notes}
+\author{Yusif Mehdiyev}
+\date{June 2024}
+\maketitle
+
 \tableofcontents
+
 \part{Probability}
 \include{chapters/probability/introductiontoprobability}
 \include{chapters/probability/randomvariables}
